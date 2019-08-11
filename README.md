@@ -1,6 +1,11 @@
-# AsdVenueFe
+# Advanced Software Development - Venue Project Front End
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
+Evan Hunter - 13248721
+Emily Law - 13245168
+Jayashri Sood - 13188230
+Chantel Dias - 13195603
+Bella Langi - 13214945
+Tom Congerton - 13227994
 
 ## Development server
 
