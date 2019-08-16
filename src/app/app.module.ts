@@ -3,6 +3,8 @@ import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 //Components for Routing
 import { NavComponent } from "./components/nav/nav.component";
 import { LoginComponent } from "./components/login/login.component";
@@ -16,10 +18,13 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MatToolbarModule } from "@angular/material";
+import { MatCardModule } from "@angular/material";
+import { MatInputModule } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NewAccountComponent } from './components/new-account/new-account.component';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, LoginComponent, MapComponent],
+  declarations: [AppComponent, NavComponent, LoginComponent, MapComponent, NewAccountComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,7 +35,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatCardModule,
+    MatInputModule,
+    FormsModule,
+    RouterModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
