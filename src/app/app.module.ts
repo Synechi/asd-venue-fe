@@ -17,9 +17,14 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MatToolbarModule } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { FriendListComponent } from './components/friend-list/friend-list.component';
+import { PendingRequestsComponent } from './components/pending-requests/pending-requests.component';
+import { AddFriendsComponent } from './components/add-friends/add-friends.component';
+import { FriendsNavComponent } from './components/friends-nav/friends-nav.component';
+import { SuggestedfriendsComponent } from './components/suggestedfriends/suggestedfriends.component';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, LoginComponent, MapComponent],
+  declarations: [AppComponent, NavComponent, LoginComponent, MapComponent, FriendListComponent, AddFriendsComponent, PendingRequestsComponent, FriendsNavComponent, SuggestedfriendsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
