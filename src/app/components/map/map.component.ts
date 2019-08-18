@@ -64,7 +64,7 @@ export class MapComponent implements OnInit {
       elementType: "labels",
       stylers: [
         {
-          visibility: "on"
+          visibility: "off"
         }
       ]
     }
