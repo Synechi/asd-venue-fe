@@ -19,12 +19,21 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MatToolbarModule } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatDialogModule} from '@angular/material';
-import { MatCardModule} from '@angular/material';
-import { VenueListViewComponent } from './components/venue-list-view/venue-list-view.component';
+import { MatDialogModule } from "@angular/material";
+import { MatCardModule } from "@angular/material";
+import { VenueListViewComponent } from "./components/venue-list-view/venue-list-view.component";
+import { VenueDetailsComponent } from "./components/venue-details/venue-details.component";
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, LoginComponent, MapComponent, VenueListComponent, VenueListViewComponent],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    LoginComponent,
+    MapComponent,
+    VenueDetailsComponent,
+    VenueListComponent,
+    VenueListViewComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
