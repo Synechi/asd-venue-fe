@@ -10,6 +10,10 @@
   background: inherit;
 }
 
+.mat-toolbar {
+  height: 7vh;
+}
+
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
@@ -24,4 +28,11 @@
 
 .navLinks a {
   margin-right: 8px;
+}
+
+.navbar img {
+  position: relative;
+  height: 6vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }

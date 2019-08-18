@@ -9,6 +9,9 @@ import { NavComponent } from "./components/nav/nav.component";
 import { LoginComponent } from "./components/login/login.component";
 import { MapComponent } from "./components/map/map.component";
 import { ListComponent } from './components/list/list.component';
+import { VenueListComponent } from "./components/venue-list/venue-list.component";
+import { VenueListViewComponent } from "./components/venue-list-view/venue-list-view.component";
+import { VenueDetailsComponent } from "./components/venue-details/venue-details.component";
 //Services
 import { UserService } from "./service/user.service";
 //Angular Design Modules
@@ -20,10 +23,23 @@ import { MatListModule } from "@angular/material/list";
 import { MatToolbarModule } from "@angular/material";
 import { MatTableModule } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatDialogModule } from "@angular/material";
+import { MatCardModule } from "@angular/material";
+
 
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, LoginComponent, MapComponent, ListComponent],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    LoginComponent,
+    MapComponent,
+    VenueDetailsComponent,
+    VenueListComponent,
+    VenueListViewComponent,
+    ListComponent
+  ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,6 +47,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatToolbarModule,
     LayoutModule,
     HttpClientModule,
+    MatCardModule,
+    MatDialogModule,
     MatButtonModule,
     MatSidenavModule,
     MatTableModule,
