@@ -8,7 +8,10 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from "@agm/core";
 import { NavComponent } from "./components/nav/nav.component";
 import { LoginComponent } from "./components/login/login.component";
 import { MapComponent } from "./components/map/map.component";
+import { ListComponent } from './components/list/list.component';
 import { VenueListComponent } from "./components/venue-list/venue-list.component";
+import { VenueListViewComponent } from "./components/venue-list-view/venue-list-view.component";
+import { VenueDetailsComponent } from "./components/venue-details/venue-details.component";
 //Services
 import { UserService } from "./service/user.service";
 //Angular Design Modules
@@ -18,11 +21,12 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MatToolbarModule } from "@angular/material";
+import { MatTableModule } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatDialogModule } from "@angular/material";
 import { MatCardModule } from "@angular/material";
-import { VenueListViewComponent } from "./components/venue-list-view/venue-list-view.component";
-import { VenueDetailsComponent } from "./components/venue-details/venue-details.component";
+
+
 
 @NgModule({
   declarations: [
@@ -32,8 +36,10 @@ import { VenueDetailsComponent } from "./components/venue-details/venue-details.
     MapComponent,
     VenueDetailsComponent,
     VenueListComponent,
-    VenueListViewComponent
+    VenueListViewComponent,
+    ListComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -45,6 +51,7 @@ import { VenueDetailsComponent } from "./components/venue-details/venue-details.
     MatDialogModule,
     MatButtonModule,
     MatSidenavModule,
+    MatTableModule,
     MatIconModule,
     MatListModule,
     AgmCoreModule.forRoot({
