@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
+import { AgmCoreModule, GoogleMapsAPIWrapper } from "@agm/core";
 //Components for Routing
 import { NavComponent } from "./components/nav/nav.component";
 import { LoginComponent } from "./components/login/login.component";
@@ -35,7 +36,11 @@ import { SuggestedfriendsComponent } from './components/suggestedfriends/suggest
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyARpeZgOM28DWy69OEewkRMgUfrfxASKLY",
+      libraries: ["places"]
+    })
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
