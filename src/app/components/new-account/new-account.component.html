@@ -3,7 +3,7 @@
         Create An Account
     </mat-card-title>
     <mat-card-content>
-            <form class="example-form" id="createAccount" #userData="ngForm" (ngSubmit)="registerUser(userData.value)">
+            <form class="example-form" id="createAccount" #userData="ngForm" (ngSubmit)="registerUser(userData)" >
               <table class="example-full-width" cellspacing="0">
                 <tr>
                   <td>
@@ -37,21 +37,31 @@
                 <tr>
                     <td>
                         <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Password" [(ngModel)]="password" name="password" type="password" required>
+                        <input matInput placeholder="Password" ngModel #password = "ngModel" name="password" type="password" required minlength="6">
+                        <mat-error *ngIf="password.invalid">Password must be minmum 6 characters long</mat-error>
+                    </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Confirm Password" [(ngModel)]="conpassword" name="conpassword" type="password" required minlength="6"> 
                         </mat-form-field>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Confirm Password" [(ngModel)]="conpassword" name="conpassword" type="password" required>
+                        <input matInput placeholder="Preference" [(ngModel)]="preference" name="preference" required> 
                         </mat-form-field>
                     </td>
-                </tr>
+                    </tr>
                 </table>
                 <!-- <button (click)="submit()">Submit</button> -->
                 <input type="submit" value="Create" mat-button>
             </form>
+            <br>
+            <div *ngIf="successMessage" [ngClass] = "'success'"> {{successMessage}} </div> 
           </mat-card-content>
 </mat-card> 
 
