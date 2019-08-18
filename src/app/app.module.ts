@@ -8,6 +8,7 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from "@agm/core";
 import { NavComponent } from "./components/nav/nav.component";
 import { LoginComponent } from "./components/login/login.component";
 import { MapComponent } from "./components/map/map.component";
+import { ListComponent } from './components/list/list.component';
 //Services
 import { UserService } from "./service/user.service";
 //Angular Design Modules
@@ -17,10 +18,12 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MatToolbarModule } from "@angular/material";
+import { MatTableModule } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
+
 @NgModule({
-  declarations: [AppComponent, NavComponent, LoginComponent, MapComponent],
+  declarations: [AppComponent, NavComponent, LoginComponent, MapComponent, ListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,6 +33,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     HttpClientModule,
     MatButtonModule,
     MatSidenavModule,
+    MatTableModule,
     MatIconModule,
     MatListModule,
     AgmCoreModule.forRoot({
