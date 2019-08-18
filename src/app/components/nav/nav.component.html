@@ -14,10 +14,11 @@
       <a mat-list-item routerLink="/login">Login</a>
       <a mat-list-item routerLink="/myFriends">My Friends</a>
       <a mat-list-item routerLink="/pendingRequests">Pending Friend Requests</a>
+      <a mat-list-item routerLink="/venue-list">Lists</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="secondary">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -27,7 +28,9 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>venU</span>
+      <span class="navbar"
+        ><img src="assets/img/name+logo.png" alt="venU"
+      /></span>
       <span class="fill-remaining-space"></span>
       <div class="navLinks">
         <a mat-raised-button routerLink="">Home</a>
@@ -35,6 +38,8 @@
         <a mat-raised-button routerLink="/login">Login</a>
         <a mat-raised-button routerLink="/myFriends">My Friends</a>
         <a mat-raised-button routerLink="/pendingRequests">Pending Friend Requests</a>
+        <a mat-raised-button routerLink="/venue-list">Lists</a>
+        <a mat-raised-button routerLink="/venuedetails">VenueDetails</a>
       </div>
     </mat-toolbar>
     <!-- Add Content Here -->

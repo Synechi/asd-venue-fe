@@ -1,0 +1,7 @@
+<div class="container" *ngIf="!isViewable">
+  <h4>Send a Friend Request to this User?</h4>
+  <div class="btnContainer">
+    <button (click)= "alert()">Yes!</button>
+    <button class = "nahBtn" (click)="hide()">Actually on second thought...</button>
+  </div>
+</div>

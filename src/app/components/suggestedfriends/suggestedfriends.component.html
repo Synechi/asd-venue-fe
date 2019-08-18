@@ -11,8 +11,15 @@
       <tr *ngFor="let user of users">
         <td>{{ user.fName }}</td>
         <td>{{ user.lName }}</td>
-        <td><button (click)="addFriend()">Add Friend</button></td>
+        <td><button type = "button" (click)="show()">Add Friend</button></td>
       </tr>
     </tbody>
   </table>
 </body>
+
+  <div>
+  <app-request-confirmation *ngIf="isViewable"></app-request-confirmation>
+  </div>
+
+
+

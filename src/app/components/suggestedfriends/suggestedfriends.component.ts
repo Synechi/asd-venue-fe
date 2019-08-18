@@ -10,6 +10,8 @@ export class SuggestedfriendsComponent implements OnInit {
 
   users = []; 
 
+  public isViewable: boolean;
+
   getUsers(): void { 
 
     this.friendService.getAllUsers().subscribe(users => this.users = users); 
@@ -18,9 +20,10 @@ export class SuggestedfriendsComponent implements OnInit {
 
   constructor(private friendService: FriendService) { }
 
+  show(): void { this.isViewable = !this.isViewable; }
 
   ngOnInit() {
     this.getUsers(); 
-  }
+      }
 
 }
