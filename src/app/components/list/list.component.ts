@@ -6,8 +6,8 @@ export interface VenueU {
 }
 
 const venue_data: VenueU[] = [
-  {name: 'Hydrogen', location: 'H'},
-  {name: 'Helium', location: 'He'},
+  {name: 'UTS Loft', location: 'JTemp'},
+  {name: 'Star Bar', location: 'HTemp'},
 ];
 
 @Component({
