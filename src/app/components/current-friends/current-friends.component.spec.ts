@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FriendsNavComponent } from './friends-nav.component';
+import { CurrentFriendsComponent } from './current-friends.component';
 
-describe('FriendsNavComponent', () => {
-  let component: FriendsNavComponent;
-  let fixture: ComponentFixture<FriendsNavComponent>;
+describe('CurrentFriendsComponent', () => {
+  let component: CurrentFriendsComponent;
+  let fixture: ComponentFixture<CurrentFriendsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FriendsNavComponent ]
+      declarations: [ CurrentFriendsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FriendsNavComponent);
+    fixture = TestBed.createComponent(CurrentFriendsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

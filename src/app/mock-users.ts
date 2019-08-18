@@ -7,8 +7,8 @@ import { User } from './user';
 
 export const USERS: User[] = [
 
-    { userID: 1, fName: 'Bella', lName: 'Pan' },
-    { userID: 2, fName: 'Lovely', lName: 'Can'},
-    { userID: 3, fName: 'Mark', lName: 'Burger'},
-    { userID: 4, fName: 'Mark', lName: 'Hungry'}
+    { userID: 1, fName: 'Sally', lName: 'Pan', preference: 'Ramen' },
+    { userID: 2, fName: 'Timothy', lName: 'Can', preference: 'Fast Food'},
+    { userID: 3, fName: 'Mark', lName: 'Johnson', preference: 'Burger'},
+    { userID: 4, fName: 'Mark', lName: 'Smith', preference: 'Sushi'}
 ]

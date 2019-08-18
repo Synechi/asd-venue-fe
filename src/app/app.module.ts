@@ -21,11 +21,14 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FriendListComponent } from './components/friend-list/friend-list.component';
 import { PendingRequestsComponent } from './components/pending-requests/pending-requests.component';
 import { AddFriendsComponent } from './components/add-friends/add-friends.component';
-import { FriendsNavComponent } from './components/friends-nav/friends-nav.component';
 import { SuggestedfriendsComponent } from './components/suggestedfriends/suggestedfriends.component';
+import { AddFriendButtonComponent } from './components/add-friend-button/add-friend-button.component';
+import { CurrentFriendsComponent } from './components/current-friends/current-friends.component';
+import { PendingRequestsTableComponent } from './components/pending-requests-table/pending-requests-table.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, LoginComponent, MapComponent, FriendListComponent, AddFriendsComponent, PendingRequestsComponent, FriendsNavComponent, SuggestedfriendsComponent],
+  declarations: [AppComponent, NavComponent, LoginComponent, MapComponent, FriendListComponent, AddFriendsComponent, PendingRequestsComponent, SuggestedfriendsComponent, AddFriendButtonComponent, CurrentFriendsComponent, PendingRequestsTableComponent, SearchBarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

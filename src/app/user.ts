@@ -6,5 +6,6 @@ export class User {
     userID: number; 
     fName: String; 
     lName: String;
+    preference: String;
 
 }
