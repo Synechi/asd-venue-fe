@@ -18,9 +18,10 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MatToolbarModule } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { VenueDetailsComponent } from './components/venue-details/venue-details.component';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, LoginComponent, MapComponent],
+  declarations: [AppComponent, NavComponent, LoginComponent, MapComponent, VenueDetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
