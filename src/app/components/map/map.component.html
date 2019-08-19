@@ -1,2 +1,10 @@
 <app-nav></app-nav>
-<p>map works!</p>
+<agm-map
+  [zoom]="15"
+  [styles]="styles"
+  [latitude]="latitude"
+  [longitude]="longitude"
+  (mapClick)="onChosenLocation($event)"
+>
+  <agm-marker></agm-marker>
+</agm-map>
