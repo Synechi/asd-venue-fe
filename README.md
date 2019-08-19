@@ -5,7 +5,9 @@ Emily Law - 13245168
 Jayashri Sood - 13188230  
 Chantel Dias - 13195603  
 Bella Langi - 13214945  
-Tom Congerton - 13227994  
+Tom Congerton - 13227994
+
+Evan Demo
 
 ## Development server
 
