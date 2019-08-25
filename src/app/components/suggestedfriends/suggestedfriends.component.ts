@@ -15,7 +15,7 @@ export class SuggestedfriendsComponent implements OnInit {
 
   displayUsers(): void { 
 
-    this.friendService.displayUsers().subscribe(users => this.users = users); 
+    this.friendService.displayUsers().subscribe(users => this.users = users);
 
   }
 
