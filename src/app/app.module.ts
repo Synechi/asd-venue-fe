@@ -37,6 +37,7 @@ import { SearchBarComponent } from "./components/search-bar/search-bar.component
 import { RequestConfirmationComponent } from "./components/request-confirmation/request-confirmation.component";
 import { MatInputModule } from "@angular/material";
 import { MatCardModule } from "@angular/material";
+import { FilterPipe } from './filterPipe';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { MatCardModule } from "@angular/material";
     VenueListComponent,
     VenueListViewComponent,
     ListComponent,
-    NewAccountComponent
+    NewAccountComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -81,6 +83,7 @@ import { MatCardModule } from "@angular/material";
     RouterModule
   ],
   providers: [UserService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [FilterPipe]
 })
 export class AppModule {}

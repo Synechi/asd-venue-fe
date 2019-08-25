@@ -1,4 +1,7 @@
 <body>
+  <form>
+    <input type="text" name = "searchBox" placeholder="Search..." [(ngModel)] = "searchBox"/>
+  </form>
   <table class="friendsTable">
     <thead>
       <tr>
@@ -8,9 +11,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{ user.fName }}</td>
-        <td>{{ user.lName }}</td>
+      <tr *ngFor="let user of users | filter : 'firstname' : searchBox; let i = index">
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.lastname }}</td>
         <td><button type = "button" (click)="show()">Add Friend</button></td>
       </tr>
     </tbody>

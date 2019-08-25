@@ -10,17 +10,16 @@ export class PendingRequestsTableComponent implements OnInit {
 
   users = [];
 
-  getUsers(): void { 
+  // getUsers(): void { 
 
-    this.friendService.getAllUsers().subscribe(users => this.users = users); 
+  //   this.friendService.getAllUsers().subscribe(users => this.users = users); 
 
-  }
+  // }
 
 
   constructor(private friendService : FriendService) { }
 
   ngOnInit() {
-    this.getUsers();
   }
 
 }

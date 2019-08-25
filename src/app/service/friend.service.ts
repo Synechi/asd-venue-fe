@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { USERS } from '../mock-users';
+
 import { User} from '../user';
 import { BehaviorSubject, of } from 'rxjs';
 import { Observable } from 'rxjs'; 
@@ -10,28 +10,16 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class FriendService {
 
-users = USERS; 
+  uri = "http://localhost:4000";
 
-results = []; 
 
-getAllUsers(): Observable<User[]> { 
-
-  return of(USERS);
+  
+constructor(private http: HttpClient){
 
 }
-/* searchUser(name) { 
-
-  let filteredList = this.user.map(function(e) {
-
-    return {ID: e["userID"], Name: e["fName"], Surname: e["lName"]}
-  }).filter((e) => e.Name == name);
-
-  return filteredList; 
-
-  } */
-
-
-constructor(){
-
+displayUsers(): Observable<User[]> {
+  return this.http.get<User[]>(`${this.uri}/displayUsers`);
 }
+
+
 }

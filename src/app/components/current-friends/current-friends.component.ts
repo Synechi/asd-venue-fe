@@ -7,17 +7,17 @@ import { FriendService } from '../../service/friend.service';
 })
 export class CurrentFriendsComponent implements OnInit {
 
-  users = [];
-  getUsers(): void { 
+  // users = [];
+  // getUsers(): void { 
 
-    this.friendService.getAllUsers().subscribe(users => this.users = users); 
+  //   this.friendService.getAllUsers().subscribe(users => this.users = users); 
 
-  }
+  // }
 
   constructor(private friendService: FriendService) { }
 
   ngOnInit() {
-    this.getUsers();
+   
   }
 
 }
