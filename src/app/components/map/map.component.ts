@@ -1,4 +1,5 @@
-import { Component, OnInit, NgModule } from "@angular/core";
+import { Component, OnInit, NgModule, NgZone } from "@angular/core";
+import { GoogleMapsService } from "../../service/google-maps.service";
 
 @Component({
   selector: "app-map",
@@ -6,17 +7,40 @@ import { Component, OnInit, NgModule } from "@angular/core";
   styleUrls: ["./map.component.css"]
 })
 export class MapComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private gMapsService: GoogleMapsService,
+    private __zone: NgZone
+  ) {}
 
   ngOnInit() {}
+  markers: marker[] = [];
 
+  // Map Center
   latitude = -33.870752;
   longitude = 151.208221;
-
-  onChosenLocation(event) {
-    console.log(event);
+  // Marker Loader
+  loadMarkers() {
+    this.getLatLong("ChIJDTR29iauEmsR97nGzWimbMo");
+    this.getLatLong("ChIJISFoEiKuEmsR8TMqpG8xgwQ");
   }
 
+  getLatLong(placeID) {
+    this.gMapsService.getLatLng(placeID).subscribe(result => {
+      this.__zone.run(
+        () => {
+          console.log(result);
+
+          this.markers.push({
+            lat: result.geometry.location.lat(),
+            lng: result.geometry.location.lng()
+          });
+        },
+        error => console.log(error)
+      );
+    });
+  }
+
+  // Style settings for map
   styles = [
     {
       featureType: "poi",
@@ -64,9 +88,14 @@ export class MapComponent implements OnInit {
       elementType: "labels",
       stylers: [
         {
-          visibility: "on"
+          visibility: "off"
         }
       ]
     }
   ];
+}
+
+interface marker {
+  lat: number;
+  lng: number;
 }

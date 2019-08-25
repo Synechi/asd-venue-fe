@@ -4,7 +4,15 @@
   [styles]="styles"
   [latitude]="latitude"
   [longitude]="longitude"
-  (mapClick)="onChosenLocation($event)"
+  (mapReady)="loadMarkers()"
 >
-  <agm-marker></agm-marker>
+  <agm-marker
+    *ngFor="let m of markers; let i = index"
+    [latitude]="m.lat"
+    [longitude]="m.lng"
+  >
+    <agm-info-window>
+      <strong>{{ m.name }}</strong>
+    </agm-info-window>
+  </agm-marker>
 </agm-map>
