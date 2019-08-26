@@ -20,11 +20,12 @@ export class MapComponent implements OnInit {
   longitude = 151.208221;
   // Marker Loader
   loadMarkers() {
-    this.getLatLong("ChIJDTR29iauEmsR97nGzWimbMo");
-    this.getLatLong("ChIJISFoEiKuEmsR8TMqpG8xgwQ");
+    this.addMarker("ChIJDTR29iauEmsR97nGzWimbMo");
+    this.addMarker("ChIJISFoEiKuEmsR8TMqpG8xgwQ");
+    this.addMarker("ChIJC78QMReuEmsR47yBEa6iDPQ");
   }
 
-  getLatLong(placeID) {
+  addMarker(placeID) {
     this.gMapsService.getLatLng(placeID).subscribe(result => {
       this.__zone.run(
         () => {
@@ -32,7 +33,8 @@ export class MapComponent implements OnInit {
 
           this.markers.push({
             lat: result.geometry.location.lat(),
-            lng: result.geometry.location.lng()
+            lng: result.geometry.location.lng(),
+            adress: result.formatted_address
           });
         },
         error => console.log(error)
@@ -98,4 +100,5 @@ export class MapComponent implements OnInit {
 interface marker {
   lat: number;
   lng: number;
+  adress: string;
 }
