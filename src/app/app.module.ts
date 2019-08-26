@@ -38,6 +38,7 @@ import { RequestConfirmationComponent } from "./components/request-confirmation/
 import { MatInputModule } from "@angular/material";
 import { MatCardModule } from "@angular/material";
 import { ListListComponent } from './components/list-list/list-list.component';
+import { VenueRecommendComponent } from './components/venue-recommend/venue-recommend.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { ListListComponent } from './components/list-list/list-list.component';
     VenueListViewComponent,
     ListComponent,
     NewAccountComponent,
-    ListListComponent
+    ListListComponent,
+    VenueRecommendComponent
   ],
   imports: [
     BrowserModule,
