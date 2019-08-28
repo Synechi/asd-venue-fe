@@ -6,6 +6,12 @@ table {
     margin-right: auto;
     margin-top: 1.4%;
   }
+
+  agm-map {
+    height: 40vh;
+    width: 60vh;
+    
+  }
   
   td, th { 
     text-align: center;
