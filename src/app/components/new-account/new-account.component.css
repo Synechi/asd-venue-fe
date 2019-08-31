@@ -6,3 +6,8 @@
 .example-full-width > * {
     width: 100%;
 }
+
+mat-card {
+    width: 80%;
+    margin: auto;
+}
