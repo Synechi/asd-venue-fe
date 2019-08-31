@@ -21,6 +21,12 @@
                 <th>
                     VenueFlag
                 </th>
+                <th>
+                    FlaggedAs
+                </th>
+                <th>
+                    Reviews
+                </th>
             </tr>
             <tr>
                 <td>
@@ -39,11 +45,19 @@
                     34235248
                 </td>
                 <td>
-                    <select>
+                    <select (change)="selectChangeHandler($event)">
                         <option value="Select Venue Status">Select Venue Status</option>
                         <option value="Want To Visit">Want To Visit</option>
                         <option value="Visited">Visited</option>
                       </select>
+                </td>
+                <td>
+                    {{selectedOption}}
+                </td>
+                <td>
+                    <ng-container *ngIf="showRev  == true">
+                        <button type="Review">Leave A Review</button>
+                    </ng-container>
                 </td>
             </tr>
             <tr>
@@ -63,11 +77,14 @@
                     30485703
                 </td>
                 <td>
-                    <select>
+                    <select (change)="selectChange1Handler($event)">
                         <option value="Select Venue Status">Select Venue Status</option>
                         <option value="Want To Visit">Want To Visit</option>
                         <option value="Visited">Visited</option>
                       </select>
+                </td>
+                <td>
+                    {{selectedOption1}}
                 </td>
             </tr>
             <tr>
@@ -87,11 +104,14 @@
                     40734085
                 </td>
                 <td>
-                    <select>
+                    <select (change)="selectChange2Handler($event)">
                         <option value="Select Venue Status">Select Venue Status</option>
                         <option value="Want To Visit">Want To Visit</option>
                         <option value="Visited">Visited</option>
                       </select>
+                </td>
+                <td>
+                    {{selectedOption2}}
                 </td>
             </tr>
             <tr>
@@ -111,11 +131,14 @@
                     80587354
                 </td>
                 <td>
-                    <select>
+                    <select (change)="selectChange3Handler($event)">
                         <option value="Select Venue Status">Select Venue Status</option>
                         <option value="Want To Visit">Want To Visit</option>
                         <option value="Visited">Visited</option>
                       </select>
+                </td>
+                <td>
+                    {{selectedOption3}}
                 </td>
             </tr>
             <tr>
@@ -135,11 +158,14 @@
                     20348758
                 </td>
                 <td>
-                    <select>
+                    <select (change)="selectChange4Handler($event)">
                         <option value="Select Venue Status">Select Venue Status</option>
                         <option value="Want To Visit">Want To Visit</option>
                         <option value="Visited">Visited</option>
                       </select>
+                </td>
+                <td>
+                    {{selectedOption4}}
                 </td>
             </tr>
             <tr>
@@ -159,11 +185,14 @@
                     80546583
                 </td>
                 <td>
-                    <select>
+                    <select (change)="selectChange5Handler($event)">
                         <option value="Select Venue Status">Select Venue Status</option>
                         <option value="Want To Visit">Want To Visit</option>
                         <option value="Visited">Visited</option>
                       </select>
+                </td>
+                <td>
+                    {{selectedOption5}}
                 </td>
             </tr>
             <tr>
@@ -183,11 +212,14 @@
                     80857934
                 </td>
                 <td>
-                    <select>
+                    <select (change)="selectChange6Handler($event)">
                         <option value="Select Venue Status">Select Venue Status</option>
                         <option value="Want To Visit">Want To Visit</option>
                         <option value="Visited">Visited</option>
                       </select>
+                </td>
+                <td>
+                    {{selectedOption6}}
                 </td>
             </tr>
             <tr>
@@ -207,11 +239,14 @@
                     55798439
                 </td>
                 <td>
-                    <select>
+                    <select (change)="selectChange7Handler($event)">
                         <option value="Select Venue Status">Select Venue Status</option>
                         <option value="Want To Visit">Want To Visit</option>
                         <option value="Visited">Visited</option>
                       </select>
+                </td>
+                <td>
+                    {{selectedOption7}}
                 </td>
             </tr>
             <tr>
@@ -231,11 +266,14 @@
                     20587354
                 </td>
                 <td>
-                    <select>
+                    <select (change)="selectChange8Handler($event)">
                         <option value="Select Venue Status">Select Venue Status</option>
                         <option value="Want To Visit">Want To Visit</option>
                         <option value="Visited">Visited</option>
                       </select>
+                </td>
+                <td>
+                    {{selectedOption8}}
                 </td>
             </tr>
             <tr>
@@ -255,11 +293,14 @@
                     205458754
                 </td>
                 <td>
-                    <select>
+                    <select (change)="selectChange9Handler($event)">
                         <option value="Select Venue Status">Select Venue Status</option>
                         <option value="Want To Visit">Want To Visit</option>
                         <option value="Visited">Visited</option>
                       </select>
+                </td>
+                <td>
+                    {{selectedOption9}}
                 </td>
             </tr>
         </thead>
