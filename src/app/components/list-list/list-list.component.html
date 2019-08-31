@@ -9,10 +9,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-            <li *ngFor="let v of Venue_list">
-                {{ v.name }}
-                </li>
+        <tr *ngFor="let v of venues">
+          <td>{{ v.id }}</td>
+          <td>{{ v.name }}</td>
+          <td>{{ v.address }}</td>
         </tr>
       </tbody>
     </table>
