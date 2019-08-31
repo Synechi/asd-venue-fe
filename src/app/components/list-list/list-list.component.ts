@@ -24,7 +24,8 @@ export class ListListComponent implements OnInit {
   ngOnInit() {
     }
 
-  getDetail(placeID: string, map: any) {
+  getDetail(placeID: string, map: any) 
+  {
     this.gMapsService.getDetails(placeID, map).subscribe(result => {
       this.__zone.run(() => {
         console.log(result);
