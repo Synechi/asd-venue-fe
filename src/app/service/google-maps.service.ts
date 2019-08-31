@@ -28,4 +28,17 @@ export class GoogleMapsService extends GoogleMapsAPIWrapper {
       });
     });
   }
+
+  getDetails(id: string, map: any) {
+    var request = {
+      placeId: id
+    };
+    let placeService = new google.maps.places.PlacesService(map);
+    return Observable.create(observer => {
+      placeService.getDetails(request, function(results, status) {
+        observer.next(results[0]);
+        observer.complete();
+      });
+    });
+  }
 }
