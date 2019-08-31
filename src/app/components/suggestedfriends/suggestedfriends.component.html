@@ -1,6 +1,6 @@
 <body>
   <form>
-    <input type="text" name = "searchBox" placeholder="Search..." [(ngModel)] = "searchBox"/>
+    <input class = "searchBar" type="text" name = "searchBox" placeholder="Search..." [(ngModel)] = "searchBox"/>
   </form>
   <table class="friendsTable">
     <thead>
@@ -11,18 +11,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users | filter : 'firstname' : searchBox; let i = index">
+      <tr *ngFor="let user of users | filter : 'firstname' : searchBox; let i = index" [class.selected] = "user === selectedUser"  >
         <td>{{ user.firstname }}</td>
         <td>{{ user.lastname }}</td>
-        <td><button type = "button" (click)="show()">Add Friend</button></td>
+        <td><button (click)="show(user)" >Add Friend</button></td>
       </tr>
     </tbody>
   </table>
 </body>
 
-  <div>
-  <app-request-confirmation *ngIf="isViewable"></app-request-confirmation>
-  </div>
+  <!-- <div>
+  <app-request-confirmation *ngIf="isViewable" [user] = "selectedUser"></app-request-confirmation>
+  </div> -->
 
 
 
