@@ -10,6 +10,17 @@
       #userData="ngForm"
       (ngSubmit)="registerUser(userData.value)"
     >
+      <!-- <div>
+        <label>Password</label>
+        <input type=”password” name=”password” [ngModel]=”password” 
+          required #password=”ngModel”>
+        <small [hidden]=”password.valid || (password.pristine &&    
+          !userData.submitted)”>
+          Password is required
+        </small>
+    </div> -->
+
+
       <table class="example-full-width" cellspacing="0">
         <tr>
           <td>
@@ -21,6 +32,10 @@
                 name="firstname"
                 required
               />
+              <!-- <small [hidden]=”firstname.valid ||  
+                (firstname.pristine && !userData.submitted)”>
+                Password mismatch
+              </small> -->
             </mat-form-field>
           </td>
         </tr>
@@ -93,9 +108,10 @@
           </td>
         </tr>
       </table>
-
       <!-- <button (click)="submit()">Submit</button> -->
       <input type="submit" value="Create" mat-button />
     </form>
+    <br>
+    <div *ngIf="successMessage" [ngClass] = "'success'"> {{successMessage}} </div> 
   </mat-card-content>
 </mat-card>
