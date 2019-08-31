@@ -11,10 +11,10 @@ declare var google: any;
 })
 export class ListListComponent implements OnInit {
   venues = [
-    new Venue("ChIJDTR29iauEmsR97nGzWimbMo","" , ""),
-    new Venue("ChIJISFoEiKuEmsR8TMqpG8xgwQ", "", ""),
-    new Venue("ChIJC78QMReuEmsR47yBEa6iDPQ", "", ""),
-    new Venue("ChIJ65p_3jyuEmsRuwkbKixObtM", "", ""),
+    new Venue("ChIJDTR29iauEmsR97nGzWimbMo","" , "", ""),
+    new Venue("ChIJISFoEiKuEmsR8TMqpG8xgwQ", "", "", ""),
+    new Venue("ChIJC78QMReuEmsR47yBEa6iDPQ", "", "", ""),
+    new Venue("ChIJ65p_3jyuEmsRuwkbKixObtM", "", "", ""),
   ];
   constructor(
     private gMapsService: GoogleMapsService,
@@ -38,6 +38,7 @@ export class Venue {
   constructor(
       public id: string,
       public name: string,
-      public address: string
+      public address: string,
+      public genre: string
       ) { }
   }

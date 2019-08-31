@@ -17,6 +17,16 @@
           <td>{{ v.id }}</td>
           <td>{{ v.name }}</td>
           <td>{{ v.address }}</td>
+          <td>{{ v.genre }}</td>
+          <td>
+            <select (change)="selectChangeHandler($event)">
+            <option value="Select Venue Status">Select Venue Status</option>
+            <option value="Want To Visit">Want To Visit</option>
+            <option value="Visited">Visited</option>
+            </select>
+          </td>
+          <td></td>
+          <td>{{ v.address }}</td>
         </tr>
       </tbody>
     </table>
