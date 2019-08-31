@@ -37,6 +37,8 @@ import { SearchBarComponent } from "./components/search-bar/search-bar.component
 import { RequestConfirmationComponent } from "./components/request-confirmation/request-confirmation.component";
 import { MatInputModule } from "@angular/material";
 import { MatCardModule } from "@angular/material";
+import { ListListComponent } from './components/list-list/list-list.component';
+import { VenueRecommendComponent } from './components/venue-recommend/venue-recommend.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { MatCardModule } from "@angular/material";
     VenueListComponent,
     VenueListViewComponent,
     ListComponent,
-    NewAccountComponent
+    NewAccountComponent,
+    ListListComponent,
+    VenueRecommendComponent
   ],
   imports: [
     BrowserModule,
