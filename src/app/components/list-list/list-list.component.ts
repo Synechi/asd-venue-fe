@@ -11,7 +11,11 @@ declare var google: any;
 })
 export class ListListComponent implements OnInit {
   venues = [
+<<<<<<< HEAD
     new Venue("ChIJDTR29iauEmsR97nGzWimbMo","" , "", ""),
+=======
+    new Venue("ChIJDTR29iauEmsR97nGzWimbMo", "" , "", ""),
+>>>>>>> origin/MapList
     new Venue("ChIJISFoEiKuEmsR8TMqpG8xgwQ", "", "", ""),
     new Venue("ChIJC78QMReuEmsR47yBEa6iDPQ", "", "", ""),
     new Venue("ChIJ65p_3jyuEmsRuwkbKixObtM", "", "", ""),
@@ -22,6 +26,25 @@ export class ListListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    }
+    showRev = false;
+    selectedOption: string = ' '; 
+    //Event Handler For The Select Element's Change Event
+    selectChangeHandler (event : any, index: number)
+    {
+      //Update The UI 
+      this.selectedOption = event.target.value;
+  
+      if (this.selectedOption == 'Visited') {
+        this.showRev = true;
+      } else {
+        this.showRev = false;
+      }
+    }
+    selectChange1Handler (event : any, index: number)
+    {
+      //Update The UI 
+      this.selectedOption = event.target.value; 
     }
 
   getDetail(placeID: string, map: any) 
@@ -34,6 +57,7 @@ export class ListListComponent implements OnInit {
   }
 
 }
+
 export class Venue {
   constructor(
       public id: string,
