@@ -1,0 +1,21 @@
+<body>
+        <table class="friendsTable">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Preference</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.fName }}</td>
+              <td>{{ user.lName }}</td>
+              <td>{{ user.preference}}</td>
+              <td><button>View Lists</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </body>
+      
