@@ -1,0 +1,57 @@
+<app-nav></app-nav>
+<mat-card>
+    <mat-card-title>
+        Create Review
+    </mat-card-title>
+    <mat-card-content>
+        <form
+          class="example-form"
+          id="login"
+          #userData="ngForm"
+          (ngSubmit)="registerUser(userData.value)"
+        >
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input
+                    matInput
+                    placeholder="Review"
+                    [(ngModel)]="review"
+                    name="review"
+                    required
+                  />
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+                <td>
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      placeholder="Rating"
+                      [(ngModel)]="rating"
+                      name="rating"
+                      required
+                    />
+                  </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input
+                    matInput
+                    placeholder="Thumbs Up"
+                    [(ngModel)]="rating"
+                    name="rating"
+                    required
+                  />
+                </mat-form-field>
+              </td>
+          </tr>
+        </table>
+        <input type="submit" value="Create Review" mat-button />
+        </form>
+    </mat-card-content>
+    </mat-card>

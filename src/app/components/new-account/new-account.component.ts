@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
+import { FormControl, FormGroupDirective, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 @Component({
   selector: 'app-new-account',
@@ -14,7 +17,10 @@ export class NewAccountComponent implements OnInit {
   email: string = "";
   password: string = "";
   conpassword: string = "";
+  preference: string = "";
   response: any;
+  successMessage: string ="";
+
   constructor(private http: HttpClient) { 
     
   }
@@ -22,41 +28,30 @@ export class NewAccountComponent implements OnInit {
   ngOnInit() {
   }
 
-  // submit() {
-  //   this.http.get('https://api.github.com/users/' + this.firstname + this.lastname + this.email + this.password + this.conpassword)
-  //   .subscribe((response) => {
-  //     this.response = response;
-  //     console.log(this.response);
-  //   })
-  // }
-
-  // let obs = this.http.post('http://localhost:4000/user', user, {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json'
-  //     })
-
-    // let obs = this.http.post('http://localhost:4000/user', user, {
-    //   headers: new HttpHeaders({
-    //     'Content-Type': 'application/json'
-    //   })
-    // });
-    // obs.subscribe((response) => console.log(response));
+ 
 
 
-  registerUser(user){
-    console.log(user);
-    let obs = this.http.post('http://localhost:4000/user', user, {
+
+
+
+
+  registerUser(form: NgForm){
+    console.log(form.value);
+    if (form.invalid) {
+      return;
+    }
+    let obs = this.http.post('http://localhost:4000/user', form.value, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     });
-    obs.subscribe((response) => console.log(response));
+    obs.subscribe((response) => {
+      // console.log(response);
+      let body = JSON.stringify(response);
+      let body1 = JSON.parse(body);
+      this.successMessage = body1.body;
+    });
 
-  //   let obs = this.http.post('http://localhost:4000/user', user, {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json'
-  //     })
-  // })
   }
 
 }
