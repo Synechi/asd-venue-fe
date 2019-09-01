@@ -1,0 +1,24 @@
+ <h2>Create New List</h2>
+
+<!-- create list form -->
+<form #listForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+<div>
+<label class="fieldlabel">Name</label>
+<input type="text" placeholder="Please Enter List Name" class="inputfield" name="name" [(ngModel)]="listModel.name" required>
+</div>
+<div>
+<label class="fieldlabel">Colour</label>
+<select name="Colour" name="colour" [(ngModel)]="listModel.colour">
+    <option value="red">red</option>
+    <option value="blue">blue</option>
+    <option value="green">green</option>
+    <option value="yellow">yellow</option>
+</select>
+</div>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button"(click)="close()">Cancel</button>
+    <button class="mat-raised-button mat-primary" type="submit">Save</button>
+</mat-dialog-actions>
+</form>
