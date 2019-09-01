@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FriendService } from '../../service/friend.service';
 import { User } from '../../user';
-import { MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS } from '@angular/material';
+
 @Component({
   selector: 'app-suggestedfriends',
   templateUrl: './suggestedfriends.component.html',
