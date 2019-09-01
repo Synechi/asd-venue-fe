@@ -15,8 +15,8 @@ constructor(private http: HttpClient){
 
 }
 
-displayUsers(): Observable<User[]> {
-  return this.http.get<User[]>(`${this.url}/displayUsers`);
+displaySuggestedFriends(): Observable<User[]> {
+  return this.http.get<User[]>(`${this.url}/suggestedFriends`);
 }
 
 displayPendingFriendRequests(): Observable<User[]> { 

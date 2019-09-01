@@ -16,9 +16,9 @@ export class SuggestedfriendsComponent implements OnInit {
 
   public isViewable: boolean;
 
-  displayUsers(): void { 
+  displaySuggestedFriends(): void { 
 
-    this.friendService.displayUsers().subscribe(users => this.users = users);
+    this.friendService.displaySuggestedFriends().subscribe(users => this.users = users);
 
   }
 
@@ -29,7 +29,7 @@ export class SuggestedfriendsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.displayUsers(); 
+    this.displaySuggestedFriends(); 
       }
 
 }
