@@ -20,28 +20,41 @@ export class MapComponent implements OnInit {
   longitude = 151.208221;
   // Marker Loader
   loadMarkers($event) {
-    this.addMarker("ChIJDTR29iauEmsR97nGzWimbMo");
-    this.addMarker("ChIJISFoEiKuEmsR8TMqpG8xgwQ");
-    this.addMarker("ChIJC78QMReuEmsR47yBEa6iDPQ");
-    this.addMarker("ChIJ65p_3jyuEmsRuwkbKixObtM");
-    this.getDetail("ChIJC78QMReuEmsR47yBEa6iDPQ", $event);
+    this.getPlaces($event);
   }
 
-  addMarker(placeID) {
-    this.gMapsService.getLatLng(placeID).subscribe(result => {
-      this.__zone.run(
-        () => {
-          console.log(result);
+  getPlaces(map: any) {
+    this.gMapsService.getBarRest(map).subscribe(result => {
+      this.__zone.run(() => {
+        console.log(result);
 
+        for (var place of result) {
+          var labelType = "";
+          for (let i = 0; i < 3; i++) {
+            if (place.types[i] === "bar") {
+              labelType = "bar";
+            }
+            if (place.types[i] === "restaurant") {
+              labelType = "restaurant";
+            }
+          }
           this.markers.push({
-            lat: result.geometry.location.lat(),
-            lng: result.geometry.location.lng(),
-            address: result.formatted_address,
-            label: result.types[0]
+            lat: place.geometry.location.lat(),
+            lng: place.geometry.location.lng(),
+            name: place.name,
+            address: place.vicinity,
+            label: labelType,
+            icon: {
+              url: place.icon,
+              scaledSize: {
+                height: 20,
+                width: 20
+              }
+            }
           });
-        },
-        error => console.log(error)
-      );
+          error => console.log(error);
+        }
+      });
     });
   }
 
@@ -111,6 +124,14 @@ export class MapComponent implements OnInit {
 interface marker {
   lat: number;
   lng: number;
+  name: string;
   address: string;
   label: string;
+  icon: {
+    url: string;
+    scaledSize: {
+      height: number;
+      width: number;
+    };
+  };
 }

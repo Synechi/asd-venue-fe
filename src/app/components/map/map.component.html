@@ -10,10 +10,13 @@
     *ngFor="let m of markers; let i = index"
     [latitude]="m.lat"
     [longitude]="m.lng"
-    [label]="m.label"
+    [iconUrl]="m.icon"
   >
     <agm-info-window>
-      <strong>Addresss: {{ m.address }}</strong>
+      <strong>Name: </strong>
+      <p>{{ m.name }}</p>
+      <strong>Addresss: </strong>
+      <p>{{ m.address }}</p>
     </agm-info-window>
   </agm-marker>
 </agm-map>
