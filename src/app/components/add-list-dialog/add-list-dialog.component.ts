@@ -32,6 +32,8 @@ export class AddListDialogComponent implements OnInit {
       data => console.log('list created successfully', data),
       error => console.error('error, cannot save list', error)
     )
+    this.dialogRef.close();
+    window.location.reload();
   }
 }
 

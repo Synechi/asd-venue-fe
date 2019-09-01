@@ -46,6 +46,7 @@ export class VenueListComponent implements OnInit {
       data => console.log('list created successfully', data),
       error => console.error('error, cannot save list', error)
     )
+    window.location.reload();
   }
 }
 
