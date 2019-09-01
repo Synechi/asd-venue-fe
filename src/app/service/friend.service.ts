@@ -24,6 +24,11 @@ displayPendingFriendRequests(): Observable<User[]> {
   return this.http.get<User[]>(`${this.url}/pendingRequests`);
 }
 
+displayCurrentFriends(): Observable<User[]> { 
+
+  return this.http.get<User[]>(`${this.url}/currentFriends`);
+}
+
 //Calls REST API with friendID as parameter to update the friend status based on status parameter
 updateFriendStatus(friendID: String, friendStatus: String): Observable<User[]> {
 
