@@ -9,14 +9,19 @@ import { catchError } from 'rxjs/operators';
 })
 export class FriendService {
 
-  uri = "http://localhost:4000";
+  url = "http://localhost:4000";
   
 constructor(private http: HttpClient){
 
 }
 
 displayUsers(): Observable<User[]> {
-  return this.http.get<User[]>(`${this.uri}/displayUsers`);
+  return this.http.get<User[]>(`${this.url}/displayUsers`);
+}
+
+displayFriendRequests(): Observable<User[]> { 
+
+  return this.http.get<User[]>(`${this.url}/pendingRequests`);
 }
 
 sendFriendRequest(friendID: String): Observable<User[]> { 
@@ -27,7 +32,7 @@ sendFriendRequest(friendID: String): Observable<User[]> {
     })
   };
   
-  return this.http.post<User[]>(`${this.uri}/friendRequest`, {friendID}, httpOptions).pipe(catchError(this.friendExistsError));
+  return this.http.post<User[]>(`${this.url}/friendRequest/:friendID`, httpOptions).pipe(catchError(this.friendExistsError));
 }
 
 friendExistsError(error) {
