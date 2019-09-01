@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from "@angular/core";
 import { GoogleMapsAPIWrapper } from "@agm/core";
 import { MapsAPILoader } from "@agm/core";
-import { Observable, Observer } from "rxjs";
+import { Observable, Observer, observable } from "rxjs";
 
 declare var google: any;
 
@@ -29,15 +29,45 @@ export class GoogleMapsService extends GoogleMapsAPIWrapper {
     });
   }
 
+  getBarRest(map: any) {
+    let placeService = new google.maps.places.PlacesService(map);
+    var ne = new google.maps.LatLng(-33.853487, 151.218456);
+    var sw = new google.maps.LatLng(-33.884559, 151.194724);
+    var bound = new google.maps.LatLngBounds(sw, ne);
+    var request = {
+      bounds: bound,
+      type: ["bar"]
+    };
+    return Observable.create(observer => {
+      placeService.nearbySearch(request, function(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          observer.next(results);
+          observer.complete();
+        } else {
+          console.log("Error - ", results, " & Status - ", status);
+          observer.next({});
+          observer.complete();
+        }
+      });
+    });
+  }
+
   getDetails(id: string, map: any) {
     var request = {
-      placeId: id
+      placeId: id,
+      fields: ["name", "formatted_phone_number"]
     };
     let placeService = new google.maps.places.PlacesService(map);
     return Observable.create(observer => {
       placeService.getDetails(request, function(results, status) {
-        observer.next(results[0]);
-        observer.complete();
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          observer.next(results[0]);
+          observer.complete();
+        } else {
+          console.log("Error - ", results, " & Status - ", status);
+          observer.next({});
+          observer.complete();
+        }
       });
     });
   }
