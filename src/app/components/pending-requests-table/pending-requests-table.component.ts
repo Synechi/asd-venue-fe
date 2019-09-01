@@ -7,6 +7,8 @@ import { User } from '../../user';
   styleUrls: ["./pending-requests-table.component.css"]
 })
 export class PendingRequestsTableComponent implements OnInit {
+  
+  public searchBox: string;
   users: User[]; 
 
   displayFriendRequests(): void {
@@ -14,6 +16,14 @@ export class PendingRequestsTableComponent implements OnInit {
       .displayPendingFriendRequests()
       .subscribe(users => (this.users = users));
   }
+
+  updateFriendStatus(user: User, friendStatus: String): void {
+
+    this.friendService.updateFriendStatus(user._id, friendStatus).subscribe(user => { window.alert("Request status successfully updated!"); this.ngOnInit(); });
+    
+  }
+
+  
 
   constructor(private friendService: FriendService) {}
 

@@ -24,11 +24,8 @@ export class SuggestedfriendsComponent implements OnInit {
 
   constructor(private friendService: FriendService) { }
 
-  show(user: User) : void { 
-    console.log(user._id);
+  sendRequest(user: User) : void { 
     this.friendService.sendFriendRequest(user._id).subscribe(user => window.alert("Friend Reqeust has been sent!"));
-    // this.selectedUser = user; 
-    // this.isViewable = !this.isViewable; 
   }
 
   ngOnInit() {
