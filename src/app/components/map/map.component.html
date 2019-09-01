@@ -4,7 +4,23 @@
   [styles]="styles"
   [latitude]="latitude"
   [longitude]="longitude"
-  (mapClick)="onChosenLocation($event)"
+  (mapReady)="loadMarkers($event)"
 >
-  <agm-marker></agm-marker>
+  <agm-marker
+    *ngFor="let m of markers; let i = index"
+    [latitude]="m.lat"
+    [longitude]="m.lng"
+    [iconUrl]="m.icon"
+  >
+    <agm-info-window>
+      <strong>Name: </strong>
+      <p>{{ m.name }}</p>
+      <strong>Addresss: </strong>
+      <p>{{ m.address }}</p>
+      <strong>Google Rating: </strong>
+      <p>{{ m.rating }} Stars</p>
+      <strong>Is the venue open?: </strong>
+      <p>{{ m.open }}</p>
+    </agm-info-window>
+  </agm-marker>
 </agm-map>

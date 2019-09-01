@@ -1,0 +1,19 @@
+<body>
+        <table class="friendsTable">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.fName }}</td>
+              <td>{{ user.lName }}</td>
+              <td><button>Accept</button> <button class = "declineBtn">Decline</button></td>
+        </tr>
+          </tbody>
+        </table>
+      </body>
+      
