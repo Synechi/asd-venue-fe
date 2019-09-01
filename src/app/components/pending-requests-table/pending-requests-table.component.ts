@@ -11,7 +11,7 @@ export class PendingRequestsTableComponent implements OnInit {
 
   displayFriendRequests(): void {
     this.friendService
-      .displayFriendRequests()
+      .displayPendingFriendRequests()
       .subscribe(users => (this.users = users));
   }
 

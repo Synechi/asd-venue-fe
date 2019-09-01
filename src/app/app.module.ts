@@ -37,6 +37,8 @@ import { SearchBarComponent } from "./components/search-bar/search-bar.component
 import { MatInputModule } from "@angular/material";
 import { MatCardModule } from "@angular/material";
 import { FilterPipe } from './filterPipe';
+import { ListListComponent } from './components/list-list/list-list.component';
+import { VenueRecommendComponent } from './components/venue-recommend/venue-recommend.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { FilterPipe } from './filterPipe';
     VenueListViewComponent,
     ListComponent,
     NewAccountComponent,
-    FilterPipe
+    FilterPipe,
+    ListListComponent,
+    VenueRecommendComponent
   ],
   imports: [
     BrowserModule,

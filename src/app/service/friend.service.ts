@@ -19,10 +19,12 @@ displayUsers(): Observable<User[]> {
   return this.http.get<User[]>(`${this.url}/displayUsers`);
 }
 
-displayFriendRequests(): Observable<User[]> { 
+displayPendingFriendRequests(): Observable<User[]> { 
 
   return this.http.get<User[]>(`${this.url}/pendingRequests`);
 }
+
+
 
 sendFriendRequest(friendID: String): Observable<User[]> { 
 
