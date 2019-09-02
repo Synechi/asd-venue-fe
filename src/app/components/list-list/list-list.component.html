@@ -26,7 +26,11 @@
         </select>
       </td>
       <td>{{selectedOption}}</td>
-      <td></td>
+      <td>
+        <ng-container *ngIf="showRev  == true">
+            <a mat-raised-button routerLink="">Leave A Review</a>
+        </ng-container>
+    </td>
     </tr>
   </tbody>
 </table>
