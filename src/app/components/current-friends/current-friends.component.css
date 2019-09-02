@@ -1,17 +1,35 @@
-.friendsTable{
-  
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+  body {
+    margin: 100px;
+    
   }
   
-  td, th { 
-  
-    border: 1px solid #ddd;
-    padding: 8px;
-  
+  .bordered {
+    border: solid black 1px;
+    box-shadow: 1px, rgba(255,255,255,.8);
   }
+
+  .bordered th {
+    background-color:  #c2185b;
+    text-align: center;
+    box-shadow: 1px, rgba(255,255,255,.8);
+    text-shadow: 1px rgba(255,255,255,255,.3);
+  }
+
+  .bordered td, .bordered th {
+    border-left: 1px solid black;
+    padding: 10px; 
+    text-align: left;
+    border-bottom: 0.5px solid black;
+  }
+
+table { 
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-spacing: 0;
+  border-collapse: separate;
+  width: 100%;
+}
   
+   
   tr:nth-child(even){
     background-color: #f2f2f2;
   }
@@ -23,7 +41,9 @@
   th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
     background-color: #c2185b;
-    color: white;
+    color:white;
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
   }

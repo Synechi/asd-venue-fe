@@ -35,7 +35,6 @@ import { AddFriendButtonComponent } from "./components/add-friend-button/add-fri
 import { CurrentFriendsComponent } from "./components/current-friends/current-friends.component";
 import { PendingRequestsTableComponent } from "./components/pending-requests-table/pending-requests-table.component";
 import { SearchBarComponent } from "./components/search-bar/search-bar.component";
-import { RequestConfirmationComponent } from "./components/request-confirmation/request-confirmation.component";
 import { MatInputModule } from "@angular/material";
 import { MatCardModule } from "@angular/material";
 import { ListListComponent } from "./components/list-list/list-list.component";
@@ -43,6 +42,7 @@ import { VenueRecommendComponent } from "./components/venue-recommend/venue-reco
 import { TestComponent } from "./components/test/test.component";
 import { CompareValidatorDirective } from "./components/create-account/compare-validator.directive";
 import { CreateAccountComponent } from "./components/create-account/create-account.component";
+import { FilterPipe } from "./filterPipe";
 
 @NgModule({
   declarations: [
@@ -58,12 +58,12 @@ import { CreateAccountComponent } from "./components/create-account/create-accou
     CurrentFriendsComponent,
     PendingRequestsTableComponent,
     SearchBarComponent,
-    RequestConfirmationComponent,
     VenueDetailsComponent,
     VenueListComponent,
     VenueListViewComponent,
     ListComponent,
     NewAccountComponent,
+    FilterPipe,
     ListListComponent,
     VenueRecommendComponent,
     CompareValidatorDirective,
@@ -92,6 +92,7 @@ import { CreateAccountComponent } from "./components/create-account/create-accou
     RouterModule
   ],
   providers: [UserService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [FilterPipe]
 })
 export class AppModule {}

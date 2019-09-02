@@ -1,5 +1,8 @@
 <body>
-        <table class="friendsTable">
+    <form>
+        <input class = "searchBar" type="text" name = "searchBox" placeholder="Search..." [(ngModel)] = "searchBox"/>
+      </form>
+        <table class="bordered">
           <thead>
             <tr>
               <th>First Name</th>
@@ -7,11 +10,11 @@
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
-            <tr *ngFor="let user of users">
-              <td>{{ user.fName }}</td>
-              <td>{{ user.lName }}</td>
-              <td><button>Accept</button> <button class = "declineBtn">Decline</button></td>
+          <tbody *ngFor="let user of users">
+            <tr *ngFor="let friend of user.friends">
+              <td>{{ friend.firstname }}</td>
+              <td>{{ friend.lastname }}</td>
+              <td><button (click)="updateFriendStatus(friend, 'Accepted')">Accept</button> <button (click)="updateFriendStatus(friend, 'Declined')" class = "declineBtn">Decline</button></td>
         </tr>
           </tbody>
         </table>
