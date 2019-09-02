@@ -1,15 +1,37 @@
 <body>
-  <a mat-raised-button routerLink="/map">Map View</a>
-  <table>
-    <thead>
-      <tr>
-        <th>Place ID</th>
-        <th>Venue Name</th>
-        <th>Venue Location</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr></tr>
-    </tbody>
-  </table>
+    <a mat-raised-button routerLink="/map">Map View</a>
+<table>
+  <thead>
+    <tr>
+      <th>Place ID</th>
+      <th>Venue Name</th>
+      <th>Venue Location</th>
+      <th>Venue Genre</th>
+      <th>Venue Flag</th>
+      <th>Flagged As</th>
+      <th>Review</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let v of venues">
+      <td>{{ v.id }}</td>
+      <td>{{ v.name }}</td>
+      <td>{{ v.address }}</td>
+      <td>{{ v.genre }}</td>
+      <td>
+        <select (change)="selectChangeHandler($event)">
+        <option value="Select Venue Status">Select Venue Status</option>
+        <option value="Want To Visit">Want To Visit</option>
+        <option value="Visited">Visited</option>
+        </select>
+      </td>
+      <td>{{selectedOption}}</td>
+      <td>
+        <ng-container *ngIf="showRev  == true">
+            <a mat-raised-button routerLink="">Leave A Review</a>
+        </ng-container>
+    </td>
+    </tr>
+  </tbody>
+</table>
 </body>
