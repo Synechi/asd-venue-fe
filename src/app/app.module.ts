@@ -42,6 +42,7 @@ import { TestComponent } from './components/test/test.component';
 
 import { CompareValidatorDirective } from './components/create-account/compare-validator.directive';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
+import { CreateReviewComponent } from './components/create-review/create-review.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { CreateAccountComponent } from './components/create-account/create-accou
     NewAccountComponent,
     CompareValidatorDirective,
     TestComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    CreateReviewComponent
   ],
   imports: [
     BrowserModule,

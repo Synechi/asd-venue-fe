@@ -12,6 +12,7 @@ import { VenueDetailsComponent } from "./components/venue-details/venue-details.
 import { NewAccountComponent } from "./components/new-account/new-account.component";
 import { TestComponent } from './components/test/test.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
+import { CreateReviewComponent } from './components/create-review/create-review.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "map", pathMatch: "full" },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: "venuedetails", component: VenueDetailsComponent },
   { path: "test", component: TestComponent },
   { path: "create-account", component: CreateAccountComponent },
+  { path: "create-review", component: CreateReviewComponent },
   { path: "new-account", component: NewAccountComponent }
 ];
 
