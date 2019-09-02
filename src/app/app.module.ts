@@ -15,6 +15,7 @@ import { VenueListComponent } from "./components/venue-list/venue-list.component
 import { VenueListViewComponent } from "./components/venue-list-view/venue-list-view.component";
 import { VenueDetailsComponent } from "./components/venue-details/venue-details.component";
 import { NewAccountComponent } from "./components/new-account/new-account.component";
+
 //Services
 import { UserService } from "./service/user.service";
 //Angular Design Modules
@@ -37,8 +38,11 @@ import { SearchBarComponent } from "./components/search-bar/search-bar.component
 import { RequestConfirmationComponent } from "./components/request-confirmation/request-confirmation.component";
 import { MatInputModule } from "@angular/material";
 import { MatCardModule } from "@angular/material";
-import { ListListComponent } from './components/list-list/list-list.component';
-import { VenueRecommendComponent } from './components/venue-recommend/venue-recommend.component';
+import { ListListComponent } from "./components/list-list/list-list.component";
+import { VenueRecommendComponent } from "./components/venue-recommend/venue-recommend.component";
+import { TestComponent } from "./components/test/test.component";
+import { CompareValidatorDirective } from "./components/create-account/compare-validator.directive";
+import { CreateAccountComponent } from "./components/create-account/create-account.component";
 
 @NgModule({
   declarations: [
@@ -61,7 +65,10 @@ import { VenueRecommendComponent } from './components/venue-recommend/venue-reco
     ListComponent,
     NewAccountComponent,
     ListListComponent,
-    VenueRecommendComponent
+    VenueRecommendComponent,
+    CompareValidatorDirective,
+    TestComponent,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,
