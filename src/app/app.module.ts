@@ -15,6 +15,7 @@ import { VenueListComponent } from "./components/venue-list/venue-list.component
 import { VenueListViewComponent } from "./components/venue-list-view/venue-list-view.component";
 import { VenueDetailsComponent } from "./components/venue-details/venue-details.component";
 import { NewAccountComponent } from "./components/new-account/new-account.component";
+import { CreateAccountComponent } from './components/create-account/create-account.component';
 
 //Services
 import { UserService } from "./service/user.service";
@@ -41,8 +42,9 @@ import { MatCardModule } from "@angular/material";
 import { TestComponent } from './components/test/test.component';
 
 import { CompareValidatorDirective } from './components/create-account/compare-validator.directive';
-import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { CreateReviewComponent } from './components/create-review/create-review.component';
+import { AuthUserGuard } from './auth-user.guard';
+import { UserGuardService } from './service/user-guard.service';
 
 @NgModule({
   declarations: [
@@ -90,7 +92,7 @@ import { CreateReviewComponent } from './components/create-review/create-review.
     FormsModule,
     RouterModule
   ],
-  providers: [UserService],
+  providers: [UserService, AuthUserGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

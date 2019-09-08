@@ -6,6 +6,7 @@ import { FormControl, FormGroupDirective, Validators, FormGroup, FormBuilder } f
 import { ErrorStateMatcher } from '@angular/material/core';
 import { UserService } from 'src/app/service/user.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-account',
@@ -28,7 +29,7 @@ export class CreateAccountComponent implements OnInit {
     preference: null
   }
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -43,43 +44,32 @@ export class CreateAccountComponent implements OnInit {
     console.log('status: ', statusResponse);
     this.postStatus = true;
     var help = JSON.parse(JSON.stringify(statusResponse))
-    this.postStatusMessage = help.Status;
+    if (help.Status == "Email Address already exists") {
+      this.postStatus = true;
+      this.postStatusMessage = help.Status;
+    }
+    else {
+      this.postStatus = false;
+      localStorage.setItem('id', help.UserID)
+      this.router.navigate(['/map'])
+    }
   }
   
 
   onSubmitAccount(form:NgForm) {
     console.log('in onSubmitAccount: ', form);
-    // console.log('in onSubmitAccount: ', form.valid);
-    // console.log(this.user);
 
     if (form.valid) {
       this.userService.postUserForm(this.user).subscribe(
-        // result => console.log('success: ', result),
         result => this.onHttpStatus(result),
         error => this.onHttpError(error)
       );
+
     }
     else {
       this.postStatus = true;
       this.postStatusMessage = "Please fix the above errors"
     }
-
-    // if (form.invalid) {
-    //   return;
-    // }
-    // let obs = this.http.post('http://localhost:4000/user', form.value, {
-    //   headers: new HttpHeaders({
-    //     'Content-Type': 'application/json'
-    //   })
-    // });
-    // obs.subscribe((response) => {
-    //   console.log(response);
-    //   // var status = JSON.parse(response);
-
-    //   let body = JSON.stringify(response);
-    //   let body1 = JSON.parse(body);
-    //   this.successMessage = body1.body;
-    // });
 
   }
 

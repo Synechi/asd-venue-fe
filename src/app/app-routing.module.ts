@@ -13,22 +13,23 @@ import { NewAccountComponent } from "./components/new-account/new-account.compon
 import { TestComponent } from './components/test/test.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { CreateReviewComponent } from './components/create-review/create-review.component';
+import { AuthUserGuard } from './auth-user.guard';
 
 const routes: Routes = [
   { path: "", redirectTo: "map", pathMatch: "full" },
   { path: "login", component: LoginComponent },
   { path: "map", component: MapComponent },
   { path: "addFriends", component: AddFriendsComponent },
-  { path: "myFriends", component: FriendListComponent },
-  { path: "pendingRequests", component: PendingRequestsComponent },
-  { path: "list", component: ListComponent },
+  { path: "myFriends", component: FriendListComponent, canActivate: [AuthUserGuard]},
+  { path: "pendingRequests", component: PendingRequestsComponent, canActivate: [AuthUserGuard]},
+  { path: "list", component: ListComponent, canActivate: [AuthUserGuard]},
   { path: "venue-list", component: VenueListComponent },
   { path: "venue-list-view", component: VenueListViewComponent },
-  { path: "venuedetails", component: VenueDetailsComponent },
+  { path: "venuedetails", component: VenueDetailsComponent, canActivate: [AuthUserGuard]},
   { path: "test", component: TestComponent },
   { path: "create-account", component: CreateAccountComponent },
   { path: "create-review", component: CreateReviewComponent },
-  { path: "new-account", component: NewAccountComponent }
+  { path: "new-account", component: NewAccountComponent },
 ];
 
 @NgModule({
