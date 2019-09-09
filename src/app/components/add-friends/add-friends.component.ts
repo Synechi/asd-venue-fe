@@ -8,8 +8,6 @@ import { FriendService } from '../../service/friend.service';
 })
 export class AddFriendsComponent implements OnInit {
 
-  results = [];
-
   /* searchUser(name) {
     
     this.results.push((this.friendService.searchUser(name)));

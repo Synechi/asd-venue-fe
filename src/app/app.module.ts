@@ -36,15 +36,16 @@ import { AddFriendButtonComponent } from "./components/add-friend-button/add-fri
 import { CurrentFriendsComponent } from "./components/current-friends/current-friends.component";
 import { PendingRequestsTableComponent } from "./components/pending-requests-table/pending-requests-table.component";
 import { SearchBarComponent } from "./components/search-bar/search-bar.component";
-import { RequestConfirmationComponent } from "./components/request-confirmation/request-confirmation.component";
 import { MatInputModule } from "@angular/material";
 import { MatCardModule } from "@angular/material";
-import { TestComponent } from './components/test/test.component';
-
-import { CompareValidatorDirective } from './components/create-account/compare-validator.directive';
 import { CreateReviewComponent } from './components/create-review/create-review.component';
 import { AuthUserGuard } from './auth-user.guard';
 import { UserGuardService } from './service/user-guard.service';
+import { ListListComponent } from "./components/list-list/list-list.component";
+import { VenueRecommendComponent } from "./components/venue-recommend/venue-recommend.component";
+import { TestComponent } from "./components/test/test.component";
+import { CompareValidatorDirective } from "./components/create-account/compare-validator.directive";
+import { FilterPipe } from "./filterPipe";
 
 @NgModule({
   declarations: [
@@ -60,12 +61,14 @@ import { UserGuardService } from './service/user-guard.service';
     CurrentFriendsComponent,
     PendingRequestsTableComponent,
     SearchBarComponent,
-    RequestConfirmationComponent,
     VenueDetailsComponent,
     VenueListComponent,
     VenueListViewComponent,
     ListComponent,
     NewAccountComponent,
+    FilterPipe,
+    ListListComponent,
+    VenueRecommendComponent,
     CompareValidatorDirective,
     TestComponent,
     CreateAccountComponent,
@@ -93,6 +96,7 @@ import { UserGuardService } from './service/user-guard.service';
     RouterModule
   ],
   providers: [UserService, AuthUserGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [FilterPipe]
 })
 export class AppModule {}

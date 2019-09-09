@@ -14,6 +14,7 @@ import { TestComponent } from './components/test/test.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { CreateReviewComponent } from './components/create-review/create-review.component';
 import { AuthUserGuard } from './auth-user.guard';
+import { VenueRecommendComponent } from "./components/venue-recommend/venue-recommend.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "map", pathMatch: "full" },
@@ -26,10 +27,12 @@ const routes: Routes = [
   { path: "venue-list", component: VenueListComponent },
   { path: "venue-list-view", component: VenueListViewComponent },
   { path: "venuedetails", component: VenueDetailsComponent, canActivate: [AuthUserGuard]},
-  { path: "test", component: TestComponent },
   { path: "create-account", component: CreateAccountComponent },
   { path: "create-review", component: CreateReviewComponent },
+  { path: "venuedetails", component: VenueDetailsComponent },
   { path: "new-account", component: NewAccountComponent },
+  { path: "recommendation", component: VenueRecommendComponent },
+  { path: "test", component: TestComponent }
 ];
 
 @NgModule({
