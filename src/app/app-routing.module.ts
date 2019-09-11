@@ -10,7 +10,6 @@ import { VenueListComponent } from "./components/venue-list/venue-list.component
 import { VenueListViewComponent } from "./components/venue-list-view/venue-list-view.component";
 import { VenueDetailsComponent } from "./components/venue-details/venue-details.component";
 import { NewAccountComponent } from "./components/new-account/new-account.component";
-import { TestComponent } from './components/test/test.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { CreateReviewComponent } from './components/create-review/create-review.component';
 import { AuthUserGuard } from './auth-user.guard';
@@ -31,8 +30,7 @@ const routes: Routes = [
   { path: "create-review", component: CreateReviewComponent },
   { path: "venuedetails", component: VenueDetailsComponent },
   { path: "new-account", component: NewAccountComponent },
-  { path: "recommendation", component: VenueRecommendComponent },
-  { path: "test", component: TestComponent }
+  { path: "recommendation", component: VenueRecommendComponent }
 ];
 
 @NgModule({

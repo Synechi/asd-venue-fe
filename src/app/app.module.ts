@@ -43,7 +43,6 @@ import { AuthUserGuard } from './auth-user.guard';
 import { UserGuardService } from './service/user-guard.service';
 import { ListListComponent } from "./components/list-list/list-list.component";
 import { VenueRecommendComponent } from "./components/venue-recommend/venue-recommend.component";
-import { TestComponent } from "./components/test/test.component";
 import { CompareValidatorDirective } from "./components/create-account/compare-validator.directive";
 import { FilterPipe } from "./filterPipe";
 
@@ -70,7 +69,6 @@ import { FilterPipe } from "./filterPipe";
     ListListComponent,
     VenueRecommendComponent,
     CompareValidatorDirective,
-    TestComponent,
     CreateAccountComponent,
     CreateReviewComponent
   ],

@@ -18,6 +18,6 @@ export class NavComponent {
       share()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private userService: UserService) {}
+  constructor(private breakpointObserver: BreakpointObserver, public userService: UserService) {}
 
 }
