@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { User} from '../user';
-import { BehaviorSubject, of, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { Observable } from 'rxjs'; 
-import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
@@ -15,22 +15,27 @@ constructor(private http: HttpClient){
 
 }
 
+//Calls REST API to retrieve 'suggested friends' from the database
 displaySuggestedFriends(): Observable<User[]> {
   return this.http.get<User[]>(`${this.url}/suggestedFriends`);
 }
 
+//Calls REST API to retrieve the user's pending friend requests from the database
 displayPendingFriendRequests(): Observable<User[]> { 
 
   return this.http.get<User[]>(`${this.url}/pendingRequests`);
 }
 
+//Calls REST API to retrieve the user's current friends from the database
 displayCurrentFriends(): Observable<User[]> { 
 
   return this.http.get<User[]>(`${this.url}/currentFriends`);
 }
 
-//Calls REST API with friendID as parameter to update the friend status based on status parameter
-updateFriendStatus(friendID: String, friendStatus: String): Observable<User[]> {
+/*Calls REST API with friendID as a parameter to update the status of the 'friend' relationship 
+between 2 users based on the status in the JSON*/
+
+updateFriendStatus(friendID: String, friendStatus: String) {
 
   const httpOptions = {
     headers: new HttpHeaders({
@@ -38,10 +43,11 @@ updateFriendStatus(friendID: String, friendStatus: String): Observable<User[]> {
     })
   };
 
-  return this.http.put<User[]>(`${this.url}/friendStatusUpdate/${friendID}`, {friendStatus}, httpOptions);
+  return this.http.put(`${this.url}/friendStatusUpdate/${friendID}`, {friendStatus}, httpOptions);
 }
 
-sendFriendRequest(friendID: String): Observable<User[]> { 
+//Calls REST API with friendID as a parameter to send a friend request
+sendFriendRequest(friendID: String) { 
 
   const httpOptions = {
     headers: new HttpHeaders({
@@ -49,9 +55,22 @@ sendFriendRequest(friendID: String): Observable<User[]> {
     })
   };
   
-  return this.http.post<User[]>(`${this.url}/friendRequest/${friendID}`, httpOptions).pipe(catchError(this.friendExistsError));
+  return this.http.post(`${this.url}/friendRequest/${friendID}`, httpOptions).pipe(catchError(this.friendExistsError));
 }
 
+deleteFriend(friendID: String) {
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+    })
+  };
+
+  return this.http.put(`${this.url}/friendRemoval/${friendID}`, httpOptions); 
+
+}
+
+//Displays error message when the user already has the selected user as a friend
 friendExistsError(error) {
 
   let message = "Friend already exists!"

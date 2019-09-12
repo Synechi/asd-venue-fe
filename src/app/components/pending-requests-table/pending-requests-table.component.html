@@ -10,7 +10,7 @@
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody *ngFor="let user of users">
+          <tbody *ngFor="let user of pendingRequests">
             <tr *ngFor="let friend of user.friends">
               <td>{{ friend.firstname }}</td>
               <td>{{ friend.lastname }}</td>

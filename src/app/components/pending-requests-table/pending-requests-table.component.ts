@@ -8,26 +8,35 @@ import { User } from "../../user";
 })
 export class PendingRequestsTableComponent implements OnInit {
   public searchBox: string;
-  users: User[];
+  pendingRequests: User[];
 
-  displayFriendRequests(): void {
+  displayPendingFriendRequests(): void {
     this.friendService
       .displayPendingFriendRequests()
-      .subscribe(users => (this.users = users));
+      .subscribe(pendingRequests => (this.pendingRequests = pendingRequests));
   }
 
+  // findFriend(id: String, array: User[]): any {
+  //   for (var i = 0; i < array.length; i++) {
+  //     if (array["friends"][i]["_id"] == id) {
+  //       return i;
+  //     }
+  //   }
+  // }
+
   updateFriendStatus(user: User, friendStatus: String): void {
+
     this.friendService
       .updateFriendStatus(user._id, friendStatus)
-      .subscribe(user => {
-        window.alert("Request status successfully updated!");
-        this.ngOnInit();
-      });
+      .subscribe(pendingRequests => (this.pendingRequests.filter(function(element){
+           return 
+      })));
+      
   }
 
   constructor(private friendService: FriendService) {}
 
   ngOnInit() {
-    this.displayFriendRequests();
+    this.displayPendingFriendRequests();
   }
 }
