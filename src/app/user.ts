@@ -1,10 +1,11 @@
+/* Mock-model 'Users' for Bella to do her testing.
+   Please remove when no longer used. */
 
 export class User { 
 
-    _id: String;
-    firstname: String; 
-    lastname: String;
-    email: String;
-    password: String;
+    userID: number; 
+    fName: String; 
+    lName: String;
+    preference: String;
 
 }

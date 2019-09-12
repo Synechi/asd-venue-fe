@@ -1,18 +1,15 @@
 table {
-    font-family: Helvetica; 
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 85%;
+    width: 65%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 1.4%;
-    font-weight: 300; 
-    font-size: small;
-    margin-bottom: 10%;
   }
 
   agm-map {
-    height: 0vh;
-    width: 0vh;
+    height: 40vh;
+    width: 60vh;
     
   }
   

@@ -11,8 +11,6 @@ import { VenueListViewComponent } from "./components/venue-list-view/venue-list-
 import { VenueDetailsComponent } from "./components/venue-details/venue-details.component";
 import { NewAccountComponent } from "./components/new-account/new-account.component";
 import { VenueRecommendComponent } from "./components/venue-recommend/venue-recommend.component";
-import { TestComponent } from "./components/test/test.component";
-import { CreateAccountComponent } from "./components/create-account/create-account.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "map", pathMatch: "full" },
@@ -26,9 +24,7 @@ const routes: Routes = [
   { path: "venue-list-view", component: VenueListViewComponent },
   { path: "venuedetails", component: VenueDetailsComponent },
   { path: "new-account", component: NewAccountComponent },
-  { path: "recommendation", component: VenueRecommendComponent },
-  { path: "test", component: TestComponent },
-  { path: "create-account", component: CreateAccountComponent }
+  { path: "recommendation", component: VenueRecommendComponent }
 ];
 
 @NgModule({

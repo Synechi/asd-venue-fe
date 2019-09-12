@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FriendService } from '../../service/friend.service';
-import { User } from '../../user';
 
 @Component({
   selector: 'app-suggestedfriends',
@@ -9,27 +8,22 @@ import { User } from '../../user';
 })
 export class SuggestedfriendsComponent implements OnInit {
 
-  public searchBox: string;
-  users: User[]; 
-  selectedUser: User; 
-  
+  users = []; 
 
   public isViewable: boolean;
 
-  displaySuggestedFriends(): void { 
+  getUsers(): void { 
 
-    this.friendService.displaySuggestedFriends().subscribe(users => this.users = users);
+    this.friendService.getAllUsers().subscribe(users => this.users = users); 
 
   }
 
   constructor(private friendService: FriendService) { }
 
-  sendRequest(user: User) : void { 
-    this.friendService.sendFriendRequest(user._id).subscribe(user => window.alert("Friend Reqeust has been sent!"));
-  }
+  show(): void { this.isViewable = !this.isViewable; }
 
   ngOnInit() {
-    this.displaySuggestedFriends(); 
+    this.getUsers(); 
       }
 
 }

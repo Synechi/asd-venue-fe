@@ -1,63 +1,37 @@
 import { Injectable } from '@angular/core';
+import { USERS } from '../mock-users';
 import { User} from '../user';
-import { BehaviorSubject, of, throwError } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 import { Observable } from 'rxjs'; 
-import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
 export class FriendService {
 
-  url = "http://localhost:4000";
-  
-constructor(private http: HttpClient){
+users = USERS; 
+
+results = []; 
+
+getAllUsers(): Observable<User[]> { 
+
+  return of(USERS);
 
 }
+/* searchUser(name) { 
 
-displaySuggestedFriends(): Observable<User[]> {
-  return this.http.get<User[]>(`${this.url}/suggestedFriends`);
+  let filteredList = this.user.map(function(e) {
+
+    return {ID: e["userID"], Name: e["fName"], Surname: e["lName"]}
+  }).filter((e) => e.Name == name);
+
+  return filteredList; 
+
+  } */
+
+
+constructor(){
+
 }
-
-displayPendingFriendRequests(): Observable<User[]> { 
-
-  return this.http.get<User[]>(`${this.url}/pendingRequests`);
-}
-
-displayCurrentFriends(): Observable<User[]> { 
-
-  return this.http.get<User[]>(`${this.url}/currentFriends`);
-}
-
-//Calls REST API with friendID as parameter to update the friend status based on status parameter
-updateFriendStatus(friendID: String, friendStatus: String): Observable<User[]> {
-
-  const httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-    })
-  };
-
-  return this.http.put<User[]>(`${this.url}/friendStatusUpdate/${friendID}`, {friendStatus}, httpOptions);
-}
-
-sendFriendRequest(friendID: String): Observable<User[]> { 
-
-  const httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-    })
-  };
-  
-  return this.http.post<User[]>(`${this.url}/friendRequest/${friendID}`, httpOptions).pipe(catchError(this.friendExistsError));
-}
-
-friendExistsError(error) {
-
-  let message = "Friend already exists!"
-
-  window.alert(message);
-  return throwError(message);
-}
-
 }

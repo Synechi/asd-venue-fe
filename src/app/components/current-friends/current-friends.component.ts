@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FriendService } from '../../service/friend.service';
-import { User } from '../../user';
-
 @Component({
   selector: 'app-current-friends',
   templateUrl: './current-friends.component.html',
@@ -9,19 +7,17 @@ import { User } from '../../user';
 })
 export class CurrentFriendsComponent implements OnInit {
 
-  public searchBox: string;
-  users: User[]; 
+  users = [];
+  getUsers(): void { 
 
-  displayCurrentFriends(): void {
-    this.friendService
-      .displayCurrentFriends()
-      .subscribe(users => (this.users = users));
+    this.friendService.getAllUsers().subscribe(users => this.users = users); 
+
   }
 
   constructor(private friendService: FriendService) { }
 
   ngOnInit() {
-   this.displayCurrentFriends();
+    this.getUsers();
   }
 
 }
