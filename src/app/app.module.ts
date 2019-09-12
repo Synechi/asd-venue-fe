@@ -15,6 +15,8 @@ import { VenueListComponent } from "./components/venue-list/venue-list.component
 import { VenueListViewComponent } from "./components/venue-list-view/venue-list-view.component";
 import { VenueDetailsComponent } from "./components/venue-details/venue-details.component";
 import { NewAccountComponent } from "./components/new-account/new-account.component";
+import { CreateReviewComponent } from "./components/create-review/create-review.component";
+import { ConfirmPasswordValidatorDirective } from "./components/test/confirmPasswordValidator.directive";
 
 //Services
 import { UserService } from "./service/user.service";
@@ -68,7 +70,9 @@ import { FilterPipe } from "./filterPipe";
     VenueRecommendComponent,
     CompareValidatorDirective,
     TestComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    CreateReviewComponent,
+    ConfirmPasswordValidatorDirective
   ],
   imports: [
     BrowserModule,
