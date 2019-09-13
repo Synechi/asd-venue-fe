@@ -33,7 +33,6 @@ import { SuggestedfriendsComponent } from "./components/suggestedfriends/suggest
 import { AddFriendButtonComponent } from "./components/add-friend-button/add-friend-button.component";
 import { CurrentFriendsComponent } from "./components/current-friends/current-friends.component";
 import { PendingRequestsTableComponent } from "./components/pending-requests-table/pending-requests-table.component";
-import { SearchBarComponent } from "./components/search-bar/search-bar.component";
 import { MatInputModule } from "@angular/material";
 import { MatCardModule } from "@angular/material";
 import { FilterPipe } from './filterPipe';
@@ -53,7 +52,6 @@ import { VenueRecommendComponent } from './components/venue-recommend/venue-reco
     AddFriendButtonComponent,
     CurrentFriendsComponent,
     PendingRequestsTableComponent,
-    SearchBarComponent,
     VenueDetailsComponent,
     VenueListComponent,
     VenueListViewComponent,

@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  SystemJsNgModuleLoader,
-  Output
-} from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FriendService } from "../../service/friend.service";
 import { User } from "../../user";
 
