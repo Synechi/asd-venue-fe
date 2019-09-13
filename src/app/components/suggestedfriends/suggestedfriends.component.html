@@ -2,7 +2,7 @@
   <form>
     <input class = "searchBar" type="text" name = "searchBox" placeholder="Search..." [(ngModel)] = "searchBox"/>
   </form>
-  <table class="bordered">
+  <table class="bordered" >
     <thead>
       <tr>
         <th>First Name</th>
@@ -11,10 +11,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users | filter : 'firstname' : searchBox; let i = index" [class.selected] = "user === selectedUser"  >
+      <tr *ngFor="let user of suggestedFriends | filter : {firstname: searchBox, lastname: searchBox}; let i = index;">
         <td>{{ user.firstname }}</td>
         <td>{{ user.lastname }}</td>
-        <td><button (click)="sendRequest(user)" >Add Friend</button></td>
+        <td><button (click)="sendRequest(user)">Add Friend</button></td>
       </tr>
     </tbody>
   </table>

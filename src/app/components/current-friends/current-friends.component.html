@@ -7,11 +7,11 @@
         <th></th>
       </tr>
     </thead>
-    <tbody *ngFor="let user of currentFriends">
-      <tr *ngFor="let friend of user.friends">
-        <td>{{ friend.firstname }}</td>
-        <td>{{ friend.lastname }}</td>
-        <td><button (click)="deleteFriend(friend)"> Remove </button></td>
+    <tbody>
+      <tr *ngFor="let user of currentFriends">
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.lastname }}</td>
+        <td><button (click)="deleteFriend(user)"> Remove </button></td>
       </tr>
     </tbody>
   </table>

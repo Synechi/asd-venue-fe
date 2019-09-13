@@ -7,31 +7,31 @@ import { User } from "../../user";
   styleUrls: ["./pending-requests-table.component.css"]
 })
 export class PendingRequestsTableComponent implements OnInit {
-  public searchBox: string;
   pendingRequests: User[];
 
+  //Updates the component variable to display pending friend requests
   displayPendingFriendRequests(): void {
     this.friendService
       .displayPendingFriendRequests()
       .subscribe(pendingRequests => (this.pendingRequests = pendingRequests));
   }
 
-  // findFriend(id: String, array: User[]): any {
-  //   for (var i = 0; i < array.length; i++) {
-  //     if (array["friends"][i]["_id"] == id) {
-  //       return i;
-  //     }
-  //   }
-  // }
+  //Removes an element in an array based on id
+  removePendingRequest(arr: User[], id: String): any {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i]["_id"] == id) {
+        arr.splice(i, 1);
+      }
+    }
+    return arr;
+  }
 
+  //Passes the user id and 'accepted' or 'declined' status to the Friend Service and updates the display
   updateFriendStatus(user: User, friendStatus: String): void {
-
+    let newArr = this.removePendingRequest(this.pendingRequests, user._id);
     this.friendService
       .updateFriendStatus(user._id, friendStatus)
-      .subscribe(pendingRequests => (this.pendingRequests.filter(function(element){
-           return 
-      })));
-      
+      .subscribe(() => (this.pendingRequests = newArr));
   }
 
   constructor(private friendService: FriendService) {}

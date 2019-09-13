@@ -6,6 +6,5 @@ export class User {
     lastname: String;
     email: String;
     password: String;
-    friends: Array<any>;
-
+   
 }

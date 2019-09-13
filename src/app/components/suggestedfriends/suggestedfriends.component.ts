@@ -1,35 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { FriendService } from '../../service/friend.service';
-import { User } from '../../user';
+import { Component, OnInit } from "@angular/core";
+import { FriendService } from "../../service/friend.service";
+import { User } from "../../user";
 
 @Component({
-  selector: 'app-suggestedfriends',
-  templateUrl: './suggestedfriends.component.html',
-  styleUrls: ['./suggestedfriends.component.css']
+  selector: "app-suggestedfriends",
+  templateUrl: "./suggestedfriends.component.html",
+  styleUrls: ["./suggestedfriends.component.css"]
 })
 export class SuggestedfriendsComponent implements OnInit {
-
   public searchBox: string;
-  users: User[]; 
-  selectedUser: User; 
+  suggestedFriends: User[];
+
   
-
-  public isViewable: boolean;
-
-  displaySuggestedFriends(): void { 
-
-    this.friendService.displaySuggestedFriends().subscribe(users => this.users = users);
-
+  //Updates the component variable to display suggested friends
+  displaySuggestedFriends(): void {
+    this.friendService
+      .displaySuggestedFriends()
+      .subscribe(
+        suggestedFriends => (this.suggestedFriends = suggestedFriends)
+      );
   }
 
-  constructor(private friendService: FriendService) { }
+  //Removes an element in an array based on id
+  removeSuggestedFriend(arr: User[], id: String): any {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i]["_id"] == id) {
+        arr.splice(i, 1);
+      }
+    }
+    return arr;
+  }
 
-  sendRequest(user: User) : void { 
-    this.friendService.sendFriendRequest(user._id).subscribe(user => window.alert("Friend Reqeust has been sent!"));
+  constructor(private friendService: FriendService) {}
+
+  //Passes the user id to the Friend Service to send the friend request and updates the display
+  sendRequest(user: User): void {
+    let newArr = this.removeSuggestedFriend(this.suggestedFriends, user._id);
+
+    this.friendService
+      .sendFriendRequest(user._id)
+      .subscribe(() => (this.suggestedFriends = newArr));
   }
 
   ngOnInit() {
-    this.displaySuggestedFriends(); 
-      }
-
+    this.displaySuggestedFriends();
+  }
 }

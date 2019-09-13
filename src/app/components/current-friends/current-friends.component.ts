@@ -13,36 +13,32 @@ import { User } from "../../user";
   styleUrls: ["./current-friends.component.css"]
 })
 export class CurrentFriendsComponent implements OnInit {
-  public searchBox: string;
   currentFriends: User[];
 
+  //Bella L: Updates the component variable to display current friend list
   displayCurrentFriends(): void {
     this.friendService
       .displayCurrentFriends()
       .subscribe(users => (this.currentFriends = users));
   }
 
-  // deleteFriend(user: User): void {
-  //   this.friendService
-  //     .deleteFriend(user._id)
-  //     .subscribe(currentFriends => (this.currentFriends = currentFriends));
-  // }
+  //Bella L: Removes an element in an array based on id
+  removeFriend(arr: User[], id: String): any {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i]["_id"] == id) {
+        arr.splice(i, 1);
+      }
+    }
+    return arr;
+  }
 
+  //Bella L: Passes the user id to the Friend Service to delete a friend and updates the display
   deleteFriend(user: User): void {
+    let newArr = this.removeFriend(this.currentFriends, user._id);
 
     this.friendService
       .deleteFriend(user._id)
-      .subscribe(
-        friends => {console.log("Ramu!");
-          (this.currentFriends = this.currentFriends.filter(
-            friend => { console.log("Hello!"); return friend._id != user._id }
-          )
-          )});
-      let hello = JSON.stringify(this.currentFriends);
-      let hello1 = JSON.stringify(this.currentFriends["friends"]);
-      console.log(hello);
-      console.log (hello1);
-
+      .subscribe(() => (this.currentFriends = newArr));
   }
 
   constructor(private friendService: FriendService) {}

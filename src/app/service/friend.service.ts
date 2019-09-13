@@ -58,6 +58,7 @@ sendFriendRequest(friendID: String) {
   return this.http.post(`${this.url}/friendRequest/${friendID}`, httpOptions).pipe(catchError(this.friendExistsError));
 }
 
+//Calls REST API with friendID as a parameter to delete friend from friend list
 deleteFriend(friendID: String) {
 
   const httpOptions = {
