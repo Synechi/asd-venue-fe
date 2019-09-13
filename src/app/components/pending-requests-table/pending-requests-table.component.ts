@@ -1,3 +1,5 @@
+//Created by Bella L
+
 import { Component, OnInit } from "@angular/core";
 import { FriendService } from "../../service/friend.service";
 import { User } from "../../user";
@@ -9,14 +11,19 @@ import { User } from "../../user";
 export class PendingRequestsTableComponent implements OnInit {
   pendingRequests: User[];
 
-  //Updates the component variable to display pending friend requests
+  constructor(private friendService: FriendService) {}
+
+  ngOnInit() {
+    this.displayPendingFriendRequests();
+  }
+
+  //Bella L: Updates the component variable to display pending friend requests
   displayPendingFriendRequests(): void {
     this.friendService
       .displayPendingFriendRequests()
       .subscribe(pendingRequests => (this.pendingRequests = pendingRequests));
   }
 
-  //Removes an element in an array based on id
   removePendingRequest(arr: User[], id: String): any {
     for (var i = 0; i < arr.length; i++) {
       if (arr[i]["_id"] == id) {
@@ -26,17 +33,11 @@ export class PendingRequestsTableComponent implements OnInit {
     return arr;
   }
 
-  //Passes the user id and 'accepted' or 'declined' status to the Friend Service and updates the display
+  //Bella L: Passes the user id and 'accepted' or 'declined' status to the Friend Service and updates the display
   updateFriendStatus(user: User, friendStatus: String): void {
     let newArr = this.removePendingRequest(this.pendingRequests, user._id);
     this.friendService
       .updateFriendStatus(user._id, friendStatus)
       .subscribe(() => (this.pendingRequests = newArr));
-  }
-
-  constructor(private friendService: FriendService) {}
-
-  ngOnInit() {
-    this.displayPendingFriendRequests();
   }
 }

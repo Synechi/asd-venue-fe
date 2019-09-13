@@ -1,24 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { FriendService } from '../../service/friend.service';
+//Created by Bella L
+
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-add-friends',
-  templateUrl: './add-friends.component.html',
-  styleUrls: ['./add-friends.component.css']
+  selector: "app-add-friends",
+  templateUrl: "./add-friends.component.html",
+  styleUrls: ["./add-friends.component.css"]
 })
 export class AddFriendsComponent implements OnInit {
+  constructor() {}
 
-  /* searchUser(name) {
-    
-    this.results.push((this.friendService.searchUser(name)));
-    return this.results;
-    
-
-  } */
-
-  constructor(private friendService: FriendService) {  }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

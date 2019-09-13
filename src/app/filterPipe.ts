@@ -4,6 +4,8 @@ import { Pipe, PipeTransform, Injectable } from "@angular/core";
   name: "filter"
 })
 @Injectable()
+
+//Used to filter data displayed in a table 
 export class FilterPipe implements PipeTransform {
   transform(data: any, filter: any, currentFilter: boolean): any {
     if (!filter) {
@@ -17,6 +19,7 @@ export class FilterPipe implements PipeTransform {
     if (filter && Array.isArray(data)) {
       let filterKeys = Object.keys(filter);
 
+      //Filters and reduces data based on input
       if (currentFilter) {
         return data.filter(item =>
           filterKeys.reduce(

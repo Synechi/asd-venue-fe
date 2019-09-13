@@ -1,3 +1,5 @@
+//Created by Bella L
+
 import { Component, OnInit } from "@angular/core";
 import { FriendService } from "../../service/friend.service";
 import { User } from "../../user";
@@ -10,6 +12,12 @@ import { User } from "../../user";
 export class CurrentFriendsComponent implements OnInit {
   currentFriends: User[];
 
+  constructor(private friendService: FriendService) {}
+
+  ngOnInit() {
+    this.displayCurrentFriends();
+  }
+  
   //Bella L: Updates the component variable to display current friend list
   displayCurrentFriends(): void {
     this.friendService
@@ -17,7 +25,6 @@ export class CurrentFriendsComponent implements OnInit {
       .subscribe(users => (this.currentFriends = users));
   }
 
-  //Bella L: Removes an element in an array based on id
   removeFriend(arr: User[], id: String): any {
     for (var i = 0; i < arr.length; i++) {
       if (arr[i]["_id"] == id) {
@@ -34,11 +41,5 @@ export class CurrentFriendsComponent implements OnInit {
     this.friendService
       .deleteFriend(user._id)
       .subscribe(() => (this.currentFriends = newArr));
-  }
-
-  constructor(private friendService: FriendService) {}
-
-  ngOnInit() {
-    this.displayCurrentFriends();
   }
 }
