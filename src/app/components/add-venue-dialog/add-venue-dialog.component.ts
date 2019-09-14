@@ -1,0 +1,55 @@
+import { Component, OnInit, Inject } from "@angular/core";
+import { UserService } from "src/app/service/user.service";
+import { ActivatedRoute } from "@angular/router";
+import { MatDialogRef } from "@angular/material";
+import { GoogleMapsService } from "src/app/service/google-maps.service";
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
+
+@Component({
+  selector: "app-add-venue-dialog",
+  templateUrl: "./add-venue-dialog.component.html",
+  styleUrls: ["./add-venue-dialog.component.css"]
+})
+export class AddVenueDialogComponent implements OnInit {
+  constructor(
+    private dialogRef: MatDialogRef<AddVenueDialogComponent>,
+    private route: ActivatedRoute,
+    private userService: UserService,
+    private gMapService: GoogleMapsService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
+
+  placeID: string;
+
+  ngOnInit() {}
+
+  close() {
+    this.dialogRef.close();
+  }
+
+  onSubmit() {
+    this.dialogRef.close();
+    window.location.reload();
+  }
+
+  createList() {
+    this.gMapService
+      .getDetails(this.placeID, document.createElement("div"))
+      .subscribe(venueDetails => {
+        if (Object.keys(venueDetails).length === 0) {
+          console.log("Invalid Place ID");
+        } else {
+          this.userService
+            .addListVenue(
+              "5d628a72d2c6643f8095cefe",
+              this.data.listID,
+              this.placeID
+            )
+            .subscribe(
+              data => console.log("Venue Added", data),
+              error => console.error("error, cannot save venue to list", error)
+            );
+        }
+      });
+  }
+}
