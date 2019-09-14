@@ -13,6 +13,7 @@ export class SuggestedfriendsComponent implements OnInit {
   suggestedFriends: User[];
   status: boolean;
   statusMessage: string;
+  searchBox: string;
 
   constructor(private friendService: FriendService) {}
 
