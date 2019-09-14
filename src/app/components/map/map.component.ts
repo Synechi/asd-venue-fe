@@ -30,7 +30,7 @@ export class MapComponent implements OnInit {
 
         for (var place of result) {
           var labelType = "";
-          for (let i = 0; i < 3; i++) {
+          for (let i = 0; i < place.types.length; i++) {
             if (place.types[i] === "bar") {
               labelType = "bar";
             }
@@ -38,6 +38,13 @@ export class MapComponent implements OnInit {
               labelType = "restaurant";
             }
           }
+          var openHour = "";
+          if (place.opening_hours.open_now) {
+            openHour = "Currently Open";
+          } else {
+            openHour = "Currently Closed";
+          }
+
           this.markers.push({
             lat: place.geometry.location.lat(),
             lng: place.geometry.location.lng(),
@@ -50,7 +57,10 @@ export class MapComponent implements OnInit {
                 height: 20,
                 width: 20
               }
-            }
+            },
+            rating: place.rating,
+            open: openHour,
+            placeID: place.placeID
           });
           error => console.log(error);
         }
@@ -134,4 +144,7 @@ interface marker {
       width: number;
     };
   };
+  rating: number;
+  open: string;
+  placeID: string;
 }
