@@ -17,7 +17,9 @@ export class FriendService {
 
   //Bella L: Calls REST API to retrieve 'suggested friends' from the database
   displaySuggestedFriends(searchBox: String): Observable<User[]> {
-    return this.http.get<User[]>(`${this.url}/suggestedFriends/suggestedFriends/${searchBox}`);
+    return this.http.get<User[]>(
+      `${this.url}/suggestedFriends/suggestedFriends/${searchBox}`
+    );
   }
 
   //Bella: Calls REST API to retrieve the user's pending friend requests from the database
@@ -55,9 +57,10 @@ between 2 users based on the status in the JSON*/
       })
     };
 
-    return this.http
-      .post(`${this.url}/friendRequest/friendRequest/${friendID}`, httpOptions)
-      .pipe(catchError(this.friendExistsError));
+    return this.http.post(
+      `${this.url}/friendRequest/friendRequest/${friendID}`,
+      httpOptions
+    );
   }
 
   //Bella L: Calls REST API with friendID as a parameter to delete friend from friend list
@@ -68,13 +71,9 @@ between 2 users based on the status in the JSON*/
       })
     };
 
-    return this.http.put(`${this.url}/friendRemoval/friendRemoval/${friendID}`, httpOptions);
-  }
-
-  friendExistsError(error) {
-    let message = "Friend already exists!";
-
-    window.alert(message);
-    return throwError(message);
+    return this.http.put(
+      `${this.url}/friendRemoval/friendRemoval/${friendID}`,
+      httpOptions
+    );
   }
 }
