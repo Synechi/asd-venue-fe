@@ -24,13 +24,6 @@ export class ListListComponent implements OnInit {
 
   ngOnInit() {
     }
-<<<<<<< HEAD
-
-  getDetail(placeID: string, map: any) {
-    this.gMapsService.getDetails(placeID, map).subscribe(result => {
-      this.__zone.run(() => {
-        console.log(result);
-=======
     markers: marker[] = [];
 
 
@@ -81,16 +74,18 @@ export class ListListComponent implements OnInit {
         this.__zone.run(() => {
           console.log(result);
         });
->>>>>>> MapList
       });
     });
   }
 
 }
-export class Venue {
-  constructor(
-      public id: string,
-      public name: string,
-      public address: string
-      ) { }
-  }
+
+//export class Venue {
+  //constructor(
+    //  public id: string,
+      //public name: string,
+      //public address: string,
+      //public genre: string
+      //) { }
+  //}
+  //test
