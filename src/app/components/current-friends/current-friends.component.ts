@@ -11,13 +11,15 @@ import { User } from "../../user";
 })
 export class CurrentFriendsComponent implements OnInit {
   currentFriends: User[];
+  status: boolean;
+  statusMessage: string;
 
   constructor(private friendService: FriendService) {}
 
   ngOnInit() {
     this.displayCurrentFriends();
   }
-  
+
   //Bella L: Updates the component variable to display current friend list
   displayCurrentFriends(): void {
     this.friendService
@@ -41,5 +43,8 @@ export class CurrentFriendsComponent implements OnInit {
     this.friendService
       .deleteFriend(user._id)
       .subscribe(() => (this.currentFriends = newArr));
+
+    this.status = true;
+    this.statusMessage = "Success! Friend has been removed.";
   }
 }

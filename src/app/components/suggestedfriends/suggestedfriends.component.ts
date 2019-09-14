@@ -11,10 +11,19 @@ import { User } from "../../user";
 })
 export class SuggestedfriendsComponent implements OnInit {
   suggestedFriends: User[];
+  status: boolean;
+  statusMessage: string;
 
   constructor(private friendService: FriendService) {}
 
   ngOnInit() {}
+
+  onHttpError(errorResponse: any) {
+    console.log('error: ', errorResponse);
+    this.status = true;
+    this.statusMessage = "Internal Server Error, please refresh your browser.";
+  }
+
 
   //Bella L: Displays 'suggested friends' based on input from user search
   displaySuggestedFriends(searchBox: String): void {
@@ -44,6 +53,10 @@ export class SuggestedfriendsComponent implements OnInit {
 
     this.friendService.sendFriendRequest(user._id).subscribe(() => {
       this.suggestedFriends = suggestedFriends;
+     
     });
+    
+    this.status = true;
+    this.statusMessage = "Success! Friend Request has been sent."
   }
 }

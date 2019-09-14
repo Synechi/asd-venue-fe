@@ -10,6 +10,8 @@ import { User } from "../../user";
 })
 export class PendingRequestsTableComponent implements OnInit {
   pendingRequests: User[];
+  status: boolean;
+  statusMessage: string;
 
   constructor(private friendService: FriendService) {}
 
@@ -36,10 +38,12 @@ export class PendingRequestsTableComponent implements OnInit {
   //Bella L: Passes the user id and 'accepted' or 'declined' status to the Friend Service and updates the display
   updateFriendStatus(user: User, friendStatus: String): void {
     let newArr = this.removePendingRequest(this.pendingRequests, user._id);
-    
+
     this.friendService
       .updateFriendStatus(user._id, friendStatus)
       .subscribe(() => (this.pendingRequests = newArr));
-      
+
+    this.status = true;
+    this.statusMessage = "Success! Request has been updated.";
   }
 }
