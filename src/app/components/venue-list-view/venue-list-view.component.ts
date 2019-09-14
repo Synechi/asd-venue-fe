@@ -39,10 +39,14 @@ export class VenueListViewComponent implements OnInit {
         venue.place_id
       )
       .subscribe(
-        data => console.log("list created successfully", data),
+        data => {
+          console.log("list created successfully", data);
+        },
         error => console.error("error, cannot save list", error)
       );
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
 
   venues: venue[] = [];

@@ -25,16 +25,19 @@ export class AddListDialogComponent implements OnInit {
   listModel = new List("", "");
 
   onSubmit() {
-    this.dialogRef.close();
-    window.location.reload();
+    //this.dialogRef.close();
+    //window.location.reload();
   }
 
   createList() {
     this.userService
       .createListforUser("5d628a72d2c6643f8095cefe", this.listModel)
-      .subscribe(
-        data => console.log("list created successfully", data),
-        error => console.error("error, cannot save list", error)
-      );
+      .subscribe(data => {
+        console.log("list created successfully", data);
+      });
+    this.dialogRef.close();
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
 }

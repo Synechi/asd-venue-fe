@@ -6,8 +6,8 @@ import { List } from "../list";
   providedIn: "root"
 })
 export class UserService {
-  uri = "http://localhost:4000";
-  listUrl = "http://localhost:4000/venuelist";
+  uri = "https://asd-venue-be.herokuapp.com";
+  listUrl = "https://asd-venue-be.herokuapp.com/venuelist";
 
   constructor(private http: HttpClient) {}
 

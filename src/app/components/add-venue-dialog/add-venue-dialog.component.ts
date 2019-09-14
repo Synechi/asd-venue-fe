@@ -28,8 +28,8 @@ export class AddVenueDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    this.dialogRef.close();
-    window.location.reload();
+    // this.dialogRef.close();
+    // window.location.reload();
   }
 
   createList() {
@@ -46,10 +46,16 @@ export class AddVenueDialogComponent implements OnInit {
               this.placeID
             )
             .subscribe(
-              data => console.log("Venue Added", data),
+              data => {
+                console.log("Venue Added", data);
+              },
               error => console.error("error, cannot save venue to list", error)
             );
         }
       });
+    this.dialogRef.close();
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
 }
