@@ -26,7 +26,6 @@ export class ListListComponent implements OnInit {
   // Marker Loader
   loadMarkers($event) {
     this.getPlaces($event);
-    this.getPlaces($event);
   }
 
 

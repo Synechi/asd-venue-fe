@@ -1,12 +1,11 @@
 <body>
     <a mat-raised-button routerLink="/map">Map View</a>
-    <button (click)="arraysort()"> Button </button>
 <table>
   <thead>
     <tr>
       <th (click)="arraysort_name()" >Venue Name</th>
-      <th>Venue Location</th>
-      <th>Venue Genre</th>
+      <th (click)="arraysort_location()" >Venue Location</th>
+      <th (click)="arraysort_genre()">Venue Genre</th>
       <th>Venue Flag</th>
       <th>Flagged As</th>
       <th>Review</th>
