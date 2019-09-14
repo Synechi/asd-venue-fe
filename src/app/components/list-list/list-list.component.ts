@@ -10,6 +10,8 @@ declare var google: any;
   styleUrls: ['./list-list.component.css']
 })
 export class ListListComponent implements OnInit {
+Venue_list: [];
+
   venues = [
     new Venue("ChIJDTR29iauEmsR97nGzWimbMo","" , ""),
     new Venue("ChIJISFoEiKuEmsR8TMqpG8xgwQ", "", ""),
