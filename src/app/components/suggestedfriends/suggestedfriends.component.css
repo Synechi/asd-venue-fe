@@ -2,37 +2,37 @@ body {
   margin-left: 100px;
   margin-right: 100px;
   margin-bottom: 40px;
-  
+  text-align: center;
 }
 
 .bordered {
   border: solid black 1px;
-  box-shadow: 1px, rgba(255,255,255,.8);
+  box-shadow: 1px, rgba(255, 255, 255, 0.8);
 }
 
 .bordered th {
-  background-color:  #c2185b;
+  background-color: #c2185b;
   text-align: center;
-  box-shadow: 1px, rgba(255,255,255,.8);
-  text-shadow: 1px rgba(255,255,255,255,.3);
+  box-shadow: 1px, rgba(255, 255, 255, 0.8);
+  text-shadow: 1px rgba(255, 255, 255, 255, 0.3);
 }
 
-.bordered td, .bordered th {
+.bordered td,
+.bordered th {
   border-left: 1px solid black;
-  padding: 10px; 
+  padding: 10px;
   text-align: left;
   border-bottom: 0.5px solid black;
 }
 
-table { 
-font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-border-spacing: 0;
-border-collapse: separate;
-width: 100%;
+table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-spacing: 0;
+  border-collapse: separate;
+  width: 100%;
 }
 
- 
-tr:nth-child(even){
+tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
@@ -44,17 +44,42 @@ th {
   padding-top: 12px;
   padding-bottom: 12px;
   background-color: #c2185b;
-  color:white;
+  color: white;
   display: table-cell;
   vertical-align: inherit;
   font-weight: bold;
 }
 
-.searchBar { 
-
-  margin-bottom: 10px; 
-
-  width: 100%;
-  font-size: 16px; 
+p {
+  margin-top: 100px;
 }
 
+.searchBar {
+  margin-bottom: 10px;
+  width: 100%;
+  font-size: 16px;
+  padding: 6px;
+  border: 0.5px black solid;
+  margin-top: 8px;
+  margin-right: 16px;
+}
+.searchButton {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  background: #c2185b;
+  color: #fff;
+  box-shadow: 0 6px #ab3c3c;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+  border-radius: 14px;
+  border: none;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px 30px;
+  display: inline-block;
+  letter-spacing: 1px;
+  font-weight: 600;
+  position: relative;
+}

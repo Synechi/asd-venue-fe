@@ -5,7 +5,8 @@ import { User } from "../user";
 import { throwError } from "rxjs";
 import { Observable } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { catchError } from "rxjs/operators";
+import { catchError, map } from "rxjs/operators";
+
 @Injectable({
   providedIn: "root"
 })
@@ -15,18 +16,18 @@ export class FriendService {
   constructor(private http: HttpClient) {}
 
   //Bella L: Calls REST API to retrieve 'suggested friends' from the database
-  displaySuggestedFriends(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.url}/suggestedFriends`);
+  displaySuggestedFriends(searchBox: String): Observable<User[]> {
+    return this.http.get<User[]>(`${this.url}/suggestedFriends/suggestedFriends/${searchBox}`);
   }
 
   //Bella: Calls REST API to retrieve the user's pending friend requests from the database
   displayPendingFriendRequests(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.url}/pendingRequests`);
+    return this.http.get<User[]>(`${this.url}/pendingRequests/pendingRequests`);
   }
 
   //Bella L: Calls REST API to retrieve the user's current friends from the database
   displayCurrentFriends(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.url}/currentFriends`);
+    return this.http.get<User[]>(`${this.url}/currentFriends/currentFriends`);
   }
 
   /*Bella L: Calls REST API with friendID as a parameter to update the status of the 'friend' relationship 
@@ -40,7 +41,7 @@ between 2 users based on the status in the JSON*/
     };
 
     return this.http.put(
-      `${this.url}/friendStatusUpdate/${friendID}`,
+      `${this.url}/friendStatusUpdate/friendStatusUpdate/${friendID}`,
       { friendStatus },
       httpOptions
     );
@@ -55,7 +56,7 @@ between 2 users based on the status in the JSON*/
     };
 
     return this.http
-      .post(`${this.url}/friendRequest/${friendID}`, httpOptions)
+      .post(`${this.url}/friendRequest/friendRequest/${friendID}`, httpOptions)
       .pipe(catchError(this.friendExistsError));
   }
 
@@ -67,7 +68,7 @@ between 2 users based on the status in the JSON*/
       })
     };
 
-    return this.http.put(`${this.url}/friendRemoval/${friendID}`, httpOptions);
+    return this.http.put(`${this.url}/friendRemoval/friendRemoval/${friendID}`, httpOptions);
   }
 
   friendExistsError(error) {

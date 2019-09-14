@@ -1,9 +1,24 @@
 <body>
   <form>
-    <!-- Passes the user input to the filter -->
-    <input class = "searchBar" type="text" name = "searchBox" placeholder="Search..." [(ngModel)] = "searchBox"/>
+    <input
+      class="searchBar"
+      type="text"
+      name="searchBox"
+      placeholder="Search..."
+      [(ngModel)]="searchBox"
+      [value]="searchBox"
+    />
+    <button
+      class="searchButton"
+      (click)="displaySuggestedFriends(searchBox)"
+      type="submit"
+      for="searchBox"
+    >
+      Search
+    </button>
   </form>
-  <table class="bordered" >
+
+  <table class="bordered">
     <thead>
       <tr>
         <th>First Name</th>
@@ -12,16 +27,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of suggestedFriends | filter : {firstname: searchBox, lastname: searchBox}; let i = index;">
+      <tr *ngFor="let user of suggestedFriends">
         <td>{{ user.firstname }}</td>
         <td>{{ user.lastname }}</td>
-        <td><button (click)="sendRequest(user)">Add Friend</button></td>
+        <td><button (click)="sendFriendRequest(user)">Add Friend</button></td>
       </tr>
     </tbody>
   </table>
+  <p *ngIf="!this.suggestedFriends.length">No Results Found</p>
 </body>
-
-
-
-
-

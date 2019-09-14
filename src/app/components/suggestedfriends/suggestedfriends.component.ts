@@ -10,39 +10,40 @@ import { User } from "../../user";
   styleUrls: ["./suggestedfriends.component.css"]
 })
 export class SuggestedfriendsComponent implements OnInit {
-  public searchBox: string;
   suggestedFriends: User[];
 
   constructor(private friendService: FriendService) {}
 
-  ngOnInit() {
-    this.displaySuggestedFriends();
-  }
+  ngOnInit() {}
 
-  //Bella L: Updates the component variable to display suggested friends
-  displaySuggestedFriends(): void {
+  //Bella L: Displays 'suggested friends' based on input from user search
+  displaySuggestedFriends(searchBox: String): void {
     this.friendService
-      .displaySuggestedFriends()
+      .displaySuggestedFriends(searchBox)
       .subscribe(
         suggestedFriends => (this.suggestedFriends = suggestedFriends)
       );
   }
 
-  removeSuggestedFriend(arr: User[], id: String): any {
-    for (var i = 0; i < arr.length; i++) {
-      if (arr[i]["_id"] == id) {
-        arr.splice(i, 1);
+  removeSuggestedFriend(suggestedFriends: User[], id: String): User[] {
+    for (var i = 0; i < suggestedFriends.length; i++) {
+      if (suggestedFriends[i]["_id"] == id) {
+        suggestedFriends.splice(i, 1);
       }
     }
-    return arr;
+    return suggestedFriends;
   }
 
   //Bella L: Passes the user id to the Friend Service to send the friend request and updates the display
-  sendRequest(user: User): void {
-    let newArr = this.removeSuggestedFriend(this.suggestedFriends, user._id);
+  sendFriendRequest(user: User): void {
+    this.friendService;
+    let suggestedFriends = this.removeSuggestedFriend(
+      this.suggestedFriends,
+      user._id
+    );
 
-    this.friendService
-      .sendFriendRequest(user._id)
-      .subscribe(() => (this.suggestedFriends = newArr));
+    this.friendService.sendFriendRequest(user._id).subscribe(() => {
+      this.suggestedFriends = suggestedFriends;
+    });
   }
 }
