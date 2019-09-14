@@ -28,6 +28,9 @@ export class ListListComponent implements OnInit {
     this.getPlaces($event);
     this.getPlaces($event);
   }
+
+
+
   showRev = false;
   selectedOption: string = ' '; 
   //Event Handler For The Select Element's Change Event
@@ -43,6 +46,10 @@ export class ListListComponent implements OnInit {
     }
   }
 
+
+
+
+
     getPlaces(map: any) {
       this.gMapsService.getBarRest(map).subscribe(result => {
         this.__zone.run(() => {
@@ -52,10 +59,10 @@ export class ListListComponent implements OnInit {
             var labelType = "";
             for (let i = 0; i < 3; i++) {
               if (place.types[i] === "bar") {
-                labelType = "bar";
+                labelType = "Bar";
               }
               if (place.types[i] === "restaurant") {
-                labelType = "restaurant";
+                labelType = "Restaurant";
               }
             }
             this.markers.push({
@@ -70,9 +77,17 @@ export class ListListComponent implements OnInit {
       });
     }
 
-    arraysort()
+    arraysort_name()
     {
       this.markers.sort((a, b) => (a.name > b.name) ? 1 : -1);
+    }
+    arraysort_location()
+    {
+      this.markers.sort((a, b) => (a.address > b.address) ? 1 : -1);
+    }
+    arraysort_genre()
+    {
+      this.markers.sort((a, b) => (a.label > b.label) ? 1 : -1);
     }
   
     getDetail(placeID: string, map: any) {
