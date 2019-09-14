@@ -1,6 +1,6 @@
 <body>
     <a mat-raised-button routerLink="/map">Map View</a>
-    <button ng-click="arraysort()"></button>
+    <button (click)="toggleImage()"> Button </button>
 <table>
   <thead>
     <tr>
@@ -25,7 +25,11 @@
         </select>
       </td>
       <td>{{selectedOption}}</td>
-      <td></td>
+      <td>
+        <ng-container *ngIf="showRev  == true">
+          <button type="Review">Leave A Review</button>
+      </ng-container>
+    </td>
     </tr>
   </tbody>
 </table>
