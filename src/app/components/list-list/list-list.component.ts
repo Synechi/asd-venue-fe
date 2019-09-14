@@ -28,6 +28,20 @@ export class ListListComponent implements OnInit {
     this.getPlaces($event);
     this.getPlaces($event);
   }
+  showRev = false;
+  selectedOption: string = ' '; 
+  //Event Handler For The Select Element's Change Event
+  selectChangeHandler (event : any)
+  {
+    //Update The UI 
+    this.selectedOption = event.target.value;
+
+    if (this.selectedOption == 'Visited') {
+      this.showRev = true;
+    } else {
+      this.showRev = false;
+    }
+  }
 
     getPlaces(map: any) {
       this.gMapsService.getBarRest(map).subscribe(result => {
@@ -51,7 +65,6 @@ export class ListListComponent implements OnInit {
               
             });
             error => console.log(error);
-            this.arraysort();
           }
         });
       });
@@ -59,7 +72,7 @@ export class ListListComponent implements OnInit {
 
     arraysort()
     {
-      this.markers.every;
+      this.markers.sort((a, b) => (a.name > b.name) ? 1 : -1);
     }
   
     getDetail(placeID: string, map: any) {

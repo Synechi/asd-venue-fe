@@ -1,32 +1,37 @@
 <body>
-  <a mat-raised-button routerLink="/map">Map View</a>
+    <a mat-raised-button routerLink="/map">Map View</a>
+    <button (click)="toggleImage()"> Button </button>
 <table>
-<thead>
-  <tr>
-    <th>Venue Name</th>
-    <th>Venue Location</th>
-    <th>Venue Genre</th>
-    <th>Venue Flag</th>
-    <th>Flagged As</th>
-    <th>Review</th>
-  </tr>
-</thead>
-<tbody>
-  <tr *ngFor="let m of markers;">
-    <td>{{ m.name }}</td>
-    <td>{{ m.address }}</td>
-    <td>{{ m.label }}</td>
-    <td>
-      <select (change)="selectChangeHandler($event)">
-      <option value="Select Venue Status">Select Venue Status</option>
-      <option value="Want To Visit">Want To Visit</option>
-      <option value="Visited">Visited</option>
-      </select>
+  <thead>
+    <tr>
+      <th>Venue Name</th>
+      <th>Venue Location</th>
+      <th>Venue Genre</th>
+      <th>Venue Flag</th>
+      <th>Flagged As</th>
+      <th>Review</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let m of markers;">
+      <td>{{ m.name }}</td>
+      <td>{{ m.address }}</td>
+      <td>{{ m.label }}</td>
+      <td>
+        <select (change)="selectChangeHandler($event)">
+        <option value="Select Venue Status">Select Venue Status</option>
+        <option value="Want To Visit">Want To Visit</option>
+        <option value="Visited">Visited</option>
+        </select>
+      </td>
+      <td>{{selectedOption}}</td>
+      <td>
+        <ng-container *ngIf="showRev  == true">
+          <button type="Review">Leave A Review</button>
+      </ng-container>
     </td>
-    <td></td>
-    <td><a mat-raised-button routerLink="/map">Leave A Review</a></td>
-  </tr>
-</tbody>
+    </tr>
+  </tbody>
 </table>
 </body>
 <agm-map
