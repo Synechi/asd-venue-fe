@@ -40,6 +40,7 @@ import { MatCardModule } from "@angular/material";
 import { ListListComponent } from './components/list-list/list-list.component';
 import { VenueRecommendComponent } from './components/venue-recommend/venue-recommend.component';
 import { AddListDialogComponent } from './components/add-list-dialog/add-list-dialog.component';
+import { AddVenueDialogComponent } from './components/add-venue-dialog/add-venue-dialog.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { AddListDialogComponent } from './components/add-list-dialog/add-list-di
     NewAccountComponent,
     ListListComponent,
     VenueRecommendComponent,
-    AddListDialogComponent
+    AddListDialogComponent,
+    AddVenueDialogComponent
   ],
   imports: [
     BrowserModule,

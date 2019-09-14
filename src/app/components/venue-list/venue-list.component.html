@@ -1,24 +1,33 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 <app-nav></app-nav>
 <h1>Your Lists</h1>
 <button (click)="openDialog()" id="addButton" mat-mini-fab>+</button>
 <p></p>
-<hr/>
-      
+<hr />
+
 <!-- show user lists -->
 <div class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Colour</th>
-        </tr>
-    </thead>
-    <tbody *ngFor="let list of lists">
-        <tr *ngFor="let object of list">
-            <td><a mat-button routerLink="/venue-list-view">{{ object.name }}</a></td>
-            <td>{{ object.colour }}</td>
-            <td><button><i class="fa fa-trash" (click)="delete(object)"></i></button></td>
-            <!-- <td><a mat-button routerLink="/venue-list-view">View List</a></td> -->
-        </tr>
-    </tbody> 
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Colour</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let list of lists">
+    <tr *ngFor="let object of list">
+      <td>
+        <a mat-button [routerLink]="['/venue-list-view', object._id]">{{
+          object.name
+        }}</a>
+      </td>
+      <td>{{ object.colour }}</td>
+      <td>
+        <button><i class="fa fa-trash" (click)="delete(object)"></i></button>
+      </td>
+      <!-- <td><a mat-button routerLink="/venue-list-view">View List</a></td> -->
+    </tr>
+  </tbody>
 </div>

@@ -11,7 +11,8 @@ import { VenueListViewComponent } from "./components/venue-list-view/venue-list-
 import { VenueDetailsComponent } from "./components/venue-details/venue-details.component";
 import { NewAccountComponent } from "./components/new-account/new-account.component";
 import { VenueRecommendComponent } from "./components/venue-recommend/venue-recommend.component";
-import { AddListDialogComponent } from './components/add-list-dialog/add-list-dialog.component';
+import { AddListDialogComponent } from "./components/add-list-dialog/add-list-dialog.component";
+import { AddVenueDialogComponent } from "./components/add-venue-dialog/add-venue-dialog.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "map", pathMatch: "full" },
@@ -22,11 +23,12 @@ const routes: Routes = [
   { path: "pendingRequests", component: PendingRequestsComponent },
   { path: "list", component: ListComponent },
   { path: "venue-list", component: VenueListComponent },
-  { path: "venue-list-view", component: VenueListViewComponent },
+  { path: "venue-list-view/:id", component: VenueListViewComponent },
   { path: "venuedetails", component: VenueDetailsComponent },
   { path: "new-account", component: NewAccountComponent },
   { path: "recommendation", component: VenueRecommendComponent },
-  { path: "add-list-dialog", component: AddListDialogComponent}
+  { path: "add-list-dialog", component: AddListDialogComponent },
+  { path: "add-venue-dialog", component: AddVenueDialogComponent }
 ];
 
 @NgModule({
