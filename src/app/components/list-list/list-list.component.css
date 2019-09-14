@@ -32,6 +32,9 @@ table {
     background-color: darkslateblue;
     color: white;
   }
+  th:hover {
+    background-color: darkblue;
+  }
   
   a {
       margin-top: 8px;
