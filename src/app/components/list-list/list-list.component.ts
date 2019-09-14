@@ -4,19 +4,12 @@ import { MarkerManager } from '@agm/core';
 
 declare var google: any;
 
-
 @Component({
   selector: 'app-list-list',
   templateUrl: './list-list.component.html',
   styleUrls: ['./list-list.component.css']
 })
 export class ListListComponent implements OnInit {
-  venues = [
-    new Venue("ChIJDTR29iauEmsR97nGzWimbMo","" , ""),
-    new Venue("ChIJISFoEiKuEmsR8TMqpG8xgwQ", "", ""),
-    new Venue("ChIJC78QMReuEmsR47yBEa6iDPQ", "", ""),
-    new Venue("ChIJ65p_3jyuEmsRuwkbKixObtM", "", ""),
-  ];
   constructor(
     private gMapsService: GoogleMapsService,
     private __zone: NgZone
@@ -75,9 +68,13 @@ export class ListListComponent implements OnInit {
           console.log(result);
         });
       });
-    });
-  }
+    }
+}
 
+export class marker {
+  name: string;
+  address: string;
+  label: string;
 }
 
 //export class Venue {
