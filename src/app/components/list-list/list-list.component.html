@@ -1,5 +1,6 @@
 <body>
     <a mat-raised-button routerLink="/map">Map View</a>
+    <button ng-click="arraysort()"></button>
 <table>
   <thead>
     <tr>
@@ -23,7 +24,7 @@
         <option value="Visited">Visited</option>
         </select>
       </td>
-      <td></td>
+      <td>{{selectedOption}}</td>
       <td></td>
     </tr>
   </tbody>
