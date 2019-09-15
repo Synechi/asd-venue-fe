@@ -39,7 +39,7 @@ import { MatInputModule } from "@angular/material";
 import { MatCardModule } from "@angular/material";
 import { ListListComponent } from './components/list-list/list-list.component';
 import { VenueRecommendComponent } from './components/venue-recommend/venue-recommend.component';
-
+import { ListListItemComponent } from './components/list-list-item/list-list-item.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +61,8 @@ import { VenueRecommendComponent } from './components/venue-recommend/venue-reco
     ListComponent,
     NewAccountComponent,
     ListListComponent,
-    VenueRecommendComponent
+    VenueRecommendComponent,
+    ListListItemComponent
   ],
   imports: [
     BrowserModule,

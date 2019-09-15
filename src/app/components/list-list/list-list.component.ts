@@ -29,8 +29,6 @@ export class ListListComponent implements OnInit {
     this.getPlaces($event);
   }
 
-
-
   showRev = false;
   selectedOption: string = ' '; 
   //Event Handler For The Select Element's Change Event
@@ -45,10 +43,6 @@ export class ListListComponent implements OnInit {
       this.showRev = false;
     }
   }
-
-
-
-
 
     getPlaces(map: any) {
       this.gMapsService.getBarRest(map).subscribe(result => {

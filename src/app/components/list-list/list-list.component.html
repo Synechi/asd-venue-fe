@@ -1,36 +1,18 @@
 <body>
     <a mat-raised-button routerLink="/map">Map View</a>
-    <button (click)="arraysort()"> Button </button>
 <table>
   <thead>
     <tr>
       <th (click)="arraysort_name()" >Venue Name</th>
-      <th>Venue Location</th>
-      <th>Venue Genre</th>
+      <th (click)="arraysort_location()" >Venue Location</th>
+      <th (click)="arraysort_genre()">Venue Genre</th>
       <th>Venue Flag</th>
       <th>Flagged As</th>
       <th>Review</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let m of markers;">
-      <td>{{ m.name }}</td>
-      <td>{{ m.address }}</td>
-      <td>{{ m.label }}</td>
-      <td>
-        <select (change)="selectChangeHandler($event)">
-        <option value="Select Venue Status">Select Venue Status</option>
-        <option value="Want To Visit">Want To Visit</option>
-        <option value="Visited">Visited</option>
-        </select>
-      </td>
-      <td>{{selectedOption}}</td>
-      <td>
-        <ng-container *ngIf="showRev  == true">
-          <a mat-raised-button routerLink="/map">Leave A Review</a>
-      </ng-container>
-    </td>
-    </tr>
+    <tr *ngFor="let m of markers" app-list-list-item [marker] = "m"></tr>
   </tbody>
 </table>
 </body>
