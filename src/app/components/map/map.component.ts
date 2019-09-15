@@ -25,8 +25,9 @@ export class MapComponent implements OnInit {
   loadMarkers($event) {
     this.getPlaces($event);
   }
-
+  // Loads Markers once map is loaded
   getPlaces(map: any) {
+    //Used to generate test data
     this.gMapsService.getBarRest(map).subscribe(result => {
       this.__zone.run(() => {
         for (var place of result) {
@@ -51,44 +52,49 @@ export class MapComponent implements OnInit {
         }
       });
     });
+    //Pulls venues from current users venue lists
     this.userService
       .getListsByID("5d628a72d2c6643f8095cefe")
       .subscribe(result => {
-        var stringObj = JSON.stringify(result);
-        var list = JSON.parse(stringObj);
-        for (var key in list.venuelists) {
-          var listName = list.venuelists[key].name;
-          // var colour = list.venuelists[key].colour;
-          // var day = this.getDay();
+        this.__zone.run(() => {
+          var stringObj = JSON.stringify(result);
+          var list = JSON.parse(stringObj);
+          for (var key in list.venuelists) {
+            // var listName = list.venuelists[key].name;
+            // var colour = list.venuelists[key].colour;
+            // var day = this.getDay();
 
-          for (var test in list.venuelists[key].venues) {
-            console.log(list.venuelists[key].venues[test].placeID);
-            var listName = list.venuelists[key].name;
-            this.gMapsService
-              .getDetails(list.venuelists[key].venues[test].placeID, map)
-              .subscribe(details => {
-                this.markers.push({
-                  lat: details.geometry.location.lat(),
-                  lng: details.geometry.location.lng(),
-                  name: details.name,
-                  address: details.formatted_address,
-                  icon: {
-                    url: details.icon,
-                    scaledSize: {
-                      height: 20,
-                      width: 20
-                    }
-                  },
-                  placeID: details.place_id,
-                  list: listName,
-                  iconColour: list.venuelists[key].colour,
-                  website: details.website,
-                  opening_hours:
-                    details.opening_hours.weekday_text[this.getDay()]
+            for (var test in list.venuelists[key].venues) {
+              console.log(list.venuelists[key].venues[test].placeID);
+              var listName = list.venuelists[key].name;
+              this.gMapsService
+                .getDetails(list.venuelists[key].venues[test].placeID, map)
+                .subscribe(details => {
+                  this.__zone.run(() => {
+                    this.markers.push({
+                      lat: details.geometry.location.lat(),
+                      lng: details.geometry.location.lng(),
+                      name: details.name,
+                      address: details.formatted_address,
+                      icon: {
+                        url: details.icon,
+                        scaledSize: {
+                          height: 20,
+                          width: 20
+                        }
+                      },
+                      placeID: details.place_id,
+                      list: listName,
+                      iconColour: list.venuelists[key].colour,
+                      website: details.website,
+                      opening_hours:
+                        details.opening_hours.weekday_text[this.getDay()]
+                    });
+                  });
                 });
-              });
+            }
           }
-        }
+        });
       });
     console.log(this.markers);
   }
