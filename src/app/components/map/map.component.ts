@@ -57,16 +57,14 @@ export class MapComponent implements OnInit {
       .getListsByID("5d628a72d2c6643f8095cefe")
       .subscribe(result => {
         this.__zone.run(() => {
+          // Stringify and then parses the observable object to access the child data.
           var stringObj = JSON.stringify(result);
           var list = JSON.parse(stringObj);
+          // Loops over the users venues lists so that the it can access each lists stored venues.
           for (var key in list.venuelists) {
-            // var listName = list.venuelists[key].name;
-            // var colour = list.venuelists[key].colour;
-            // var day = this.getDay();
-
+            // Loops over the lists venues to generate each marker on the map.
             for (var test in list.venuelists[key].venues) {
-              console.log(list.venuelists[key].venues[test].placeID);
-              var listName = list.venuelists[key].name;
+              // Search the google maps Place API with the Place ID and returns an obserable object with the details of that place.
               this.gMapsService
                 .getDetails(list.venuelists[key].venues[test].placeID, map)
                 .subscribe(details => {
@@ -84,7 +82,7 @@ export class MapComponent implements OnInit {
                         }
                       },
                       placeID: details.place_id,
-                      list: listName,
+                      list: list.venuelists[key].name,
                       iconColour: list.venuelists[key].colour,
                       website: details.website,
                       opening_hours:
@@ -96,9 +94,8 @@ export class MapComponent implements OnInit {
           }
         });
       });
-    console.log(this.markers);
   }
-
+  // Simple function that uses an Anguler API to return the current day.
   getDay() {
     var day;
     switch (WeekDay[0]) {
@@ -181,6 +178,8 @@ export class MapComponent implements OnInit {
     }
   ];
 }
+
+// Interface for the markers shown on the map.
 
 interface marker {
   lat: number;
