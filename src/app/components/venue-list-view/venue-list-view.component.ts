@@ -31,6 +31,7 @@ export class VenueListViewComponent implements OnInit {
     this.dialog.open(AddVenueDialogComponent, dialogConfig);
   }
 
+  //calls a service with venueID to delete venue of a list of one user
   delete(venue) {
     this.userService
       .deleteListVenue(
@@ -44,6 +45,7 @@ export class VenueListViewComponent implements OnInit {
         },
         error => console.error("error, cannot save list", error)
       );
+      //ensures venue deleted before window reload
     setTimeout(() => {
       window.location.reload();
     }, 500);
@@ -53,15 +55,18 @@ export class VenueListViewComponent implements OnInit {
   listName: string;
 
   ngOnInit() {
+    //gets venues of a list by listid
     this.userService
       .getListVenues(
         "5d628a72d2c6643f8095cefe",
         this.route.snapshot.paramMap.get("id")
       )
       .subscribe(venueList => {
+        //turns venuelist into a string then to an object
         var storage = JSON.stringify(venueList);
         var details = JSON.parse(storage);
         this.listName = details.venuelists[0].name;
+        //iterates through a list to get venue details from google maps API
         for (var ven in details.venuelists[0].venues) {
           this.gMapsService
             .getDetails(
