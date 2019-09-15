@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: "myFriends", component: FriendListComponent, canActivate: [AuthUserGuard]},
   { path: "pendingRequests", component: PendingRequestsComponent, canActivate: [AuthUserGuard]},
   { path: "list", component: ListComponent, canActivate: [AuthUserGuard]},
-  { path: "venue-list", component: VenueListComponent },
+  { path: "venue-list", component: VenueListComponent, canActivate: [AuthUserGuard]},
   { path: "venue-list-view", component: VenueListViewComponent },
   { path: "venuedetails", component: VenueDetailsComponent, canActivate: [AuthUserGuard]},
   { path: "create-account", component: CreateAccountComponent },
