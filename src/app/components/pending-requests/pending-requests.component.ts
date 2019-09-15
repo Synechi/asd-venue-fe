@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+//Created by Bella L
+
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-pending-requests',
-  templateUrl: './pending-requests.component.html',
-  styleUrls: ['./pending-requests.component.css']
+  selector: "app-pending-requests",
+  templateUrl: "./pending-requests.component.html",
+  styleUrls: ["./pending-requests.component.css"]
 })
 export class PendingRequestsComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -33,14 +33,12 @@ import { SuggestedfriendsComponent } from "./components/suggestedfriends/suggest
 import { AddFriendButtonComponent } from "./components/add-friend-button/add-friend-button.component";
 import { CurrentFriendsComponent } from "./components/current-friends/current-friends.component";
 import { PendingRequestsTableComponent } from "./components/pending-requests-table/pending-requests-table.component";
-import { SearchBarComponent } from "./components/search-bar/search-bar.component";
-import { RequestConfirmationComponent } from "./components/request-confirmation/request-confirmation.component";
 import { MatInputModule } from "@angular/material";
 import { MatCardModule } from "@angular/material";
-import { ListListComponent } from './components/list-list/list-list.component';
-import { VenueRecommendComponent } from './components/venue-recommend/venue-recommend.component';
-import { AddListDialogComponent } from './components/add-list-dialog/add-list-dialog.component';
-import { AddVenueDialogComponent } from './components/add-venue-dialog/add-venue-dialog.component';
+import { ListListComponent } from "./components/list-list/list-list.component";
+import { VenueRecommendComponent } from "./components/venue-recommend/venue-recommend.component";
+import { AddListDialogComponent } from "./components/add-list-dialog/add-list-dialog.component";
+import { AddVenueDialogComponent } from "./components/add-venue-dialog/add-venue-dialog.component";
 
 @NgModule({
   declarations: [
@@ -55,8 +53,6 @@ import { AddVenueDialogComponent } from './components/add-venue-dialog/add-venue
     AddFriendButtonComponent,
     CurrentFriendsComponent,
     PendingRequestsTableComponent,
-    SearchBarComponent,
-    RequestConfirmationComponent,
     VenueDetailsComponent,
     VenueListComponent,
     VenueListViewComponent,

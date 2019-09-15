@@ -1,37 +1,79 @@
-import { Injectable } from '@angular/core';
-import { USERS } from '../mock-users';
-import { User} from '../user';
-import { BehaviorSubject, of } from 'rxjs';
-import { Observable } from 'rxjs'; 
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+//Created by Bella L
+
+import { Injectable } from "@angular/core";
+import { User } from "../user";
+import { throwError } from "rxjs";
+import { Observable } from "rxjs";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { catchError, map } from "rxjs/operators";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class FriendService {
+  url = "https://asd-venue-be.herokuapp.com";
 
-users = USERS; 
+  constructor(private http: HttpClient) {}
 
-results = []; 
+  //Bella L: Calls REST API to retrieve 'suggested friends' from the database
+  displaySuggestedFriends(searchBox: String): Observable<User[]> {
+    return this.http.get<User[]>(
+      `${this.url}/suggestedFriends/suggestedFriends/${searchBox}`
+    );
+  }
 
-getAllUsers(): Observable<User[]> { 
+  //Bella: Calls REST API to retrieve the user's pending friend requests from the database
+  displayPendingFriendRequests(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.url}/pendingRequests/pendingRequests`);
+  }
 
-  return of(USERS);
+  //Bella L: Calls REST API to retrieve the user's current friends from the database
+  displayCurrentFriends(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.url}/currentFriends/currentFriends`);
+  }
 
-}
-/* searchUser(name) { 
+  /*Bella L: Calls REST API with friendID as a parameter to update the status of the 'friend' relationship 
+between 2 users based on the status in the JSON*/
 
-  let filteredList = this.user.map(function(e) {
+  updateFriendStatus(friendID: String, friendStatus: String) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    };
 
-    return {ID: e["userID"], Name: e["fName"], Surname: e["lName"]}
-  }).filter((e) => e.Name == name);
+    return this.http.put(
+      `${this.url}/friendStatusUpdate/friendStatusUpdate/${friendID}`,
+      { friendStatus },
+      httpOptions
+    );
+  }
 
-  return filteredList; 
+  //Bella L: Calls REST API with friendID as a parameter to send a friend request
+  sendFriendRequest(friendID: String) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    };
 
-  } */
+    return this.http.post(
+      `${this.url}/friendRequest/friendRequest/${friendID}`,
+      httpOptions
+    );
+  }
 
+  //Bella L: Calls REST API with friendID as a parameter to delete friend from friend list
+  deleteFriend(friendID: String) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    };
 
-constructor(){
-
-}
+    return this.http.put(
+      `${this.url}/friendRemoval/friendRemoval/${friendID}`,
+      httpOptions
+    );
+  }
 }
