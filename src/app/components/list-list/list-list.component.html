@@ -1,19 +1,19 @@
 <body>
-    <a mat-raised-button routerLink="/map">Map View</a>
-    <table>
-      <thead>
-        <tr>
-          <th (click)="arraysort_name()">Venue Name</th>
-          <th (click)="arraysort_location()">Venue Location</th>
-          <th (click)="arraysort_genre()">Venue Genre</th>
-          <th>Venue Flag</th>
-          <th>Flagged As</th>
-          <th>Review</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let m of markers" app-list-list-item [marker]="m"></tr>
-      </tbody>
-    </table>
-  </body>
-  <agm-map (mapReady)="loadMarkers($event)"> </agm-map>
+  <a mat-raised-button routerLink="/map">Map View</a>
+  <table>
+    <thead>
+      <tr>
+        <th (click)="arraysort_name()">Venue Name</th>
+        <th (click)="arraysort_location()">Venue Location</th>
+        <th (click)="arraysort_genre()">Venue Genre</th>
+        <th>Venue Flag</th>
+        <th>Flagged As</th>
+        <th>Review</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of markers" app-list-list-item [marker]="m"></tr>
+    </tbody>
+  </table>
+</body>
+<agm-map (mapReady)="loadMarkers($event)"> </agm-map>

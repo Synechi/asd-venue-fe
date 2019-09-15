@@ -1,25 +1,43 @@
 <body>
-  <table class="friendsTable">
+  <form>
+    <input
+      class="searchBar"
+      type="text"
+      name="searchBox"
+      placeholder="Search..."
+      [(ngModel)]="searchBox"
+      [value]="searchBox"
+    />
+    <button
+      class="searchButton"
+      (click)="displaySuggestedFriends(searchBox)"
+      type="submit"
+      for="searchBox"
+    >
+      Search
+    </button>
+  </form>
+
+  <table class="bordered">
     <thead>
       <tr>
         <th>First Name</th>
         <th>Last Name</th>
-        <th></th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{ user.fName }}</td>
-        <td>{{ user.lName }}</td>
-        <td><button type = "button" (click)="show()">Add Friend</button></td>
+      <tr *ngFor="let user of suggestedFriends">
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.lastname }}</td>
+        <td><button (click)="sendFriendRequest(user)">Add Friend</button></td>
       </tr>
     </tbody>
   </table>
-</body>
-
-  <div>
-  <app-request-confirmation *ngIf="isViewable"></app-request-confirmation>
+  <p class="placeholder" *ngIf="!this.suggestedFriends.length">
+    No Results Found
+  </p>
+  <div class="notification-container" *ngIf="this.status">
+    <p>{{ statusMessage }}</p>
   </div>
-
-
-
+</body>

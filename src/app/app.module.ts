@@ -23,7 +23,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
-import { MatToolbarModule } from "@angular/material";
+import { MatToolbarModule, MatDialogModule } from "@angular/material";
 import { MatTableModule } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FriendListComponent } from "./components/friend-list/friend-list.component";
@@ -33,12 +33,13 @@ import { SuggestedfriendsComponent } from "./components/suggestedfriends/suggest
 import { AddFriendButtonComponent } from "./components/add-friend-button/add-friend-button.component";
 import { CurrentFriendsComponent } from "./components/current-friends/current-friends.component";
 import { PendingRequestsTableComponent } from "./components/pending-requests-table/pending-requests-table.component";
-import { SearchBarComponent } from "./components/search-bar/search-bar.component";
-import { RequestConfirmationComponent } from "./components/request-confirmation/request-confirmation.component";
 import { MatInputModule } from "@angular/material";
 import { MatCardModule } from "@angular/material";
-import { ListListComponent } from './components/list-list/list-list.component';
-import { VenueRecommendComponent } from './components/venue-recommend/venue-recommend.component';
+import { ListListComponent } from "./components/list-list/list-list.component";
+import { VenueRecommendComponent } from "./components/venue-recommend/venue-recommend.component";
+import { AddListDialogComponent } from "./components/add-list-dialog/add-list-dialog.component";
+import { AddVenueDialogComponent } from "./components/add-venue-dialog/add-venue-dialog.component";
+import { ListListItemComponent } from "./components/list-list-item/list-list-item.component";
 
 @NgModule({
   declarations: [
@@ -53,15 +54,16 @@ import { VenueRecommendComponent } from './components/venue-recommend/venue-reco
     AddFriendButtonComponent,
     CurrentFriendsComponent,
     PendingRequestsTableComponent,
-    SearchBarComponent,
-    RequestConfirmationComponent,
     VenueDetailsComponent,
     VenueListComponent,
     VenueListViewComponent,
     ListComponent,
     NewAccountComponent,
     ListListComponent,
-    VenueRecommendComponent
+    VenueRecommendComponent,
+    AddListDialogComponent,
+    AddVenueDialogComponent,
+    ListListItemComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +75,7 @@ import { VenueRecommendComponent } from './components/venue-recommend/venue-reco
     MatButtonModule,
     MatSidenavModule,
     MatTableModule,
+    MatDialogModule,
     MatIconModule,
     MatListModule,
     AgmCoreModule.forRoot({
@@ -85,6 +88,7 @@ import { VenueRecommendComponent } from './components/venue-recommend/venue-reco
     RouterModule
   ],
   providers: [UserService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddListDialogComponent]
 })
 export class AppModule {}

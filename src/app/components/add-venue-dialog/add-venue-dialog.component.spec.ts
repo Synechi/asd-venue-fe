@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateReviewComponent } from './create-review.component';
+import { AddVenueDialogComponent } from './add-venue-dialog.component';
 
-describe('CreateReviewComponent', () => {
-  let component: CreateReviewComponent;
-  let fixture: ComponentFixture<CreateReviewComponent>;
+describe('AddVenueDialogComponent', () => {
+  let component: AddVenueDialogComponent;
+  let fixture: ComponentFixture<AddVenueDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateReviewComponent ]
+      declarations: [ AddVenueDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateReviewComponent);
+    fixture = TestBed.createComponent(AddVenueDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

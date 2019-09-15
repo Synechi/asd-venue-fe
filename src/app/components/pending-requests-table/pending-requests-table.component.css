@@ -1,36 +1,69 @@
-.friendsTable{
-  
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  td, th { 
-  
-    border: 1px solid #ddd;
-    padding: 8px;
-  
-  }
-  
-  tr:nth-child(even){
-    background-color: #f2f2f2;
-  }
-  
-  tr:hover {
-    background-color: #ddd;
-  }
-  
-  th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #c2185b;
-    color: white;
-  }
+body {
+  margin: 100px;
+  text-align: center;
+}
 
-  .declineBtn{ 
+.bordered {
+  border: solid black 1px;
+  box-shadow: 1px, rgba(255, 255, 255, 0.8);
+}
 
-    margin-left: 10px;
-  }
-  
-  
+.bordered th {
+  background-color: #c2185b;
+  text-align: center;
+  box-shadow: 1px, rgba(255, 255, 255, 0.8);
+  text-shadow: 1px rgba(255, 255, 255, 255, 0.3);
+}
+
+.bordered td,
+.bordered th {
+  border-left: 1px solid black;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 0.5px solid black;
+}
+
+table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-spacing: 0;
+  border-collapse: separate;
+  width: 100%;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #c2185b;
+  color: white;
+  display: table-cell;
+  vertical-align: inherit;
+  font-weight: bold;
+}
+.declineBtn {
+  margin-left: 10px;
+}
+
+.notification-container {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  margin-bottom: 20px;
+  border: 2px solid;
+  margin-top: 40px;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  color: #3c763d;
+  font-weight: bold;
+}
+
+.placeholder {
+  margin-top: 100px;
+}
