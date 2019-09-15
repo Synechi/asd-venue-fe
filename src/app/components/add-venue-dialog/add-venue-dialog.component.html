@@ -1,0 +1,27 @@
+<h2>Add Venue to List</h2>
+
+<!-- create list form -->
+<form #listForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+  <div>
+    <label class="fieldlabel">PlaceID</label>
+    <input
+      type="text"
+      placeholder="Please Enter PlaceID of Venue"
+      class="inputfield"
+      name="name"
+      [(ngModel)]="placeID"
+      required
+    />
+  </div>
+
+  <mat-dialog-actions>
+    <button class="mat-raised-button" (click)="close()">Cancel</button>
+    <button
+      class="mat-raised-button mat-primary"
+      type="submit"
+      (click)="createList()"
+    >
+      Save
+    </button>
+  </mat-dialog-actions>
+</form>

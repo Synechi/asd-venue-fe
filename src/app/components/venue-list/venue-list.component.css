@@ -1,4 +1,4 @@
-.addButton {
+#addButton {
     float: right;
     margin: 20px;
     display: inline-block;
@@ -15,6 +15,6 @@ th, td {
    height: 5vw;
 }
 
-table {
+.table {
      margin:20px;
 }

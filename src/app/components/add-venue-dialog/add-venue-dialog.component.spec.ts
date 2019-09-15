@@ -1,21 +1,20 @@
-//Unit Testing
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateAccountComponent } from './create-account.component';
+import { AddVenueDialogComponent } from './add-venue-dialog.component';
 
-describe('CreateAccountComponent', () => {
-  let component: CreateAccountComponent;
-  let fixture: ComponentFixture<CreateAccountComponent>;
+describe('AddVenueDialogComponent', () => {
+  let component: AddVenueDialogComponent;
+  let fixture: ComponentFixture<AddVenueDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateAccountComponent ]
+      declarations: [ AddVenueDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateAccountComponent);
+    fixture = TestBed.createComponent(AddVenueDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

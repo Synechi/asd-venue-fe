@@ -1,26 +1,33 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 <app-nav></app-nav>
 <h1>Your Lists</h1>
-<button id="addButton" mat-mini-fab>+</button>
+<button (click)="openDialog()" id="addButton" mat-mini-fab>+</button>
 <p></p>
-<hr/>
-<table>
-    <tr >
-        <th>Name</th>
-        <th>Venues Listed</th>
-    </tr>
+<hr />
+
+<!-- show user lists -->
+<div class="table">
+  <thead>
     <tr>
-        <td><a mat-button routerLink="/venue-list-view">Favourites List</a></td>
-    <td>3</td>
+      <th>Name</th>
+      <th>Colour</th>
     </tr>
-    <tr>
-            <button mat-button>
-        <td>Want to go Bars
-        </td></button>
-        <td>64</td>
+  </thead>
+  <tbody *ngFor="let list of lists">
+    <tr *ngFor="let object of list">
+      <td>
+        <a mat-button [routerLink]="['/venue-list-view', object._id]">{{
+          object.name
+        }}</a>
+      </td>
+      <td>{{ object.colour }}</td>
+      <td>
+        <button><i class="fa fa-trash" (click)="delete(object)"></i></button>
+      </td>
+      <!-- <td><a mat-button routerLink="/venue-list-view">View List</a></td> -->
     </tr>
-    <tr>        <button mat-button>
-        <td>Want to go cafes
-        </td></button>
-        <td>8</td>
-    </tr>
-</table>
+  </tbody>
+</div>

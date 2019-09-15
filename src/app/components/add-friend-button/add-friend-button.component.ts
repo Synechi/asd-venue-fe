@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+//Created by Bella L
+
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-add-friend-button',
-  templateUrl: './add-friend-button.component.html',
-  styleUrls: ['./add-friend-button.component.css']
+  selector: "app-add-friend-button",
+  templateUrl: "./add-friend-button.component.html",
+  styleUrls: ["./add-friend-button.component.css"]
 })
 export class AddFriendButtonComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

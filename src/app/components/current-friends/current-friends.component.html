@@ -4,13 +4,21 @@
       <tr>
         <th>First Name</th>
         <th>Last Name</th>
+        <th>Actions</th>
       </tr>
     </thead>
-    <tbody *ngFor="let user of users">
-      <tr *ngFor="let friend of user.friends">
-        <td>{{ friend.firstname }}</td>
-        <td>{{ friend.lastname }}</td>
+    <tbody>
+      <tr *ngFor="let user of currentFriends">
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.lastname }}</td>
+        <td><button (click)="deleteFriend(user)">Remove</button></td>
       </tr>
     </tbody>
   </table>
+  <p class="placeholder" *ngIf="!this.currentFriends.length">
+    No Results Found
+  </p>
+  <div class="notification-container" *ngIf="this.status">
+    <p>{{ statusMessage }}</p>
+  </div>
 </body>

@@ -55,13 +55,22 @@ export class GoogleMapsService extends GoogleMapsAPIWrapper {
   getDetails(id: string, map: any) {
     var request = {
       placeId: id,
-      fields: ["name", "formatted_phone_number"]
+      fields: [
+        "name",
+        "formatted_phone_number",
+        "place_id",
+        "formatted_address",
+        "website",
+        "opening_hours.weekday_text",
+        "geometry",
+        "icon"
+      ]
     };
     let placeService = new google.maps.places.PlacesService(map);
     return Observable.create(observer => {
       placeService.getDetails(request, function(results, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-          observer.next(results[0]);
+          observer.next(results);
           observer.complete();
         } else {
           console.log("Error - ", results, " & Status - ", status);

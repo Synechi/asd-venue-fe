@@ -1,19 +1,39 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<agm-map></agm-map>
 <app-nav></app-nav>
-<h1>Favourites List</h1>
-<button class="addButton" mat-mini-fab>+</button>
+<h1>{{ listName }}</h1>
+<button (click)="openDialog()" class="addButton" mat-mini-fab>+</button>
 <p></p>
-<hr/>
-<table>
-    <tr >
-        <th>Venue Name</th>
-    </tr>
-    <tr>
-        <td>Bancho</td>
-    </tr>
-    <tr>
-        <td>Assembly Bar</td>
-    </tr>
-    <tr>
-        <td>Chingalings</td>
-    </tr>
-</table>
+<hr />
+<!-- show venues in lists -->
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>Address</th>
+        <th>Place ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let object of venues">
+        <td>
+          {{ object.name }}
+        </td>
+        <td>{{ object.formatted_phone_number }}</td>
+        <td>
+          {{ object.formatted_address }}
+        </td>
+        <td>{{ object.place_id }}</td>
+        <td>
+          <button><i class="fa fa-trash" (click)="delete(object)"></i></button>
+        </td>
+        <!-- <td><a mat-button routerLink="/venue-list-view">View List</a></td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>

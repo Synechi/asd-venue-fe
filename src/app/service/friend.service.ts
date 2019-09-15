@@ -1,63 +1,79 @@
-import { Injectable } from '@angular/core';
-import { User} from '../user';
-import { BehaviorSubject, of, throwError } from 'rxjs';
-import { Observable } from 'rxjs'; 
-import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
+//Created by Bella L
+
+import { Injectable } from "@angular/core";
+import { User } from "../user";
+import { throwError } from "rxjs";
+import { Observable } from "rxjs";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { catchError, map } from "rxjs/operators";
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class FriendService {
+  url = "https://asd-venue-be.herokuapp.com";
 
-  url = "http://localhost:4000";
-  
-constructor(private http: HttpClient){
+  constructor(private http: HttpClient) {}
 
-}
+  //Bella L: Calls REST API to retrieve 'suggested friends' from the database
+  displaySuggestedFriends(searchBox: String): Observable<User[]> {
+    return this.http.get<User[]>(
+      `${this.url}/suggestedFriends/suggestedFriends/${searchBox}`
+    );
+  }
 
-displaySuggestedFriends(): Observable<User[]> {
-  return this.http.get<User[]>(`${this.url}/suggestedFriends`);
-}
+  //Bella: Calls REST API to retrieve the user's pending friend requests from the database
+  displayPendingFriendRequests(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.url}/pendingRequests/pendingRequests`);
+  }
 
-displayPendingFriendRequests(): Observable<User[]> { 
+  //Bella L: Calls REST API to retrieve the user's current friends from the database
+  displayCurrentFriends(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.url}/currentFriends/currentFriends`);
+  }
 
-  return this.http.get<User[]>(`${this.url}/pendingRequests`);
-}
+  /*Bella L: Calls REST API with friendID as a parameter to update the status of the 'friend' relationship 
+between 2 users based on the status in the JSON*/
 
-displayCurrentFriends(): Observable<User[]> { 
+  updateFriendStatus(friendID: String, friendStatus: String) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    };
 
-  return this.http.get<User[]>(`${this.url}/currentFriends`);
-}
+    return this.http.put(
+      `${this.url}/friendStatusUpdate/friendStatusUpdate/${friendID}`,
+      { friendStatus },
+      httpOptions
+    );
+  }
 
-//Calls REST API with friendID as parameter to update the friend status based on status parameter
-updateFriendStatus(friendID: String, friendStatus: String): Observable<User[]> {
+  //Bella L: Calls REST API with friendID as a parameter to send a friend request
+  sendFriendRequest(friendID: String) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    };
 
-  const httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-    })
-  };
+    return this.http.post(
+      `${this.url}/friendRequest/friendRequest/${friendID}`,
+      httpOptions
+    );
+  }
 
-  return this.http.put<User[]>(`${this.url}/friendStatusUpdate/${friendID}`, {friendStatus}, httpOptions);
-}
+  //Bella L: Calls REST API with friendID as a parameter to delete friend from friend list
+  deleteFriend(friendID: String) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    };
 
-sendFriendRequest(friendID: String): Observable<User[]> { 
-
-  const httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-    })
-  };
-  
-  return this.http.post<User[]>(`${this.url}/friendRequest/${friendID}`, httpOptions).pipe(catchError(this.friendExistsError));
-}
-
-friendExistsError(error) {
-
-  let message = "Friend already exists!"
-
-  window.alert(message);
-  return throwError(message);
-}
-
+    return this.http.put(
+      `${this.url}/friendRemoval/friendRemoval/${friendID}`,
+      httpOptions
+    );
+  }
 }

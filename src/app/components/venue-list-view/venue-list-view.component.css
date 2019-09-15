@@ -1,20 +1,23 @@
 .addButton {
-    float: right;
-    margin: 20px;
-    display: inline-block;
+  /* float: right; */
+  margin: 20px;
+  display: inline-block;
 }
 
 h1 {
-    display: inline-block;
-    margin: 20px;
+  display: inline-block;
+  margin: 20px;
 }
 
-th, td {
-    text-align:left; 
-    width: 100vw;
-    height: 5vw;
- }
- 
- table {
-      margin:20px;
- }
+th,
+td {
+  text-align: left;
+  width: 100vw;
+  height: 5vw;
+}
+
+.table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+}

@@ -1,64 +1,88 @@
 import { Component, OnInit, NgModule, NgZone } from "@angular/core";
 import { GoogleMapsService } from "../../service/google-maps.service";
-import { TableBasicExample } from '../list/list.component';
+import { MarkerManager } from "@agm/core";
 
 declare var google: any;
 
 @Component({
-  selector: 'app-list-list',
-  templateUrl: './list-list.component.html',
-  styleUrls: ['./list-list.component.css']
+  selector: "app-list-list",
+  templateUrl: "./list-list.component.html",
+  styleUrls: ["./list-list.component.css"]
 })
 export class ListListComponent implements OnInit {
   constructor(
     private gMapsService: GoogleMapsService,
     private __zone: NgZone
-  ) { }
+  ) {}
 
-  ngOnInit() {
-    }
-    markers: marker[] = [];
-      // Map Center
+  ngOnInit() {}
+  markers: marker[] = [];
+
+  // Map Center
   latitude = -33.870752;
   longitude = 151.208221;
   // Marker Loader
   loadMarkers($event) {
     this.getPlaces($event);
   }
-    getPlaces(map: any) {
-      this.gMapsService.getBarRest(map).subscribe(result => {
-        this.__zone.run(() => {
-          console.log(result);
-  
-          for (var place of result) {
-            var labelType = "";
-            for (let i = 0; i < 3; i++) {
-              if (place.types[i] === "bar") {
-                labelType = "bar";
-              }
-              if (place.types[i] === "restaurant") {
-                labelType = "restaurant";
-              }
+
+  showRev = false;
+  selectedOption: string = " ";
+  //Event Handler For The Select Element's Change Event
+  selectChangeHandler(event: any) {
+    //Update The UI
+    this.selectedOption = event.target.value;
+
+    if (this.selectedOption == "Visited") {
+      this.showRev = true;
+    } else {
+      this.showRev = false;
+    }
+  }
+
+  getPlaces(map: any) {
+    this.gMapsService.getBarRest(map).subscribe(result => {
+      this.__zone.run(() => {
+        console.log(result);
+
+        for (var place of result) {
+          var labelType = "";
+          for (let i = 0; i < 3; i++) {
+            if (place.types[i] === "bar") {
+              labelType = "Bar";
             }
-            this.markers.push({
-              name: place.name,
-              address: place.vicinity,
-              label: labelType,
-              
-            });
-            error => console.log(error);
+            if (place.types[i] === "restaurant") {
+              labelType = "Restaurant";
+            }
           }
-        });
+          this.markers.push({
+            name: place.name,
+            address: place.vicinity,
+            label: labelType
+          });
+          error => console.log(error);
+        }
       });
-    }
-  
-    getDetail(placeID: string, map: any) {
-      this.gMapsService.getDetails(placeID, map).subscribe(result => {
-        this.__zone.run(() => {
-          console.log(result);
-        });
+    });
+  }
+
+  arraysort_name() {
+    this.markers.sort((a, b) => (a.name > b.name ? 1 : -1));
+  }
+  arraysort_location() {
+    this.markers.sort((a, b) => (a.address > b.address ? 1 : -1));
+  }
+  arraysort_genre() {
+    this.markers.sort((a, b) => (a.label > b.label ? 1 : -1));
+  }
+
+  getDetail(placeID: string, map: any) {
+    this.gMapsService.getDetails(placeID, map).subscribe(result => {
+      this.__zone.run(() => {
+        console.log(result);
       });
-    }
+    });
+  }
 }
 
 export class marker {
@@ -68,10 +92,11 @@ export class marker {
 }
 
 //export class Venue {
-  //constructor(
-    //  public id: string,
-      //public name: string,
-      //public address: string,
-      //public genre: string
-      //) { }
-  //}
+//constructor(
+//  public id: string,
+//public name: string,
+//public address: string,
+//public genre: string
+//) { }
+//}
+//test
