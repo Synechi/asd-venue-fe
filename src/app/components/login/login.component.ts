@@ -1,7 +1,7 @@
 // chantel
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "../../service/user.service";
-import { User } from 'src/app/models/user.model';
+import { User } from 'src/app/user';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -18,13 +18,13 @@ export class LoginComponent implements OnInit {
   postStatusMessage ='';
 
   user: User = {
-    id: null,
+    _id: null,
     firstname: null,
     lastname: null,
     email: null, 
-    password: null, 
-    conpassword: null, 
-    preference: null
+    password: null,
+    conpassword: null
+    // preference: null
   }
 
   

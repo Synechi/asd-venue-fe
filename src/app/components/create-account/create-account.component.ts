@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
-import { User } from 'src/app/models/user.model';
+import { User } from 'src/app/user';
 import { FormControl, FormGroupDirective, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { UserService } from 'src/app/service/user.service';
@@ -21,13 +21,13 @@ export class CreateAccountComponent implements OnInit {
   postStatusMessage ='';
 
   user: User = {
-    id: null,
+    _id: null,
     firstname: null,
     lastname: null,
     email: null, 
-    password: null, 
-    conpassword: null, 
-    preference: null
+    password: null,
+    conpassword: null
+    // preference: null
   }
 
   constructor(private userService: UserService, private router: Router) { }

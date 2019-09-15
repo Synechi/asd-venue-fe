@@ -43,7 +43,7 @@ import { UserGuardService } from './service/user-guard.service';
 import { ListListComponent } from "./components/list-list/list-list.component";
 import { VenueRecommendComponent } from "./components/venue-recommend/venue-recommend.component";
 import { CompareValidatorDirective } from "./components/create-account/compare-validator.directive";
-import { FilterPipe } from "./filterPipe";
+//import { FilterPipe } from "./filterPipe";
 import { AddListDialogComponent } from "./components/add-list-dialog/add-list-dialog.component";
 import { AddVenueDialogComponent } from "./components/add-venue-dialog/add-venue-dialog.component";
 

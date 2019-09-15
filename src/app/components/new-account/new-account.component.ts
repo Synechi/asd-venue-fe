@@ -2,7 +2,7 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { NgForm } from "@angular/forms";
-import { User } from "src/app/models/user.model";
+import { User } from "src/app/user";
 import {
   FormControl,
   FormGroupDirective,
