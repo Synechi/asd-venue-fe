@@ -75,6 +75,7 @@ export class VenueListViewComponent implements OnInit {
             });
         }
       });
+    console.log(this.venues);
   }
 }
 
@@ -83,4 +84,6 @@ export interface venue {
   formatted_phone_number: String;
   place_id: String;
   formatted_address: String;
+  website: String;
+  opening_hours: String;
 }

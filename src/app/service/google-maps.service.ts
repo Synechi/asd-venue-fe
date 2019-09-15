@@ -59,7 +59,11 @@ export class GoogleMapsService extends GoogleMapsAPIWrapper {
         "name",
         "formatted_phone_number",
         "place_id",
-        "formatted_address"
+        "formatted_address",
+        "website",
+        "opening_hours.weekday_text",
+        "geometry",
+        "icon"
       ]
     };
     let placeService = new google.maps.places.PlacesService(map);
