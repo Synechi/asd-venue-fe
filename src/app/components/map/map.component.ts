@@ -54,7 +54,7 @@ export class MapComponent implements OnInit {
     });
     //Pulls venues from current users venue lists
     this.userService
-      .getListsByID("5d628a72d2c6643f8095cefe")
+      .getListsByID(localStorage.getItem("id"))
       .subscribe(result => {
         this.__zone.run(() => {
           // Stringify and then parses the observable object to access the child data.

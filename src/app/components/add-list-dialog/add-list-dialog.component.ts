@@ -31,7 +31,7 @@ export class AddListDialogComponent implements OnInit {
 
   createList() {
     this.userService
-      .createListforUser("5d628a72d2c6643f8095cefe", this.listModel)
+      .createListforUser(localStorage.getItem("id"), this.listModel)
       .subscribe(data => {
         console.log("list created successfully", data);
       });

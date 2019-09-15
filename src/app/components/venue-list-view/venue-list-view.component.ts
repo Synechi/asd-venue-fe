@@ -34,7 +34,7 @@ export class VenueListViewComponent implements OnInit {
   delete(venue) {
     this.userService
       .deleteListVenue(
-        "5d628a72d2c6643f8095cefe",
+        localStorage.getItem("id"),
         this.route.snapshot.paramMap.get("id"),
         venue.place_id
       )
@@ -55,7 +55,7 @@ export class VenueListViewComponent implements OnInit {
   ngOnInit() {
     this.userService
       .getListVenues(
-        "5d628a72d2c6643f8095cefe",
+        localStorage.getItem("id"),
         this.route.snapshot.paramMap.get("id")
       )
       .subscribe(venueList => {

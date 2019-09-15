@@ -10,24 +10,40 @@ import { VenueListComponent } from "./components/venue-list/venue-list.component
 import { VenueListViewComponent } from "./components/venue-list-view/venue-list-view.component";
 import { VenueDetailsComponent } from "./components/venue-details/venue-details.component";
 import { NewAccountComponent } from "./components/new-account/new-account.component";
-import { CreateAccountComponent } from './components/create-account/create-account.component';
+import { CreateAccountComponent } from "./components/create-account/create-account.component";
 // import { CreateReviewComponent } from './components/create-review/create-review.component';
-import { AuthUserGuard } from './auth-user.guard';
+import { AuthUserGuard } from "./auth-user.guard";
 import { VenueRecommendComponent } from "./components/venue-recommend/venue-recommend.component";
 import { AddListDialogComponent } from "./components/add-list-dialog/add-list-dialog.component";
 import { AddVenueDialogComponent } from "./components/add-venue-dialog/add-venue-dialog.component";
 
 const routes: Routes = [
-  { path: "", redirectTo: "map", pathMatch: "full" },
+  { path: "", redirectTo: "login", pathMatch: "full" },
   { path: "login", component: LoginComponent },
-  { path: "map", component: MapComponent },
+  { path: "map", component: MapComponent, canActivate: [AuthUserGuard] },
   { path: "addFriends", component: AddFriendsComponent },
-  { path: "myFriends", component: FriendListComponent, canActivate: [AuthUserGuard]},
-  { path: "pendingRequests", component: PendingRequestsComponent, canActivate: [AuthUserGuard]},
-  { path: "list", component: ListComponent, canActivate: [AuthUserGuard]},
-  { path: "venue-list", component: VenueListComponent, canActivate: [AuthUserGuard]},
+  {
+    path: "myFriends",
+    component: FriendListComponent,
+    canActivate: [AuthUserGuard]
+  },
+  {
+    path: "pendingRequests",
+    component: PendingRequestsComponent,
+    canActivate: [AuthUserGuard]
+  },
+  { path: "list", component: ListComponent, canActivate: [AuthUserGuard] },
+  {
+    path: "venue-list",
+    component: VenueListComponent,
+    canActivate: [AuthUserGuard]
+  },
   { path: "venue-list-view", component: VenueListViewComponent },
-  { path: "venuedetails", component: VenueDetailsComponent, canActivate: [AuthUserGuard]},
+  {
+    path: "venuedetails",
+    component: VenueDetailsComponent,
+    canActivate: [AuthUserGuard]
+  },
   { path: "create-account", component: CreateAccountComponent },
   // { path: "create-review", component: CreateReviewComponent },
   { path: "venuedetails", component: VenueDetailsComponent },

@@ -32,7 +32,7 @@ export class VenueListComponent implements OnInit {
   ngOnInit() {
     //gets lists of logged in user
     this.userService
-      .getListsByID("5d628a72d2c6643f8095cefe")
+      .getListsByID(localStorage.getItem("id"))
       .subscribe(userlist => {
         for (var key in userlist) {
           if (userlist.hasOwnProperty(key)) {
@@ -45,7 +45,7 @@ export class VenueListComponent implements OnInit {
 
   delete(list) {
     this.userService
-      .deleteListforUser("5d628a72d2c6643f8095cefe", list._id)
+      .deleteListforUser(localStorage.getItem("id"), list._id)
       .subscribe(
         data => {
           console.log("list created successfully", data);

@@ -41,7 +41,7 @@ export class AddVenueDialogComponent implements OnInit {
         } else {
           this.userService
             .addListVenue(
-              "5d628a72d2c6643f8095cefe",
+              localStorage.getItem("id"),
               this.data.listID,
               this.placeID
             )
