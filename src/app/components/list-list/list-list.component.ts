@@ -75,14 +75,6 @@ export class ListListComponent implements OnInit {
   arraysort_genre() {
     this.markers.sort((a, b) => (a.label > b.label ? 1 : -1));
   }
-
-  getDetail(placeID: string, map: any) {
-    this.gMapsService.getDetails(placeID, map).subscribe(result => {
-      this.__zone.run(() => {
-        console.log(result);
-      });
-    });
-  }
 }
 
 export class marker {
@@ -90,13 +82,3 @@ export class marker {
   address: string;
   label: string;
 }
-
-//export class Venue {
-//constructor(
-//  public id: string,
-//public name: string,
-//public address: string,
-//public genre: string
-//) { }
-//}
-//test

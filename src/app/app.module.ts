@@ -39,6 +39,7 @@ import { ListListComponent } from "./components/list-list/list-list.component";
 import { VenueRecommendComponent } from "./components/venue-recommend/venue-recommend.component";
 import { AddListDialogComponent } from "./components/add-list-dialog/add-list-dialog.component";
 import { AddVenueDialogComponent } from "./components/add-venue-dialog/add-venue-dialog.component";
+import { ListListItemComponent } from "./components/list-list-item/list-list-item.component";
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { AddVenueDialogComponent } from "./components/add-venue-dialog/add-venue
     ListListComponent,
     VenueRecommendComponent,
     AddListDialogComponent,
-    AddVenueDialogComponent
+    AddVenueDialogComponent,
+    ListListItemComponent
   ],
   imports: [
     BrowserModule,
