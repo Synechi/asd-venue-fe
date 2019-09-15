@@ -1,3 +1,4 @@
+//Chantel - For password validation
 import { Directive, Input } from '@angular/core';
 import { Validator, AbstractControl, ValidationErrors, NG_VALIDATORS } from '@angular/forms';
  
