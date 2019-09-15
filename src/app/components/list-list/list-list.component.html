@@ -12,25 +12,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let m of markers">
-        <td>{{ m.name }}</td>
-        <td>{{ m.address }}</td>
-        <td>{{ m.label }}</td>
-        <td>
-          <select (change)="selectChangeHandler($event)">
-            <option value="Select Venue Status">Select Venue Status</option>
-            <option value="Want To Visit">Want To Visit</option>
-            <option value="Visited">Visited</option>
-          </select>
-        </td>
-        <td>{{ selectedOption }}</td>
-        <td>
-          <ng-container *ngIf="showRev == true">
-            <button type="Review">Leave A Review</button>
-          </ng-container>
-        </td>
-      </tr>
+      <tr *ngFor="let m of markers" app-list-list-item [marker]="m"></tr>
     </tbody>
   </table>
 </body>
-<agm-map (mapReady)="loadMarkers($event)"></agm-map>
+<agm-map (mapReady)="loadMarkers($event)"> </agm-map>
