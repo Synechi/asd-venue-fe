@@ -28,7 +28,7 @@ export class SuggestedfriendsComponent implements OnInit {
   //Bella L: Displays 'suggested friends' based on input from user search
   displaySuggestedFriends(searchBox: String): void {
     this.friendService
-      .displaySuggestedFriends(searchBox)
+      .displaySuggestedFriends(searchBox, localStorage.getItem("id"))
       .subscribe(
         suggestedFriends => (this.suggestedFriends = suggestedFriends)
       );
@@ -51,7 +51,7 @@ export class SuggestedfriendsComponent implements OnInit {
       user._id
     );
 
-    this.friendService.sendFriendRequest(user._id).subscribe(() => {
+    this.friendService.sendFriendRequest(user._id, localStorage.getItem("id")).subscribe(() => {
       this.suggestedFriends = suggestedFriends;
     });
 
