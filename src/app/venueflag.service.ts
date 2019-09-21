@@ -17,6 +17,6 @@ export class VenueflagService
   addVenueFlag(venueName, venueFlag)
   {
     var venueObject = {venueName : venueName, venueFlag : venueFlag}; 
-    return this.http.post(`{this.url}/venueFlag/venueFlag`, venueObject); 
+    return this.http.post(`${this.uri}/venueFlag/venueFlag`, venueObject); 
   }
 }
