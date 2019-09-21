@@ -40,6 +40,7 @@ export class VenueListComponent implements OnInit {
     return result;
   }
 
+
   openDialog() {
     //allows create list dialog to open
     const dialogConfig = new MatDialogConfig();

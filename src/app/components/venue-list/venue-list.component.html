@@ -41,3 +41,7 @@
     </tr>
   </tbody>
 </div>
+
+<div class ="friendsButtonContainer" *ngIf = "!checkFriendID()">
+  <button class ="friendsButton"><a class= "backToFriends" routerLink ="/myFriends">Back to My Friends</a></button>
+</div>

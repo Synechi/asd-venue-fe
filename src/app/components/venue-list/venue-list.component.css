@@ -18,3 +18,36 @@ th, td {
 .table {
      margin:20px;
 }
+
+.friendsButton {
+    margin-top: 60px;
+    margin-bottom: 30px;
+    background: #c2185b;
+    color: #fff;
+    box-shadow: 0 6px #ab3c3c;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+    border-radius: 14px;
+    border: none;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 30px;
+    display: inline-block;
+    letter-spacing: 1px;
+    font-weight: 600;
+    position: relative;
+  }
+
+  .friendsButtonContainer {
+
+    text-align: center;
+    align-content: center;
+     
+  }
+
+  .backToFriends {
+    text-decoration: none;
+    color: white;
+  }
