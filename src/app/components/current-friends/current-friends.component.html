@@ -11,7 +11,8 @@
       <tr *ngFor="let user of currentFriends">
         <td>{{ user.firstname }}</td>
         <td>{{ user.lastname }}</td>
-        <td><button (click)="deleteFriend(user)">Remove</button></td>
+        <td><button class="viewBtn"><a [routerLink] ="['/venue-list', user._id, user.firstname]">View Venue List</a></button>
+            <button (click)="deleteFriend(user)">Remove</button></td>
       </tr>
     </tbody>
   </table>

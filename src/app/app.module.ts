@@ -48,6 +48,7 @@ import { AddListDialogComponent } from "./components/add-list-dialog/add-list-di
 import { AddVenueDialogComponent } from "./components/add-venue-dialog/add-venue-dialog.component";
 import { ListListItemComponent } from "./components/list-list-item/list-list-item.component";
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +74,8 @@ import { ListListItemComponent } from "./components/list-list-item/list-list-ite
     // CreateReviewComponent
     AddListDialogComponent,
     AddVenueDialogComponent,
-    ListListItemComponent
+    ListListItemComponent,
+  
   ],
   imports: [
     BrowserModule,

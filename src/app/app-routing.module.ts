@@ -49,6 +49,8 @@ const routes: Routes = [
   { path: "venuedetails", component: VenueDetailsComponent },
   { path: "new-account", component: NewAccountComponent },
   { path: "venue-list-view/:id", component: VenueListViewComponent },
+  { path: "venue-list-view/:id/:friendID", component: VenueListViewComponent}, 
+  { path: "venue-list/:friendID/:firstname", component: VenueListComponent },
   { path: "recommendation", component: VenueRecommendComponent },
   { path: "add-list-dialog", component: AddListDialogComponent },
   { path: "add-venue-dialog", component: AddVenueDialogComponent }

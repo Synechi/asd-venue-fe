@@ -53,28 +53,52 @@ export class VenueListViewComponent implements OnInit {
   listName: string;
 
   ngOnInit() {
-    this.userService
-      .getListVenues(
-        localStorage.getItem("id"),
-        this.route.snapshot.paramMap.get("id")
-      )
-      .subscribe(venueList => {
-        var storage = JSON.stringify(venueList);
-        var details = JSON.parse(storage);
-        this.listName = details.venuelists[0].name;
-        for (var ven in details.venuelists[0].venues) {
-          this.gMapsService
-            .getDetails(
-              details.venuelists[0].venues[ven].placeID,
-              document.createElement("div")
-            )
-            .subscribe(venuedetails => {
-              this.__zone.run(() => {
-                this.venues.push(venuedetails);
+    let friendID = this.route.snapshot.paramMap.get("friendID");
+
+    if (friendID != "user") {
+      this.userService
+        .getListVenues(friendID, this.route.snapshot.paramMap.get("id"))
+        .subscribe(venueList => {
+          var storage = JSON.stringify(venueList);
+          var details = JSON.parse(storage);
+          this.listName = details.venuelists[0].name;
+          for (var ven in details.venuelists[0].venues) {
+            this.gMapsService
+              .getDetails(
+                details.venuelists[0].venues[ven].placeID,
+                document.createElement("div")
+              )
+              .subscribe(venuedetails => {
+                this.__zone.run(() => {
+                  this.venues.push(venuedetails);
+                });
               });
-            });
-        }
-      });
+          }
+        });
+    } else {
+      this.userService
+        .getListVenues(
+          localStorage.getItem("id"),
+          this.route.snapshot.paramMap.get("id")
+        )
+        .subscribe(venueList => {
+          var storage = JSON.stringify(venueList);
+          var details = JSON.parse(storage);
+          this.listName = details.venuelists[0].name;
+          for (var ven in details.venuelists[0].venues) {
+            this.gMapsService
+              .getDetails(
+                details.venuelists[0].venues[ven].placeID,
+                document.createElement("div")
+              )
+              .subscribe(venuedetails => {
+                this.__zone.run(() => {
+                  this.venues.push(venuedetails);
+                });
+              });
+          }
+        });
+    }
     console.log(this.venues);
   }
 }
