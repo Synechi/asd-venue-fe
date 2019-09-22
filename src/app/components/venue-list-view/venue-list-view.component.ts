@@ -13,7 +13,7 @@ import { AddVenueDialogComponent } from "../add-venue-dialog/add-venue-dialog.co
 export class VenueListViewComponent implements OnInit {
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
     private gMapsService: GoogleMapsService,
     private __zone: NgZone,
     private dialog: MatDialog

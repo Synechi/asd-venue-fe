@@ -18,7 +18,7 @@ export class VenueListComponent implements OnInit {
     private dialog: MatDialog,
     private userService: UserService,
     private __zone: NgZone,
-    private route: ActivatedRoute
+    public route: ActivatedRoute
   ) {}
   lists: list[] = [];
 
