@@ -1,5 +1,11 @@
 <body>
   <a mat-raised-button routerLink="/map">Map View</a>
+  <p>
+    <input 
+      #query
+      (keyup)="filter(query.value)"
+      type="text" class="form-control" placeholder="Search">
+  </p>
   <table>
     <thead>
       <tr>
@@ -12,8 +18,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let m of markers" app-list-list-item [marker]="m"></tr>
+      <tr *ngFor="let v of filteredVenues" app-list-list-item [marker]="v"></tr>
     </tbody>
   </table>
+
 </body>
 <agm-map (mapReady)="loadMarkers($event)"> </agm-map>

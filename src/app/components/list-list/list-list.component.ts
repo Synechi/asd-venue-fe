@@ -9,11 +9,14 @@ declare var google: any;
   templateUrl: "./list-list.component.html",
   styleUrls: ["./list-list.component.css"]
 })
-export class ListListComponent implements OnInit {
+export class ListListComponent implements OnInit 
+{
+  filteredVenues: any[]; 
   constructor(
     private gMapsService: GoogleMapsService,
     private __zone: NgZone
-  ) {}
+  ) 
+  {}
 
   ngOnInit() {}
   markers: marker[] = [];
@@ -66,6 +69,13 @@ export class ListListComponent implements OnInit {
     });
   }
 
+  filter(query : string)
+  {
+    this.filteredVenues = (query) ?
+      this.markers.filter(v => v.label.toLowerCase().includes(query.toLowerCase())) : 
+      this.markers; 
+  }
+
   arraysort_name() {
     this.markers.sort((a, b) => (a.name > b.name ? 1 : -1));
   }
@@ -76,6 +86,7 @@ export class ListListComponent implements OnInit {
     this.markers.sort((a, b) => (a.label > b.label ? 1 : -1));
   }
 }
+
 
 export class marker {
   name: string;
