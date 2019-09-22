@@ -52,6 +52,7 @@ export class VenueListViewComponent implements OnInit {
   venues: venue[] = [];
   listName: string;
 
+  // If it is a friend, the display will change to display the friend's venue list
   ngOnInit() {
     let friendID = this.route.snapshot.paramMap.get("friendID");
 
