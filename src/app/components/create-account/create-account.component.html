@@ -38,7 +38,7 @@
 
         <div class="form-group">
             <label for="password">Password</label>
-            <input id="password" name="password" class="form-control" [(ngModel)]="user.password" required #password="ngModel"> 
+            <input id="password" name="password" class="form-control" [(ngModel)]="user.password" required #password="ngModel" type="password"> 
             <span class="help-block" *ngIf="password.invalid && password.touched">
                 <i>Password is required</i>
             </span>
@@ -47,7 +47,7 @@
         <div class="form-group">
                 <label for="conpassword">Confirm Password</label>
 <!--             <label for="conpassword">Confirm Password</label> -->
-            <input id="conpassword" name="conpassword" class="form-control" [(ngModel)]="user.conpassword" compare="password" #conpasswordField="ngModel">
+            <input id="conpassword" name="conpassword" class="form-control" [(ngModel)]="user.conpassword" compare="password" #conpasswordField="ngModel" type="password">
             <span class="help-block" *ngIf="conpasswordField.errors?.notMatched">Password does not match</span>
         </div>
 
