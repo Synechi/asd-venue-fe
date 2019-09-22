@@ -37,7 +37,7 @@ import { CurrentFriendsComponent } from "./components/current-friends/current-fr
 import { PendingRequestsTableComponent } from "./components/pending-requests-table/pending-requests-table.component";
 import { MatInputModule } from "@angular/material";
 import { MatCardModule } from "@angular/material";
-// import { CreateReviewComponent } from './components/create-review/create-review.component';
+import { CreateReviewComponent } from './components/create-review/create-review.component';
 import { AuthUserGuard } from './auth-user.guard';
 import { UserGuardService } from './service/user-guard.service';
 import { ListListComponent } from "./components/list-list/list-list.component";
@@ -71,7 +71,7 @@ import { ListListItemComponent } from "./components/list-list-item/list-list-ite
     VenueRecommendComponent,
     CompareValidatorDirective,
     CreateAccountComponent,
-    // CreateReviewComponent
+    CreateReviewComponent,
     AddListDialogComponent,
     AddVenueDialogComponent,
     ListListItemComponent,

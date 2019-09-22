@@ -11,7 +11,7 @@ import { VenueListViewComponent } from "./components/venue-list-view/venue-list-
 import { VenueDetailsComponent } from "./components/venue-details/venue-details.component";
 import { NewAccountComponent } from "./components/new-account/new-account.component";
 import { CreateAccountComponent } from "./components/create-account/create-account.component";
-// import { CreateReviewComponent } from './components/create-review/create-review.component';
+import { CreateReviewComponent } from "./components/create-review/create-review.component";
 import { AuthUserGuard } from "./auth-user.guard";
 import { VenueRecommendComponent } from "./components/venue-recommend/venue-recommend.component";
 import { AddListDialogComponent } from "./components/add-list-dialog/add-list-dialog.component";
@@ -45,7 +45,7 @@ const routes: Routes = [
     canActivate: [AuthUserGuard]
   },
   { path: "create-account", component: CreateAccountComponent },
-  // { path: "create-review", component: CreateReviewComponent },
+  { path: "create-review", component: CreateReviewComponent },
   { path: "venuedetails", component: VenueDetailsComponent },
   { path: "new-account", component: NewAccountComponent },
   { path: "venue-list-view/:id", component: VenueListViewComponent },
