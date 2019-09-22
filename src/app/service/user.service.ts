@@ -27,10 +27,10 @@ export class UserService {
   // }
 
   //Chantel
-  validateUser(user:User) : Observable<any> {
+  validateUser(user: User): Observable<any> {
     const param = new HttpParams().set("email", user.email).set("password", user.password)
     // return this.http.get('http://localhost:4000/user', {params: param});
-    return this.http.get(`${this.uri}/user`, {params: param});
+    return this.http.get(`${this.uri}/user`, { params: param });
   }
 
   getUserByID(id) {
@@ -38,11 +38,11 @@ export class UserService {
   }
 
   //Chantel
-  postUserForm(user:User) : Observable<any> {
+  postUserForm(user: User): Observable<any> {
     // return this.http.post('http://localhost:4000/user', user);
     return this.http.post(`${this.uri}/user`, user);
   }
-  
+
   getListsByID(id) {
     return this.http.get(`${this.listUrl}/lists/${id}`);
   }
@@ -83,7 +83,7 @@ export class UserService {
   //Chantel
   logoutUser() {
     localStorage.removeItem('id')
-    this.router.navigate(['/map'])
+    this.router.navigate(['/login'])
   }
 
 }

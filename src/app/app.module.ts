@@ -4,7 +4,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AgmCoreModule, GoogleMapsAPIWrapper } from "@agm/core";
 //Components for Routing
 import { NavComponent } from "./components/nav/nav.component";
@@ -95,10 +95,11 @@ import { ListListItemComponent } from "./components/list-list-item/list-list-ite
     MatCardModule,
     MatInputModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule
   ],
   providers: [UserService, AuthUserGuard],
   bootstrap: [AppComponent],
   entryComponents: [AddListDialogComponent]
 })
-export class AppModule {}
+export class AppModule { }
