@@ -3,8 +3,17 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 />
 <app-nav></app-nav>
+<!-- Hiding heading for logged in user -->
+<div *ngIf ="checkFriendID()">
 <h1>Your Lists</h1>
+</div>
+<div *ngIf= "!checkFriendID()">
+<h1>{{firstname}}'s Lists</h1>
+</div>
+<!-- Hiding add button to prevent editing of friend's venue lists -->
+<div *ngIf ="checkFriendID()">
 <button (click)="openDialog()" id="addButton" mat-mini-fab>+</button>
+</div>
 <p></p>
 <hr />
 
@@ -19,15 +28,20 @@
   <tbody *ngFor="let list of lists">
     <tr *ngFor="let object of list">
       <td>
-        <a mat-button [routerLink]="['/venue-list-view', object._id]">{{
+        <a mat-button [routerLink]="['/venue-list-view', object._id, getFriendID()]">{{
           object.name
         }}</a>
       </td>
       <td>{{ object.colour }}</td>
-      <td>
+      <!-- Hiding delete list button to prevent editing of friend's venue lists -->
+      <td *ngIf ="checkFriendID()"> 
         <button><i class="fa fa-trash" (click)="delete(object)"></i></button>
       </td>
       <!-- <td><a mat-button routerLink="/venue-list-view">View List</a></td> -->
     </tr>
   </tbody>
+</div>
+
+<div class ="friendsButtonContainer" *ngIf = "!checkFriendID()">
+  <button class ="friendsButton"><a class= "backToFriends" routerLink ="/myFriends">Back to My Friends</a></button>
 </div>

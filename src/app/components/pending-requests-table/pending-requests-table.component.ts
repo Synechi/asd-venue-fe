@@ -22,7 +22,7 @@ export class PendingRequestsTableComponent implements OnInit {
   //Bella L: Updates the component variable to display pending friend requests
   displayPendingFriendRequests(): void {
     this.friendService
-      .displayPendingFriendRequests()
+      .displayPendingFriendRequests(localStorage.getItem("id"))
       .subscribe(pendingRequests => (this.pendingRequests = pendingRequests));
   }
 
@@ -40,7 +40,7 @@ export class PendingRequestsTableComponent implements OnInit {
     let newArr = this.removePendingRequest(this.pendingRequests, user._id);
 
     this.friendService
-      .updateFriendStatus(user._id, friendStatus)
+      .updateFriendStatus(user._id, localStorage.getItem("id"), friendStatus)
       .subscribe(() => (this.pendingRequests = newArr));
 
     this.status = true;

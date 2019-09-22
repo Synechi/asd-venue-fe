@@ -13,7 +13,7 @@ import { AddVenueDialogComponent } from "../add-venue-dialog/add-venue-dialog.co
 export class VenueListViewComponent implements OnInit {
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
     private gMapsService: GoogleMapsService,
     private __zone: NgZone,
     private dialog: MatDialog
@@ -52,29 +52,54 @@ export class VenueListViewComponent implements OnInit {
   venues: venue[] = [];
   listName: string;
 
+  // If it is a friend, the display will change to display the friend's venue list
   ngOnInit() {
-    this.userService
-      .getListVenues(
-        localStorage.getItem("id"),
-        this.route.snapshot.paramMap.get("id")
-      )
-      .subscribe(venueList => {
-        var storage = JSON.stringify(venueList);
-        var details = JSON.parse(storage);
-        this.listName = details.venuelists[0].name;
-        for (var ven in details.venuelists[0].venues) {
-          this.gMapsService
-            .getDetails(
-              details.venuelists[0].venues[ven].placeID,
-              document.createElement("div")
-            )
-            .subscribe(venuedetails => {
-              this.__zone.run(() => {
-                this.venues.push(venuedetails);
+    let friendID = this.route.snapshot.paramMap.get("friendID");
+
+    if (friendID != "user") {
+      this.userService
+        .getListVenues(friendID, this.route.snapshot.paramMap.get("id"))
+        .subscribe(venueList => {
+          var storage = JSON.stringify(venueList);
+          var details = JSON.parse(storage);
+          this.listName = details.venuelists[0].name;
+          for (var ven in details.venuelists[0].venues) {
+            this.gMapsService
+              .getDetails(
+                details.venuelists[0].venues[ven].placeID,
+                document.createElement("div")
+              )
+              .subscribe(venuedetails => {
+                this.__zone.run(() => {
+                  this.venues.push(venuedetails);
+                });
               });
-            });
-        }
-      });
+          }
+        });
+    } else {
+      this.userService
+        .getListVenues(
+          localStorage.getItem("id"),
+          this.route.snapshot.paramMap.get("id")
+        )
+        .subscribe(venueList => {
+          var storage = JSON.stringify(venueList);
+          var details = JSON.parse(storage);
+          this.listName = details.venuelists[0].name;
+          for (var ven in details.venuelists[0].venues) {
+            this.gMapsService
+              .getDetails(
+                details.venuelists[0].venues[ven].placeID,
+                document.createElement("div")
+              )
+              .subscribe(venuedetails => {
+                this.__zone.run(() => {
+                  this.venues.push(venuedetails);
+                });
+              });
+          }
+        });
+    }
     console.log(this.venues);
   }
 }

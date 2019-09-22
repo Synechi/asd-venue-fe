@@ -21,10 +21,13 @@ export class CurrentFriendsComponent implements OnInit {
   }
 
   //Bella L: Updates the component variable to display current friend list
+  
   displayCurrentFriends(): void {
+   
     this.friendService
-      .displayCurrentFriends()
+      .displayCurrentFriends(localStorage.getItem("id"))
       .subscribe(users => (this.currentFriends = users));
+    
   }
 
   removeFriend(arr: User[], id: String): any {
@@ -41,7 +44,7 @@ export class CurrentFriendsComponent implements OnInit {
     let newArr = this.removeFriend(this.currentFriends, user._id);
 
     this.friendService
-      .deleteFriend(user._id)
+      .deleteFriend(user._id, localStorage.getItem("id"))
       .subscribe(() => (this.currentFriends = newArr));
 
     this.status = true;
