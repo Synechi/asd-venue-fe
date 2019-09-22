@@ -1,10 +1,22 @@
 <app-nav></app-nav>
-<h1 class="mat-display-2">Recommended Places</h1>
-
-
-<form class="UserID-form">
-    <p>User Email:</p>
-    <mat-form-field class="Width">
-      <input matInput placeholder="User Email" value="First.Last@email.com">
-    </mat-form-field>
-</form>
+<a mat-raised-button routerLink="/map">Map View</a>
+<a mat-raised-button routerLink="/list">View All Venues</a>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Venue Name</th>
+        <th>Venue Location</th>
+        <th>Venue Genre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of markers;">
+        <td>{{ m.name }}</td>
+        <td>{{ m.address }}</td>
+        <td>{{ m.label }}</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+<agm-map (mapReady)="loadMarkers($event)"> </agm-map>

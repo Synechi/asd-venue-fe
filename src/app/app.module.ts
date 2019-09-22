@@ -73,7 +73,7 @@ import { ListListItemComponent } from "./components/list-list-item/list-list-ite
     // CreateReviewComponent
     AddListDialogComponent,
     AddVenueDialogComponent,
-    ListListItemComponent
+    ListListItemComponent,
   ],
   imports: [
     BrowserModule,

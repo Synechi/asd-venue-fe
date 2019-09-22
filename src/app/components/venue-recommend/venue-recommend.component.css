@@ -1,23 +1,43 @@
-.mat-display-2 {
-    text-align: center;
-    margin-top:2%;
+table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.4%;
+  margin-bottom: 10%;
 }
 
-p {
-  display: inline;
-  padding:1%;
+agm-map {
+  height: 0vh;
+  width: 0vh;
+}
+
+td,
+th {
   text-align: center;
+  border: 1px solid #ddd;
+  padding: 8px;
 }
 
-.UserID-form {
-    margin:auto;
-    min-width: 150px;
-    max-width: 90%;
-    width: 100%;
-    padding: 0%;
-    border: 1px solid #ddd;
-  }
-  
-.Width{
-    width: 60%;
-  }
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: darkslateblue;
+  color: white;
+}
+th:hover {
+  background-color: darkblue;
+}
+
+a {
+  margin-top: 8px;
+  margin-left: 8px;
+  padding: 1%;
+  background-color: darkslateblue;
+}
