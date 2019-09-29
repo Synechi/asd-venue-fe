@@ -69,18 +69,7 @@ export class ListListComponent implements OnInit
       });
     });
   }
-
-  //filter(query : string)
-  //{
-    //this.filteredVenues = (query) ?
-      //this.markers.filter(v => v.label.toLowerCase().includes(query.toLowerCase())) : 
-      //this.markers; 
-      //if(query != "Bar" && query != "Restaurant")
-      //{
-        //this.message = "Venue Genre Required. Search 'Restaurant' Or 'Bar'."
-      //}
-  //}
-
+  
   filter(query : string)
   {
     if(query != "Bar" && query != "Restaurant")
