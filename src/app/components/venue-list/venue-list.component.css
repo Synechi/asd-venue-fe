@@ -5,9 +5,18 @@
 }
 
 h1 {
-    display: inline-block;
+    
     margin: 20px;
+    text-align: center;
 }
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+} 
 
 th, td {
    text-align:left; 
@@ -51,3 +60,15 @@ th, td {
     text-decoration: none;
     color: white;
   }
+
+  .viewBtn {
+
+    margin-right: 30px; 
+  }
+
+  button { 
+    cursor: pointer;
+  }
+
+
+  

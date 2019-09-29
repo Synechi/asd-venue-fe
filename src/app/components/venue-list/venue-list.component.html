@@ -20,24 +20,21 @@
 <!-- show user lists -->
 <div class="table">
   <thead>
-    <tr>
+    
       <th>Name</th>
       <th>Colour</th>
-    </tr>
+      <th>Actions</th>
+    
   </thead>
   <tbody *ngFor="let list of lists">
     <tr *ngFor="let object of list">
-      <td>
-        <a mat-button [routerLink]="['/venue-list-view', object._id, getFriendID()]">{{
-          object.name
-        }}</a>
-      </td>
+      <td>{{object.name}}</td>
       <td>{{ object.colour }}</td>
       <!-- Hiding delete list button to prevent editing of friend's venue lists -->
       <td *ngIf ="checkFriendID()"> 
+        <button class= "viewBtn"><a routerLink= "['/venue-list-view', object._id, getFriendID()]"></a>View List</button>
         <button><i class="fa fa-trash" (click)="delete(object)"></i></button>
       </td>
-      <!-- <td><a mat-button routerLink="/venue-list-view">View List</a></td> -->
     </tr>
   </tbody>
 </div>
