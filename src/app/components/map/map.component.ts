@@ -70,7 +70,7 @@ export class MapComponent implements OnInit {
     var sw = new google.maps.LatLng(-33.884559, 151.194724);
     var bound = new google.maps.LatLngBounds(sw, ne);
     const autocomplete = new google.maps.places.Autocomplete(this.addresstext.nativeElement, {
-      componentResctrictions: { country: 'au' },
+      componentRestrictions: { country: 'au' },
       types: ['establishment'],
       bounds: bound
     })
@@ -145,6 +145,7 @@ export class MapComponent implements OnInit {
           // Stringify and then parses the observable object to access the child data.
           var stringObj = JSON.stringify(result);
           var list = JSON.parse(stringObj);
+
           // Loops over the users venues lists so that the it can access each lists stored venues.
           for (var key in list.venuelists) {
             // Loops over the lists venues to generate each marker on the map.
@@ -169,6 +170,8 @@ export class MapComponent implements OnInit {
             } else {
               markerIcon = details.icon;
             }
+            console.log(details);
+
             this.markers.push({
               lat: details.geometry.location.lat(),
               lng: details.geometry.location.lng(),
