@@ -10,9 +10,11 @@ import { User } from "../../user";
   styleUrls: ["./current-friends.component.css"]
 })
 export class CurrentFriendsComponent implements OnInit {
-  currentFriends: User[];
-  status: boolean;
-  statusMessage: string;
+  currentFriends: User[] = [];
+  statusSuccess: boolean;
+  statusSuccessMessage: string;
+  placeholderStatus: boolean;
+  placeholderMessage: string;
 
   constructor(private friendService: FriendService) {}
 
@@ -21,13 +23,17 @@ export class CurrentFriendsComponent implements OnInit {
   }
 
   //Bella L: Updates the component variable to display current friend list
-  
+
   displayCurrentFriends(): void {
-   
     this.friendService
       .displayCurrentFriends(localStorage.getItem("id"))
-      .subscribe(users => (this.currentFriends = users));
-    
+      .subscribe(users => {
+        this.currentFriends = users;
+        if (this.currentFriends.length == 0) {
+          this.placeholderStatus = true;
+          this.placeholderMessage = "You do not have any friends right now.";
+        }
+      });
   }
 
   removeFriend(arr: User[], id: String): any {
@@ -45,9 +51,11 @@ export class CurrentFriendsComponent implements OnInit {
 
     this.friendService
       .deleteFriend(user._id, localStorage.getItem("id"))
-      .subscribe(() => (this.currentFriends = newArr));
+      .subscribe(() => {
+        this.currentFriends = newArr;
+      });
 
-    this.status = true;
-    this.statusMessage = "Success! Friend has been removed.";
+    this.statusSuccess = true;
+    this.statusSuccessMessage = "Success! Friend has been removed.";
   }
 }

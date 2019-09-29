@@ -11,15 +11,15 @@
       <tr *ngFor="let user of currentFriends">
         <td>{{ user.firstname }}</td>
         <td>{{ user.lastname }}</td>
-        <td><button class="viewBtn"><a [routerLink] ="['/venue-list', user._id, user.firstname]">View Venue List</a></button>
-            <button (click)="deleteFriend(user)">Remove</button></td>
+        <td><button mat-button class="viewBtn"><a [routerLink] ="['/venue-list', user._id, user.firstname]">View Venue List</a></button>
+            <button mat-button (click)="deleteFriend(user)">Remove</button></td>
       </tr>
     </tbody>
   </table>
-  <p class="placeholder" *ngIf="!this.currentFriends.length">
-    No Results Found
-  </p>
-  <div class="notification-container" *ngIf="this.status">
-    <p>{{ statusMessage }}</p>
+  <div class="placeholder-notification-container" *ngIf="this.placeholderStatus">
+    <p>{{ placeholderMessage }}</p>
+  </div>
+  <div class="success-notification-container" *ngIf="this.statusSuccess">
+    <p>{{ statusSuccessMessage }}</p>
   </div>
 </body>
