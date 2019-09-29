@@ -12,8 +12,8 @@
         <td>{{ user.firstname }}</td>
         <td>{{ user.lastname }}</td>
         <td>
-          <button (click)="updateFriendStatus(user, 'Accepted')">Accept</button>
-          <button
+          <button mat-button (click)="updateFriendStatus(user, 'Accepted')">Accept</button>
+          <button mat-button
             (click)="updateFriendStatus(user, 'Declined')"
             class="declineBtn"
           >

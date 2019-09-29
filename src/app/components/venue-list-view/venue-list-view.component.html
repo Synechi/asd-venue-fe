@@ -6,10 +6,10 @@
 <app-nav></app-nav>
 <h1>{{ listName }}</h1>
 <div *ngIf ="this.route.snapshot.paramMap.get('friendID') == 'user'">
-<button (click)="openDialog()" class="addButton" mat-mini-fab>+</button>
+<button (click)="openDialog()" id="addButton" mat-mini-fab>+</button>
 </div>
 <p></p>
-<hr />
+
 <!-- show venues in lists -->
 <div>
   <table class="table">
@@ -19,6 +19,7 @@
         <th>Phone Number</th>
         <th>Address</th>
         <th>Place ID</th>
+        <th *ngIf ="this.route.snapshot.paramMap.get('friendID') == 'user'">Actions</th> 
       </tr>
     </thead>
     <tbody>
@@ -32,7 +33,7 @@
         </td>
         <td>{{ object.place_id }}</td>
         <td *ngIf ="this.route.snapshot.paramMap.get('friendID') == 'user'">
-          <button><i class="fa fa-trash" (click)="delete(object)"></i></button>
+          <button mat-button><i class="fa fa-trash" (click)="delete(object)"></i></button>
         </td>
         <!-- <td><a mat-button routerLink="/venue-list-view">View List</a></td> -->
       </tr>

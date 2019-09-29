@@ -5,7 +5,8 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root"
 })
 export class VenueService {
-  uri = "https://asd-venue-be.herokuapp.com";
+  uri = "http://localhost:4000"; 
+  // "https://asd-venue-be.herokuapp.com";
 
   constructor(private http: HttpClient) {}
 

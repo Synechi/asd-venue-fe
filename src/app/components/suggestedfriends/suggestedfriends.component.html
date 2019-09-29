@@ -30,7 +30,7 @@
       <tr *ngFor="let user of suggestedFriends">
         <td>{{ user.firstname }}</td>
         <td>{{ user.lastname }}</td>
-        <td><button (click)="sendFriendRequest(user)">Add Friend</button></td>
+        <td><button mat-button (click)="sendFriendRequest(user)">Add Friend</button></td>
       </tr>
     </tbody>
   </table>
