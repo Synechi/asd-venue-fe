@@ -8,7 +8,7 @@
       <h4>{{ reviews.venueName }}</h4>
       <div class="form-group"> 
           <label for="reviewDescription">Review Description</label>
-          <textarea id="reviewDescription" name="reviewDescription" type="text" class="md-textarea md-textarea-auto form-control" mdbInput [(ngModel)]="reviews.reviewDescription" required #reviewDescription="ngModel"></textarea>
+          <textarea id="reviewDescription" name="reviewDescription" type="text" class="md-textarea md-textarea-auto form-control" mdbInput [(ngModel)]="reviews.reviewDescription" required #reviewDescription="ngModel" minlength="10"></textarea>
           <!-- <input type="text" name="reviewDescription" [(ngModel)]="reviewDescription" class="form-control submissionField" required> -->
       </div>
 
