@@ -53,6 +53,7 @@ export class SuggestedfriendsComponent implements OnInit {
 
     this.friendService.sendFriendRequest(user._id, localStorage.getItem("id")).subscribe(() => {
       this.suggestedFriends = suggestedFriends;
+      
     });
 
     this.status = true;
