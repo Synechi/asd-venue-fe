@@ -12,9 +12,9 @@ import { $ } from 'protractor';
   providedIn: "root"
 })
 export class FriendService {
-  url = "http://localhost:4000";
+  url = "https://asd-venue-be.herokuapp.com";
   //https://asd-venue-be.herokuapp.com
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   //Bella L: Calls REST API with user id and search input as parameters to retrieve 'suggested friends' from the database
   displaySuggestedFriends(searchBox: String, id: String): Observable<User[]> {

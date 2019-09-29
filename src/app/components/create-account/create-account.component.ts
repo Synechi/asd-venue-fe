@@ -41,6 +41,7 @@ export class CreateAccountComponent implements OnInit {
     this.postStatusMessage = "Internal Error";
   }
 
+  // When the Email Address already exist
   onHttpStatus(statusResponse: any) {
     console.log('status: ', statusResponse);
     this.postStatus = true;
@@ -56,7 +57,7 @@ export class CreateAccountComponent implements OnInit {
     }
   }
   
-
+  // When the user creates an account 
   onSubmitAccount(form:NgForm) {
     console.log('in onSubmitAccount: ', form);
 

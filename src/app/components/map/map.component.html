@@ -1,17 +1,16 @@
 <app-nav></app-nav>
-<agm-map
-  [zoom]="15"
-  [styles]="styles"
-  [latitude]="latitude"
-  [longitude]="longitude"
-  (mapReady)="loadMarkers($event)"
->
-  <agm-marker
-    *ngFor="let m of markers; let i = index"
-    [latitude]="m.lat"
-    [longitude]="m.lng"
-    [iconUrl]="m.icon"
-  >
+<div id="searchBar">
+  <div class="row">
+    <div class="col=md-12">
+      <div class="form-group">
+        <input type="text" class="input" id="place" #addresstext autocomplete="off" autocapitalize="off"
+          spellcheck="off">
+      </div>
+    </div>
+  </div>
+</div>
+<agm-map [zoom]="15" [styles]="styles" [latitude]="latitude" [longitude]="longitude" (mapReady)="loadMarkers($event)">
+  <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng" [iconUrl]="m.icon">
     <agm-info-window>
       <strong>Name: </strong>
       <p>{{ m.name }}</p>
@@ -19,8 +18,10 @@
       <p>{{ m.address }}</p>
       <strong>Website: </strong>
       <p>{{ m.website }}</p>
-      <strong>Opening hours for today: </strong>
-      <p>{{ m.opening_hours }}</p>
+      <strong>List: </strong>
+      <p>{{ m.list }}</p>
+      <strong>Opening hours: </strong>
+      <p *ngFor="let n of m.opening_hours">{{ n }}</p>
     </agm-info-window>
   </agm-marker>
 </agm-map>
