@@ -1,11 +1,14 @@
 <body>
   <a mat-raised-button routerLink="/map">Map View</a>
   <p>
-    <input 
+    <input
       #query
       (keyup)="filter(query.value)"
-      type="text" class="form-control" placeholder="Search" pattern="^Bar|Restaurant">
+      type="text" class="form-control" placeholder="Search: Restaurant/Bar">
   </p>
+  <span>
+    {{message}}
+  </span>
   <table>
     <thead>
       <tr>

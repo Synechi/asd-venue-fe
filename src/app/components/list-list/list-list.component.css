@@ -13,6 +13,13 @@ agm-map {
   width: 0vh;
 }
 
+span
+{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  color: red;
+}
+
 td,
 th {
   text-align: center;
