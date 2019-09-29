@@ -11,7 +11,7 @@ import { User } from "../../user";
 })
 export class SuggestedfriendsComponent implements OnInit {
   suggestedFriends: User[] = [];
-  status: boolean;
+  searchBox: string;
   statusSuccess: boolean;
   statusSuccessMessage: string;
   placeholderStatus: boolean;
