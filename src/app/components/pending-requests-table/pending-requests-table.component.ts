@@ -9,7 +9,7 @@ import { User } from "../../user";
   styleUrls: ["./pending-requests-table.component.css"]
 })
 export class PendingRequestsTableComponent implements OnInit {
-  pendingRequests: User[];
+  pendingRequests: User[] = [];
   statusSuccess: boolean;
   statusSuccessMessage: string;
   placeholderStatus: boolean;
