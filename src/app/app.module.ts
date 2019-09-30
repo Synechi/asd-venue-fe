@@ -4,7 +4,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AgmCoreModule, GoogleMapsAPIWrapper } from "@agm/core";
 //Components for Routing
 import { NavComponent } from "./components/nav/nav.component";
@@ -37,7 +37,7 @@ import { CurrentFriendsComponent } from "./components/current-friends/current-fr
 import { PendingRequestsTableComponent } from "./components/pending-requests-table/pending-requests-table.component";
 import { MatInputModule } from "@angular/material";
 import { MatCardModule } from "@angular/material";
-// import { CreateReviewComponent } from './components/create-review/create-review.component';
+import { CreateReviewComponent } from './components/create-review/create-review.component';
 import { AuthUserGuard } from './auth-user.guard';
 import { UserGuardService } from './service/user-guard.service';
 import { ListListComponent } from "./components/list-list/list-list.component";
@@ -47,6 +47,8 @@ import { CompareValidatorDirective } from "./components/create-account/compare-v
 import { AddListDialogComponent } from "./components/add-list-dialog/add-list-dialog.component";
 import { AddVenueDialogComponent } from "./components/add-venue-dialog/add-venue-dialog.component";
 import { ListListItemComponent } from "./components/list-list-item/list-list-item.component";
+import { ViewReviewComponent } from './components/view-review/view-review.component';
+
 
 @NgModule({
   declarations: [
@@ -70,10 +72,11 @@ import { ListListItemComponent } from "./components/list-list-item/list-list-ite
     VenueRecommendComponent,
     CompareValidatorDirective,
     CreateAccountComponent,
-    // CreateReviewComponent
+    CreateReviewComponent,
     AddListDialogComponent,
     AddVenueDialogComponent,
-    ListListItemComponent
+    ListListItemComponent,
+    ViewReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -95,10 +98,11 @@ import { ListListItemComponent } from "./components/list-list-item/list-list-ite
     MatCardModule,
     MatInputModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule
   ],
   providers: [UserService, AuthUserGuard],
   bootstrap: [AppComponent],
   entryComponents: [AddListDialogComponent]
 })
-export class AppModule {}
+export class AppModule { }

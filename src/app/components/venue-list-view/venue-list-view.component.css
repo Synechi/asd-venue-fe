@@ -1,23 +1,66 @@
-.addButton {
-  /* float: right; */
+#addButton {
+  float: right;
   margin: 20px;
   display: inline-block;
 }
 
-h1 {
-  display: inline-block;
-  margin: 20px;
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+th {
+  text-align: left;
+  background-color: #c2185b;
+  color: white;
 }
 
 th,
 td {
   text-align: left;
   width: 100vw;
-  height: 5vw;
+  height: 2vw;
+  padding: 10px;
+  border-bottom: 0.5px solid black;
 }
 
 .table {
-  margin-left: auto;
-  margin-right: auto;
-  width: 95%;
+  margin: 30px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+button {
+  cursor: pointer;
+  border: black 0.5px solid;
+}
+
+a {
+  margin-right: 30px;
+  border: black 0.5px solid;
+}
+
+h1 {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 36px;
+  color: #333;
+  text-align: center;
+}
+
+#searchBar {
+  position: absolute;
+  z-index:1;
+  width: 100%;
+  margin: 5 5;
+  /* background-color: darkslategray;  */
+}
+
+input {
+  width: 60%;
+  display: block;
+  margin: 0 auto;
 }

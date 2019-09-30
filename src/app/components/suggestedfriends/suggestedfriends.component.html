@@ -30,14 +30,23 @@
       <tr *ngFor="let user of suggestedFriends">
         <td>{{ user.firstname }}</td>
         <td>{{ user.lastname }}</td>
-        <td><button (click)="sendFriendRequest(user)">Add Friend</button></td>
+        <td>
+          <button mat-button (click)="sendFriendRequest(user)">
+            Add Friend
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
-  <p class="placeholder" *ngIf="!this.suggestedFriends.length">
-    No Results Found
-  </p>
-  <div class="notification-container" *ngIf="this.status">
-    <p>{{ statusMessage }}</p>
+
+  <div
+    class="placeholder-notification-container"
+    *ngIf="this.placeholderStatus"
+  >
+    <p>{{ placeholderMessage }}</p>
+  </div>
+
+  <div class="success-notification-container" *ngIf="this.statusSuccess">
+    <p>{{ statusSuccessMessage }}</p>
   </div>
 </body>

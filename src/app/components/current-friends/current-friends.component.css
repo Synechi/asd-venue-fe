@@ -48,12 +48,12 @@ th {
   font-weight: bold;
 }
 
-.notification-container {
+.success-notification-container {
   background-color: #dff0d8;
   border-color: #d6e9c6;
   margin-bottom: 20px;
-  border: 2px solid;
-  margin-top: 40px;
+  border: 1px black solid;
+  margin-top: 80px;
   height: 50px;
   width: 100%;
   text-align: center;
@@ -61,6 +61,33 @@ th {
   font-weight: bold;
 }
 
+.placeholder-notification-container {
+  background-color: #ADD8E6;
+  margin-bottom: 20px;
+  border: 1px black solid;
+  margin-top: 80px;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  color: 			midnightblue;
+  font-weight: bold;
+}
+
+
 .placeholder {
   margin-top: 100px;
+}
+
+.viewBtn {
+  margin-right: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+button {
+  cursor: pointer;
+  border: black 0.5px solid;
 }

@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<app-nav></app-nav>
+<h1>Friend Reviews of: {{ venueName }}</h1>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Reviewer</th>
+                <th>Description</th>
+                <th>Rate it!</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let object of reviews">
+                <td>
+                    {{ object.firstname }}
+                </td>
+                <td>
+                    {{ object.reviewDescription }}
+                </td>
+                <td>
+                    <button mat-button><i class="fa fa-thumbs-up"></i></button>
+                    <button mat-button><i class="fa fa-thumbs-down"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<agm-map (mapReady)="loadReviews()"> </agm-map>

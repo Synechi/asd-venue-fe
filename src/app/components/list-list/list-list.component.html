@@ -1,10 +1,8 @@
 <body>
   <a mat-raised-button routerLink="/map">Map View</a>
+  <a mat-raised-button routerLink="/rec">Recommended Venues</a>
   <p>
-    <input
-      #query
-      (keyup)="filter(query.value)"
-      type="text" class="form-control" placeholder="Search: Venue Genre">
+    <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search: Venue Genre">
   </p>
   <span>
     {{message}}

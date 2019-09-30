@@ -1,9 +1,12 @@
-import { Component, OnInit, NgZone } from "@angular/core";
+import { Component, OnInit, NgZone, ViewChild, Input, Output, EventEmitter } from "@angular/core";
 import { UserService } from "src/app/service/user.service";
 import { ActivatedRoute } from "@angular/router";
 import { GoogleMapsService } from "../../service/google-maps.service";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { AddVenueDialogComponent } from "../add-venue-dialog/add-venue-dialog.component";
+
+declare var google: any;
+
 
 @Component({
   selector: "app-venue-list-view",
@@ -13,20 +16,29 @@ import { AddVenueDialogComponent } from "../add-venue-dialog/add-venue-dialog.co
 export class VenueListViewComponent implements OnInit {
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
     private gMapsService: GoogleMapsService,
     private __zone: NgZone,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
-  openDialog() {
+  @Input() adressType: string;
+  @Output() setAddress: EventEmitter<any> = new EventEmitter();
+  @ViewChild('addresstext', { static: true }) addresstext: any;
+
+  openDialog(result) {
     //allows create list dialog to open
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
-    dialogConfig.data = { listID: this.route.snapshot.paramMap.get("id") };
+    dialogConfig.data = {
+      listID: this.route.snapshot.paramMap.get("id"),
+      name: result.name,
+      placeID: result.place_id
+    };
+    console.log(dialogConfig.data);
 
     this.dialog.open(AddVenueDialogComponent, dialogConfig);
   }
@@ -52,30 +64,75 @@ export class VenueListViewComponent implements OnInit {
   venues: venue[] = [];
   listName: string;
 
+  // If it is a friend, the display will change to display the friend's venue list
   ngOnInit() {
-    this.userService
-      .getListVenues(
-        localStorage.getItem("id"),
-        this.route.snapshot.paramMap.get("id")
-      )
-      .subscribe(venueList => {
-        var storage = JSON.stringify(venueList);
-        var details = JSON.parse(storage);
-        this.listName = details.venuelists[0].name;
-        for (var ven in details.venuelists[0].venues) {
-          this.gMapsService
-            .getDetails(
-              details.venuelists[0].venues[ven].placeID,
-              document.createElement("div")
-            )
-            .subscribe(venuedetails => {
-              this.__zone.run(() => {
-                this.venues.push(venuedetails);
+    let friendID = this.route.snapshot.paramMap.get("friendID");
+
+    if (friendID != "user") {
+      this.userService
+        .getListVenues(friendID, this.route.snapshot.paramMap.get("id"))
+        .subscribe(venueList => {
+          var storage = JSON.stringify(venueList);
+          var details = JSON.parse(storage);
+          this.listName = details.venuelists[0].name;
+          for (var ven in details.venuelists[0].venues) {
+            this.gMapsService
+              .getDetails(
+                details.venuelists[0].venues[ven].placeID,
+                document.createElement("div")
+              )
+              .subscribe(venuedetails => {
+                this.__zone.run(() => {
+                  this.venues.push(venuedetails);
+                });
               });
-            });
-        }
-      });
+          }
+        });
+    } else {
+      this.userService
+        .getListVenues(
+          localStorage.getItem("id"),
+          this.route.snapshot.paramMap.get("id")
+        )
+        .subscribe(venueList => {
+          var storage = JSON.stringify(venueList);
+          var details = JSON.parse(storage);
+          this.listName = details.venuelists[0].name;
+          for (var ven in details.venuelists[0].venues) {
+            this.gMapsService
+              .getDetails(
+                details.venuelists[0].venues[ven].placeID,
+                document.createElement("div")
+              )
+              .subscribe(venuedetails => {
+                this.__zone.run(() => {
+                  this.venues.push(venuedetails);
+                });
+              });
+          }
+        });
+    }
     console.log(this.venues);
+  }
+
+  loadList() {
+    this.getPlaceAutocomplete();
+  }
+
+
+  private getPlaceAutocomplete() {
+    var ne = new google.maps.LatLng(-33.853487, 151.218456);
+    var sw = new google.maps.LatLng(-33.884559, 151.194724);
+    var bound = new google.maps.LatLngBounds(sw, ne);
+    const autocomplete = new google.maps.places.Autocomplete(this.addresstext.nativeElement, {
+      componentRestrictions: { country: 'au' },
+      types: ['establishment'],
+      bounds: bound
+    })
+    google.maps.event.addListener(autocomplete, "place_changed", () => {
+      const place = autocomplete.getPlace();
+      this.openDialog(place)
+    })
   }
 }
 

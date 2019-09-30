@@ -1,56 +1,40 @@
-<p>
-  Create Review Page
-</p>
-<!-- <app-nav></app-nav>
-<mat-card>
-  <mat-card-title>
-    Create A Review
-  </mat-card-title>
-  <mat-card-content>
-    <form
-      class="example-form"
-      id="createReview"
-      #userData="ngForm"
-    >
-      <table class="example-full-width" cellspacing="0">
-        <tr>
-          <td>
-            <mat-form-field class="example-full-width">
-              <input
-                matInput
-                placeholder="Review"
-                [(ngModel)]="review"
-                required
-              />
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label>Rating</label>
-            <br>
-            <select (change)="selectChange1Handler($event)">
-                <option value="one">1</option>
-                <option value="two">2</option>
-                <option value="three">3</option>
-                <option value="four">4</option>
-                <option value="five">5</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <mat-radio-group aria-label="selectChange2Handler($event)">
-                <mat-radio-button value="1">Thumbs Up</mat-radio-button>
-                <mat-radio-button value="2">Thumbs Down</mat-radio-button>
-            </mat-radio-group>
-          </td>
-        </tr>
-      </table>
-      <button (click)="submit()">Submit</button>
-      <input type="submit" value="Create Review" mat-button />
+<app-nav></app-nav>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+<div class="container">
+    <h2>Create A Review</h2>
+
+    <form #createReview="ngForm" (ngSubmit)="onSubmitReview(createReview)">
+      <br>
+      <h4>{{ reviews.venueName }}</h4>
+      <div class="form-group"> 
+          <label for="reviewDescription">Review Description</label>
+          <textarea id="reviewDescription" name="reviewDescription" type="text" class="md-textarea md-textarea-auto form-control" mdbInput [(ngModel)]="reviews.reviewDescription" required #reviewDescription="ngModel" minlength="10"></textarea>
+          <!-- <input type="text" name="reviewDescription" [(ngModel)]="reviewDescription" class="form-control submissionField" required> -->
+      </div>
+
+      <div class="form-group">
+          <label for="rating">Rating</label>
+          <br>
+          <select id="rating" name="rating" [(ngModel)]="reviews.rating">
+              <option value="one">1</option>
+              <option value="two">2</option>
+              <option value="three">3</option>
+              <option value="four">4</option>
+              <option value="five">5</option>
+          </select>
+      </div>
+
+      <div class="form-group">
+          <label for="thumbs">Thumbs Up or Down</label>
+          <br>
+          <input type="radio" name="count" value="thumbsUp" [(ngModel)]="reviews.thumbsUp">Thumbs Up<br>
+          <input type="radio" name="count" value="thumbsDown" [(ngModel)]="reviews.thumbsDown">Thumbs Down<br>
+      </div>
+
+      <button class="btm btn-primary" [disabled]="createReview.invalid">Create Review</button>
+
     </form>
-    <br>
-    <div *ngIf="successMessage" [ngClass] = "'success'"> {{successMessage}} </div> 
-  </mat-card-content>
-</mat-card> -->
+
+
+</div>
+

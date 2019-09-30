@@ -1,6 +1,7 @@
 import { Component, OnInit, NgModule, NgZone, Input } from "@angular/core";
 import { GoogleMapsService } from "../../service/google-maps.service";
 import { MarkerManager } from "@agm/core";
+import { UserService } from "../../service/user.service";
 
 declare var google: any;
 
@@ -9,17 +10,16 @@ declare var google: any;
   templateUrl: "./list-list.component.html",
   styleUrls: ["./list-list.component.css"]
 })
-export class ListListComponent implements OnInit 
-{
-  filteredVenues: any[]; 
-  message : string = "";
+export class ListListComponent implements OnInit {
+  filteredVenues: any[];
+  message: string = "";
   constructor(
     private gMapsService: GoogleMapsService,
+    private userService: UserService,
     private __zone: NgZone
-  ) 
-  {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
   markers: marker[] = [];
 
   // Map Center
@@ -45,46 +45,94 @@ export class ListListComponent implements OnInit
   }
 
   getPlaces(map: any) {
+    //Used to generate test data
     this.gMapsService.getBarRest(map).subscribe(result => {
       this.__zone.run(() => {
-        console.log(result);
-
         for (var place of result) {
-          var labelType = "";
-          for (let i = 0; i < 3; i++) {
-            if (place.types[i] === "bar") {
-              labelType = "Bar";
-            }
-            if (place.types[i] === "restaurant") {
-              labelType = "Restaurant";
-            }
-          }
-          this.markers.push({
-            name: place.name,
-            address: place.vicinity,
-            label: labelType
-          });
+          // this.markers.push({
+          //   lat: place.geometry.location.lat(),
+          //   lng: place.geometry.location.lng(),
+          //   name: place.name,
+          //   address: place.vicinity,
+          //   label: labelType,
+          //   icon: {
+          //     url: place.icon,
+          //     scaledSize: {
+          //       height: 20,
+          //       width: 20
+          //     }
+          //   },
+          //   rating: place.rating,
+          //   open: openHour,
+          //   placeID: place.placeID
+          // });
           error => console.log(error);
         }
       });
     });
+    //Pulls venues from current users venue lists
+    this.userService
+      .getListsByID(localStorage.getItem("id"))
+      .subscribe(result => {
+        this.__zone.run(() => {
+          // Stringify and then parses the observable object to access the child data.
+          var stringObj = JSON.stringify(result);
+          var list = JSON.parse(stringObj);
+          // Loops over the users venues lists so that the it can access each lists stored venues.
+          for (var key in list.venuelists) {
+            // Loops over the lists venues to generate each marker on the map.
+            for (var test in list.venuelists[key].venues) {
+              // Search the google maps Place API with the Place ID and returns an obserable object with the details of that place.
+              this.gMapsService
+                .getDetails(list.venuelists[key].venues[test].placeID, map)
+                .subscribe(details => {
+                  this.__zone.run(() => {
+                    var label;
+                    if (details.icon === "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png") {
+                      label = "Restaurant"
+                    } else if (details.icon === "https://maps.gstatic.com/mapfiles/place_api/icons/bar-71.png") {
+                      label = "Bar"
+                    } else {
+                      label = "Other";
+                    }
+
+                    this.markers.push({
+                      name: details.name,
+                      address: details.formatted_address,
+                      list: list.venuelists[key].name,
+                      label: label,
+                    });
+                  });
+                });
+            }
+          }
+        });
+      });
   }
-  
-  filter(query : string)
-  {
-    if(query != "Bar" && query != "Restaurant")
-    {
+
+  //filter(query : string)
+  //{
+  //this.filteredVenues = (query) ?
+  //this.markers.filter(v => v.label.toLowerCase().includes(query.toLowerCase())) : 
+  //this.markers; 
+  //if(query != "Bar" && query != "Restaurant")
+  //{
+  //this.message = "Venue Genre Required. Search 'Restaurant' Or 'Bar'."
+  //}
+  //}
+
+  filter(query: string) {
+    if (query != "Bar" && query != "Restaurant") {
       console.log(query)
       this.message = "Venue Genre Required. Search 'Restaurant' Or 'Bar'."
-    } 
-    else 
-    { 
+    }
+    else {
       this.message = ""
-    this.filteredVenues = (query) ?
-      this.markers.filter(v => 
-		 v.label.toLowerCase().includes(query.toLowerCase())) : 
-      this.markers; 
-	  }   
+      this.filteredVenues = (query) ?
+        this.markers.filter(v =>
+          v.label.toLowerCase().includes(query.toLowerCase())) :
+        this.markers;
+    }
   }
 
   arraysort_name() {
@@ -101,6 +149,7 @@ export class ListListComponent implements OnInit
 
 export class marker {
   name: string;
+  list: string;
   address: string;
   label: string;
 }

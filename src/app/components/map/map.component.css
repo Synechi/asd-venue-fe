@@ -7,4 +7,17 @@ span
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   font-size: 11px;
   color: red;
+
+  #searchBar {
+  position: absolute;
+  z-index:1;
+  width: 100%;
+  margin: 55;
+  /* background-color: darkslategray;  */
+}
+
+input {
+  width: 60%;
+  display: block;
+  margin: 0 auto;
 }
