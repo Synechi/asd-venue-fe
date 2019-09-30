@@ -7,8 +7,10 @@ span
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   font-size: 11px;
   color: red;
+}
 
-  #searchBar {
+  #searchBar 
+{
   position: absolute;
   z-index:1;
   width: 100%;
