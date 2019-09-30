@@ -2,6 +2,7 @@ import { Component, OnInit, NgModule, NgZone } from "@angular/core";
 import { GoogleMapsService } from "../../service/google-maps.service";
 import { UserService } from "../../service/user.service";
 import { WeekDay } from "@angular/common";
+import { MarkerManager } from "@agm/core";
 
 @Component({
   selector: "app-map",
@@ -9,6 +10,8 @@ import { WeekDay } from "@angular/common";
   styleUrls: ["./map.component.css"]
 })
 export class MapComponent implements OnInit {
+  filteredVenues: any[]; 
+  message : string = "";
   constructor(
     private gMapsService: GoogleMapsService,
     private userService: UserService,
@@ -50,8 +53,10 @@ export class MapComponent implements OnInit {
           // });
           error => console.log(error);
         }
+
       });
     });
+
     //Pulls venues from current users venue lists
     this.userService
       .getListsByID(localStorage.getItem("id"))
@@ -199,3 +204,5 @@ interface marker {
   website: String;
   opening_hours: String;
 }
+
+
