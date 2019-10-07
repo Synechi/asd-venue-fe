@@ -13,6 +13,13 @@ agm-map {
   width: 0vh;
 }
 
+span
+{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  color: red;
+}
+
 td,
 th {
   text-align: center;
@@ -38,6 +45,5 @@ th:hover {
 a {
   margin-top: 8px;
   margin-left: 8px;
-  padding: 1%;
   background-color: darkslateblue;
 }

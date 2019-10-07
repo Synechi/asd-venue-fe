@@ -38,16 +38,16 @@
 
         <div class="form-group">
             <label for="password">Password</label>
-            <input id="password" name="password" class="form-control" [(ngModel)]="user.password" required #password="ngModel" type="password"> 
+            <input id="password" name="password" class="form-control" [(ngModel)]="user.password" required #password="ngModel" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$"> 
             <span class="help-block" *ngIf="password.invalid && password.touched">
-                <i>Password is required</i>
+                <i>Password is required/Password must contain at least 1 captial letter, lower case letter and numeric digit and must be between 4 - 8 charcters long </i>
             </span>
         </div>
 
         <div class="form-group">
                 <label for="conpassword">Confirm Password</label>
 <!--             <label for="conpassword">Confirm Password</label> -->
-            <input id="conpassword" name="conpassword" class="form-control" [(ngModel)]="user.conpassword" compare="password" #conpasswordField="ngModel" type="password">
+            <input id="conpassword" name="conpassword" class="form-control" [(ngModel)]="user.conpassword" compare="password" #conpasswordField="ngModel" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$">
             <span class="help-block" *ngIf="conpasswordField.errors?.notMatched">Password does not match</span>
         </div>
 

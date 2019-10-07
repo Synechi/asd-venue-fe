@@ -47,6 +47,7 @@ import { CompareValidatorDirective } from "./components/create-account/compare-v
 import { AddListDialogComponent } from "./components/add-list-dialog/add-list-dialog.component";
 import { AddVenueDialogComponent } from "./components/add-venue-dialog/add-venue-dialog.component";
 import { ListListItemComponent } from "./components/list-list-item/list-list-item.component";
+import { ViewReviewComponent } from './components/view-review/view-review.component';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { ListListItemComponent } from "./components/list-list-item/list-list-ite
     CreateReviewComponent,
     AddListDialogComponent,
     AddVenueDialogComponent,
-    ListListItemComponent
+    ListListItemComponent,
+    ViewReviewComponent
   ],
   imports: [
     BrowserModule,

@@ -31,8 +31,8 @@ export class GoogleMapsService extends GoogleMapsAPIWrapper {
 
   getBarRest(map: any) {
     let placeService = new google.maps.places.PlacesService(map);
-    var ne = new google.maps.LatLng(-33.853487, 151.218456);
-    var sw = new google.maps.LatLng(-33.884559, 151.194724);
+    var ne = new google.maps.LatLng(-33.820506, 151.245018);
+    var sw = new google.maps.LatLng(-33.893208, 151.173436);
     var bound = new google.maps.LatLngBounds(sw, ne);
     var request = {
       bounds: bound,

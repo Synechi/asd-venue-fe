@@ -16,6 +16,7 @@ import { AuthUserGuard } from "./auth-user.guard";
 import { VenueRecommendComponent } from "./components/venue-recommend/venue-recommend.component";
 import { AddListDialogComponent } from "./components/add-list-dialog/add-list-dialog.component";
 import { AddVenueDialogComponent } from "./components/add-venue-dialog/add-venue-dialog.component";
+import { ViewReviewComponent } from "./components/view-review/view-review.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },
@@ -54,7 +55,8 @@ const routes: Routes = [
   { path: "recommendation", component: VenueRecommendComponent },
   { path: "rec", component: VenueRecommendComponent },
   { path: "add-list-dialog", component: AddListDialogComponent },
-  { path: "add-venue-dialog", component: AddVenueDialogComponent }
+  { path: "add-venue-dialog", component: AddVenueDialogComponent },
+  { path: "viewreview/:id", component: ViewReviewComponent }
 ];
 
 @NgModule({

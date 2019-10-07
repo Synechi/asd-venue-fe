@@ -50,3 +50,17 @@ h1 {
   color: #333;
   text-align: center;
 }
+
+#searchBar {
+  position: absolute;
+  z-index:1;
+  width: 100%;
+  margin: 5 5;
+  /* background-color: darkslategray;  */
+}
+
+input {
+  width: 60%;
+  display: block;
+  margin: 0 auto;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule, NgZone } from "@angular/core";
+import { Component, OnInit, NgModule, NgZone, Input } from "@angular/core";
 import { GoogleMapsService } from "../../service/google-maps.service";
 import { MarkerManager } from "@agm/core";
 import { UserService } from "../../service/user.service";
@@ -12,6 +12,7 @@ declare var google: any;
 })
 export class ListListComponent implements OnInit {
   filteredVenues: any[];
+  message: string = "";
   constructor(
     private gMapsService: GoogleMapsService,
     private userService: UserService,
@@ -109,11 +110,29 @@ export class ListListComponent implements OnInit {
       });
   }
 
+  //filter(query : string)
+  //{
+  //this.filteredVenues = (query) ?
+  //this.markers.filter(v => v.label.toLowerCase().includes(query.toLowerCase())) : 
+  //this.markers; 
+  //if(query != "Bar" && query != "Restaurant")
+  //{
+  //this.message = "Venue Genre Required. Search 'Restaurant' Or 'Bar'."
+  //}
+  //}
 
   filter(query: string) {
-    this.filteredVenues = (query) ?
-      this.markers.filter(v => v.label.toLowerCase().includes(query.toLowerCase())) :
-      this.markers;
+    if (query != "Bar" && query != "Restaurant") {
+      console.log(query)
+      this.message = "Venue Genre Required. Search 'Restaurant' Or 'Bar'."
+    }
+    else {
+      this.message = ""
+      this.filteredVenues = (query) ?
+        this.markers.filter(v =>
+          v.label.toLowerCase().includes(query.toLowerCase())) :
+        this.markers;
+    }
   }
 
   arraysort_name() {
