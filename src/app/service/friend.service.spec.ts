@@ -18,29 +18,11 @@ describe('FriendService', () => {
     service = TestBed.get(FriendService);
   });
 
-  afterEach(() => {
-    httpTestingController.verify();
-  });
 
   // Angular default test
     it('should be created', () => {
     expect(service).toBeTruthy();
   });
-
-  // //Testing that delete friend returns a 204 status code 
-  // describe('#deleteFriend()', () => {
-
-  //   it('returned status should match the right status', () => {
-
-  //     const req = httpTestingController.expectOne('http://localhost:4000/friendRemoval/friendRemoval/1/2');
-
-  //     expect(req.request.method).toEqual('PUT');
-      
-  //     req.flush('' , { status: 204});
-
-  //   });
-  // });
-
 
 
 });
