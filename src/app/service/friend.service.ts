@@ -12,8 +12,8 @@ import { $ } from "protractor";
   providedIn: "root"
 })
 export class FriendService {
-  url = "http://localhost:4000";
-  // "https://asd-venue-be.herokuapp.com";
+  url = "https://asd-venue-be.herokuapp.com";
+  
 
   constructor(private http: HttpClient) {}
 
