@@ -1,7 +1,7 @@
-import { List } from './list';
+// import { List } from './list';
 
-describe('List', () => {
-  it('should create an instance', () => {
-    expect(new List()).toBeTruthy();
-  });
-});
+// describe('List', () => {
+//   it('should create an instance', () => {
+//     expect(new List()).toBeTruthy();
+//   });
+// });
