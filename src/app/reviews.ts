@@ -4,6 +4,6 @@ export class Reviews {
     venueName: string;
     reviewDescription: string;
     rating: string;
-    thumbsUp: boolean;
-    thumbsDown: boolean;
+    thumbsUpDown: string;
+    // thumbsDown: string;
   }
