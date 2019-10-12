@@ -6,15 +6,14 @@ import { FormsModule, ReactiveFormsModule, FormControl } from "@angular/forms"
 
 declare var google: any;
 
-
-
-
 @Component({
   selector: "app-map",
   templateUrl: "./map.component.html",
   styleUrls: ["./map.component.css"]
 })
 export class MapComponent implements OnInit {
+  filteredVenues: any[];
+  message: string = "";
 
   // Map Center
   latitude = -33.870752;
@@ -58,10 +57,12 @@ export class MapComponent implements OnInit {
       ""
   };
 
-  ngOnInit() {
+  ngOnInit() 
+  {
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit() 
+  {
 
   }
 
@@ -110,6 +111,17 @@ export class MapComponent implements OnInit {
     })
     console.log(this.lists);
 
+  }
+
+  filter(query: string) {
+    if (query != "Bar" && query != "Restaurant") {
+      console.log(query)
+      this.message = "Venue Genre Required. Search 'Restaurant' Or 'Bar'."
+    }
+    else {
+      this.message = ""
+        this.markers;
+    }
   }
 
   addVenuetoList(venueid) {
