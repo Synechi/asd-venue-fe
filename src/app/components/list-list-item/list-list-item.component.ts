@@ -31,7 +31,7 @@ export class ListListItemComponent implements OnInit
       this.showRev = false;
     }
 
-    this.venueFlagService.addVenueFlag(this.marker.name, this.selectedOption).subscribe()
+    this.venueFlagService.addVenueFlag(this.marker.name, this.selectedOption, localStorage.getItem("id")).subscribe(venueFlag => {console.log(venueFlag);})
   }  
 
 }
