@@ -106,6 +106,7 @@ export class ListListComponent implements OnInit {
                 });
             }
           }
+          this.filteredVenues = this.markers;
         });
       });
   }

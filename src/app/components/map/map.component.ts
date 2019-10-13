@@ -59,12 +59,10 @@ export class MapComponent implements OnInit {
     opening_hours: ""
   };
 
-  ngOnInit() 
-  {
+  ngOnInit() {
   }
 
-  ngAfterViewInit() 
-  {
+  ngAfterViewInit() {
   }
 
   private getPlaceAutocomplete(map: any) {
@@ -84,7 +82,7 @@ export class MapComponent implements OnInit {
         lng: place.geometry.location.lng(),
         name: place.name,
         address: place.formatted_address,
-        label: "", 
+        label: "",
         icon: {
           url: place.icon,
           scaledSize: {
@@ -126,8 +124,6 @@ export class MapComponent implements OnInit {
 
   setCurrentSelect($event) {
     this.selectedValue = $event.target.value;
-    console.log(this.selectedValue);
-
   }
 
   // Marker Loader
@@ -152,6 +148,7 @@ export class MapComponent implements OnInit {
             // Loops over the lists venues to generate each marker on the map.
             this.getVenue(list, key, map);
           }
+          this.filteredVenues = this.markers;
         });
       });
   }
@@ -164,7 +161,7 @@ export class MapComponent implements OnInit {
         .subscribe(details => {
           this.__zone.run(() => {
             var markerIcon;
-            var label; 
+            var label;
             if (details.icon === "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png") {
               markerIcon = "../../../assets/img/markerIcons/food/" + list.venuelists[key].colour + ".png"
               label = "Restaurant"
@@ -204,7 +201,6 @@ export class MapComponent implements OnInit {
 
   filter(query: string) {
     if (query != "Bar" && query != "Restaurant") {
-      console.log(query)
       this.message = "Venue Genre Required. Search 'Restaurant' Or 'Bar'."
     }
     else {
@@ -214,7 +210,6 @@ export class MapComponent implements OnInit {
           v.label.toLowerCase().includes(query.toLowerCase())) :
         this.markers;
     }
-    console.log(this.filteredVenues);
   }
 
   // Style settings for map
@@ -309,5 +304,5 @@ interface searchMark {
   placeID: string;
   website: String;
   opening_hours: String;
-  label: string; 
+  label: string;
 }
