@@ -55,6 +55,8 @@ export class VenueListComponent implements OnInit {
 
   ngOnInit() {
     // gets lists of logged in user
+
+    //Bella L - Checks friendID to determine if friend lists should be displayed 
     let friendID = this.route.snapshot.paramMap.get("friendID");
     
     if(friendID != null) {
