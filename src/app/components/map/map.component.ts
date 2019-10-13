@@ -3,11 +3,10 @@ import { GoogleMapsService } from "../../service/google-maps.service";
 import { MapsAPILoader } from '@agm/core';
 import { UserService } from "../../service/user.service";
 import { FormsModule, ReactiveFormsModule, FormControl } from "@angular/forms"
+import { LabelOptions } from '@angular/material';
+import { CdkStepLabel } from '@angular/cdk/stepper';
 
 declare var google: any;
-
-
-
 
 @Component({
   selector: "app-map",
@@ -15,6 +14,8 @@ declare var google: any;
   styleUrls: ["./map.component.css"]
 })
 export class MapComponent implements OnInit {
+  filteredVenues: any[];
+  message: string = "";
 
   // Map Center
   latitude = -33.870752;
@@ -45,6 +46,7 @@ export class MapComponent implements OnInit {
     lng: 0,
     name: "",
     address: "",
+    label: "",
     icon: {
       url: "place.icon",
       scaledSize: {
@@ -54,15 +56,15 @@ export class MapComponent implements OnInit {
     },
     placeID: "",
     website: "",
-    opening_hours:
-      ""
+    opening_hours: ""
   };
 
-  ngOnInit() {
+  ngOnInit() 
+  {
   }
 
-  ngAfterViewInit() {
-
+  ngAfterViewInit() 
+  {
   }
 
   private getPlaceAutocomplete(map: any) {
@@ -82,6 +84,7 @@ export class MapComponent implements OnInit {
         lng: place.geometry.location.lng(),
         name: place.name,
         address: place.formatted_address,
+        label: "", 
         icon: {
           url: place.icon,
           scaledSize: {
@@ -127,8 +130,6 @@ export class MapComponent implements OnInit {
 
   }
 
-
-
   // Marker Loader
   loadMarkers($event) {
     this.getUserList(localStorage.getItem("id"));
@@ -163,12 +164,16 @@ export class MapComponent implements OnInit {
         .subscribe(details => {
           this.__zone.run(() => {
             var markerIcon;
+            var label; 
             if (details.icon === "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png") {
               markerIcon = "../../../assets/img/markerIcons/food/" + list.venuelists[key].colour + ".png"
+              label = "Restaurant"
             } else if (details.icon === "https://maps.gstatic.com/mapfiles/place_api/icons/bar-71.png") {
               markerIcon = "../../../assets/img/markerIcons/bars/" + list.venuelists[key].colour + ".png"
+              label = "Bar"
             } else {
               markerIcon = details.icon;
+              label = "Other"
             }
             console.log(details);
 
@@ -189,13 +194,28 @@ export class MapComponent implements OnInit {
               iconColour: list.venuelists[key].colour,
               website: details.website,
               opening_hours:
-                details.opening_hours.weekday_text
+                details.opening_hours.weekday_text,
+              label: label
             });
           });
         });
     }
   }
 
+  filter(query: string) {
+    if (query != "Bar" && query != "Restaurant") {
+      console.log(query)
+      this.message = "Venue Genre Required. Search 'Restaurant' Or 'Bar'."
+    }
+    else {
+      this.message = ""
+      this.filteredVenues = (query) ?
+        this.markers.filter(v =>
+          v.label.toLowerCase().includes(query.toLowerCase())) :
+        this.markers;
+    }
+    console.log(this.filteredVenues);
+  }
 
   // Style settings for map
   styles = [
@@ -271,6 +291,7 @@ interface marker {
   iconColour: string;
   website: String;
   opening_hours: String;
+  label: string;
 }
 
 interface searchMark {
@@ -288,4 +309,5 @@ interface searchMark {
   placeID: string;
   website: String;
   opening_hours: String;
+  label: string; 
 }
