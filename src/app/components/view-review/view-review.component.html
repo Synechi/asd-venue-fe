@@ -8,6 +8,7 @@
             <tr>
                 <th>Reviewer</th>
                 <th>Description</th>
+                <th>Score</th>
                 <th>Rate it!</th>
             </tr>
         </thead>
@@ -20,8 +21,13 @@
                     {{ object.reviewDescription }}
                 </td>
                 <td>
-                    <button mat-button><i class="fa fa-thumbs-up"></i></button>
-                    <button mat-button><i class="fa fa-thumbs-down"></i></button>
+                    {{ object.score }}
+                </td>
+                <td>
+                    <button mat-button (click)="updateScore(1, object._id, object._venueid)"><i
+                            class="fa fa-thumbs-up"></i></button>
+                    <button mat-button (click)="updateScore(-1, object._id, object._venueid)"><i
+                            class="fa fa-thumbs-down"></i></button>
                 </td>
             </tr>
         </tbody>

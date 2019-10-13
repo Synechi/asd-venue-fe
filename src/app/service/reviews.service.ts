@@ -10,19 +10,31 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
   providedIn: "root"
 })
 export class ReviewsService {
-  uri = "https://asd-venue-be.herokuapp.com/reviews";
+  uri = "https://asd-venue-be.herokuapp.com";
 
   constructor(private http: HttpClient, private router: Router) { }
 
   getFriendReviews(id, placeID) {
-    return this.http.get(`${this.uri}/getfriendreviews/${id}/${placeID}`);
+    return this.http.get(`${this.uri}/reviews/getfriendreviews/${id}/${placeID}`);
   }
   postReviewForm(review: Reviews): Observable<any> {
 
     // return this.http.post('http://localhost:4000/user/addReview', review);
-    return this.http.post(`${this.uri}/addReview`, review);
+    return this.http.post(`${this.uri}/reviews/addReview`, review);
 
 
+  }
+
+  updateUserRating(id, friendid, reviewid, score) {
+    let doc = {
+      _id: id,
+      friendID: friendid,
+      reviewID: reviewid,
+      rating: score
+    }
+    console.log(doc);
+
+    return this.http.get(`${this.uri}/venueReviews/updateScore/${id}/${friendid}/${reviewid}/${score}`)
   }
 
 

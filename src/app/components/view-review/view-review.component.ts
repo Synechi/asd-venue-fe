@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GoogleMapsService } from "../../service/google-maps.service";
 import { MapsAPILoader } from '@agm/core';
 import { ReviewsService } from "../../service/reviews.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-view-review',
@@ -12,7 +12,7 @@ import { ActivatedRoute } from "@angular/router";
 export class ViewReviewComponent implements OnInit {
 
   constructor(private gMapsService: GoogleMapsService,
-    private reviewsService: ReviewsService, public route: ActivatedRoute) { }
+    private reviewsService: ReviewsService, public route: ActivatedRoute, private router: Router) { }
 
   venueName;
 
@@ -34,6 +34,16 @@ export class ViewReviewComponent implements OnInit {
         })
       }
 
+    })
+  }
+
+  updateScore(score, friendid, reviewid) {
+    this.reviewsService.updateUserRating(localStorage.getItem("id"), friendid, reviewid, score).subscribe(res => {
+      console.log(res);
+
+      setTimeout(() => {
+        this.router.navigate(['/map'])
+      }, 500);
     })
   }
 

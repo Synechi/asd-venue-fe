@@ -29,9 +29,8 @@
       <p>{{ m.list }}</p>
       <strong>Opening hours: </strong>
       <p *ngFor="let n of m.opening_hours">{{ n }}</p>
-      <strong>Flagged As: </strong>
       <p></p>
-      <a mat-button class="viewBtn" [routerLink]="['/viewreview',m.placeID]">See Reviews</a>
+      <a mat-raised-button class="viewBtn" [routerLink]="['/viewreview',m.placeID]">See Reviews</a>
     </agm-info-window>
   </agm-marker>
   <agm-marker [latitude]="search.lat" [longitude]="search.lng" [iconUrl]="search.icon">
@@ -52,7 +51,7 @@
         <br><br>
         <button type="submit" (click)="addVenuetoList(search.placeID)">Add</button>
       </form>
-      <a mat-button class="viewBtn" [routerLink]="['/viewreview',search.placeID]">See Reviews</a>
+      <a mat-raised-button class="viewBtn" [routerLink]="['/viewreview',search.placeID]">See Reviews</a>
     </agm-info-window>
   </agm-marker>
 </agm-map>
