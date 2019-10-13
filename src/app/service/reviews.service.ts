@@ -15,16 +15,11 @@ export class ReviewsService {
   constructor(private http: HttpClient, private router: Router) { }
 
   postReviewForm(review: Reviews): Observable<any> {
-  //   var status:any
-    
-  //   status = {
-  //     "Status" : "Review has not been created"
-  // };
-  // console.log("hello")
-  // return status;
 
-    return this.http.post('http://localhost:4000/user/addReview', review);
-    // return this.http.post(`${this.uri}/user`, user);
+    // return this.http.post('http://localhost:4000/user/addReview', review);
+    return this.http.post(`${this.uri}/user/addReview`, review);
+
+
   }
 
 

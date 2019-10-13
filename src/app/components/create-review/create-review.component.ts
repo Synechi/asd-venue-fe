@@ -44,7 +44,7 @@ export class CreateReviewComponent implements OnInit {
       this.review.venueName = params['venueName'];
     })
   }
-
+// When the create review button is pressed
   onSubmitReview(form:NgForm) {
     console.log("hello, its meeeeee");
     console.log(this.review.thumbsUpDown);
@@ -56,12 +56,14 @@ export class CreateReviewComponent implements OnInit {
     );
   }
 
+  //If an error occurs
   onHttpError(errorResponse: any) {
     console.log('error: ', errorResponse);
    this.postStatus = true;
    this.postStatusMessage = "Internal Error";
   }
 
+    //If no error occurs
   onHttpStatus(statusResponse: any) {
     console.log('status: ', statusResponse);
    this.postStatus = true;
