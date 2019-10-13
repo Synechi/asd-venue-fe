@@ -5,17 +5,17 @@
 
     <form #createReview="ngForm" (ngSubmit)="onSubmitReview(createReview)">
       <br>
-      <h4>{{ reviews.venueName }}</h4>
+      <h4>{{ review.venueName }}</h4>
       <div class="form-group"> 
           <label for="reviewDescription">Review Description</label>
-          <textarea id="reviewDescription" name="reviewDescription" type="text" class="md-textarea md-textarea-auto form-control" mdbInput [(ngModel)]="reviews.reviewDescription" required #reviewDescription="ngModel" minlength="10"></textarea>
+          <textarea id="reviewDescription" name="reviewDescription" type="text" class="md-textarea md-textarea-auto form-control" mdbInput [(ngModel)]="review.reviewDescription" required #reviewDescription="ngModel" minlength="10"></textarea>
           <!-- <input type="text" name="reviewDescription" [(ngModel)]="reviewDescription" class="form-control submissionField" required> -->
       </div>
 
       <div class="form-group">
           <label for="rating">Rating</label>
           <br>
-          <select id="rating" name="rating" [(ngModel)]="reviews.rating">
+          <select id="rating" name="rating" [(ngModel)]="review.rating">
               <option value="one">1</option>
               <option value="two">2</option>
               <option value="three">3</option>
@@ -27,12 +27,16 @@
       <div class="form-group">
           <label for="thumbs">Thumbs Up or Down</label>
           <br>
-          <input type="radio" name="count" value="thumbsUp" [(ngModel)]="reviews.thumbsUp">Thumbs Up<br>
-          <input type="radio" name="count" value="thumbsDown" [(ngModel)]="reviews.thumbsDown">Thumbs Down<br>
+          <input type="radio" name="thumbsUpDown" value="thumbsUp" [(ngModel)]="review.thumbsUpDown">Thumbs Up<br>
+          <input type="radio" name="thumbsUpDown" value="thumbsDown" [(ngModel)]="review.thumbsUpDown">Thumbs Down<br>
       </div>
 
-      <button class="btm btn-primary" [disabled]="createReview.invalid">Create Review</button>
-
+      <!-- <button class="btm btn-primary" [disabled]="createReview.invalid">Create Review</button> -->
+      <button class="btm btn-primary">Create Review</button>
+      <br>
+      <br>
+      <br>
+      <div [hidden]="!postStatus" class="alert alert-danger"> {{ postStatusMessage }}</div>
     </form>
 
 
