@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
@@ -48,8 +47,10 @@ export class CreateReviewComponent implements OnInit {
   onSubmitReview(form:NgForm) {
     console.log("hello, its meeeeee");
     console.log(this.review.thumbsUpDown);
+    //Gets the user ID from the local storage
     this.review._userid= localStorage.getItem('id');
     
+    //Post review form
     this.reviewsService.postReviewForm(this.review).subscribe(
       result => this.onHttpStatus(result),
       error => this.onHttpError(error)
