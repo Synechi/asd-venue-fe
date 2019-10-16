@@ -65,31 +65,31 @@ import { browser, element, by } from 'protractor';
         expect(component).toBeTruthy();
     });
 
-    it("should call onSubmitReview function", async(() => {
-      spyOn(component, "onSubmitReview");
+    // it("should call onSubmitReview function", async(() => {
+    //   spyOn(component, "onSubmitReview");
   
-      let button = fixture.debugElement.nativeElement.querySelector('button');
-      button.click();
+    //   let button = fixture.debugElement.nativeElement.querySelector('button');
+    //   button.click();
   
-      fixture.whenStable().then(() => {
-        expect(component.onSubmitReview).toHaveBeenCalled();
-      });
-    }));
+    //   fixture.whenStable().then(() => {
+    //     expect(component.onSubmitReview).toHaveBeenCalled();
+    //   });
+    // }));
 
-    it('Entering review values in input control and emit output evnts', ()=> {
-        let review: any;
-        reviewDescription.nativeElement.value = "This place was excellent";
-        submitButton.triggerEventHandler('click', null);
-    });
+    // it('Entering review values in input control and emit output evnts', ()=> {
+    //     let review: any;
+    //     reviewDescription.nativeElement.value = "This place was excellent";
+    //     submitButton.triggerEventHandler('click', null);
+    // });
 
-    it ('should show venue name as KFC', async(()=> {
-        component.review.venueName = 'KFC';
-        fixture.detectChanges();
-        fixture.whenStable().then(() => { 
-            expect(fixture.nativeElement.querySelector('h4').textContent).toContain('KFC');
-        });
+    // it ('should show venue name as KFC', async(()=> {
+    //     component.review.venueName = 'KFC';
+    //     fixture.detectChanges();
+    //     fixture.whenStable().then(() => { 
+    //         expect(fixture.nativeElement.querySelector('h4').textContent).toContain('KFC');
+    //     });
 
-    }));
+    // }));
 
     // it ('create review successful', function(){
     //     browser.get('http://localhost:9876/create-review');
