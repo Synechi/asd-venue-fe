@@ -8,13 +8,14 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 export class VenueflagService 
 {
-  //Need To Call The Backend From Here In A Method. Example: user.service
+  //This Method Makes A Call To The Backend
 
   //uri = "https://asd-venue-be.herokuapp.com";
   uri = "http://localhost:4000";
 
   constructor(private http: HttpClient) {}
 
+  //Takes The VenueName, VenueFlag & User ID Parameters & Stores Then In The Venue Object Variable. This Venue Object Variable Is Then Pushed To The Backend.
   addVenueFlag(venueName, venueFlag, id: String)
   {
     const httpOptions = 

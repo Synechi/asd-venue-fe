@@ -14,7 +14,9 @@ declare var google: any;
   styleUrls: ["./map.component.css"]
 })
 export class MapComponent implements OnInit {
+  //Generates The Filtered Venues Array. Stores The Venues Which Fulfil The User's Search Query
   filteredVenues: any[];
+  //Creates The Message Variable & Declares It As A String 
   message: string = "";
 
   // Map Center
@@ -164,7 +166,9 @@ export class MapComponent implements OnInit {
         .subscribe(details => {
           this.__zone.run(() => {
             var markerIcon;
+            //Declares The Label Variable
             var label; 
+            //Creates The "Restaurant", "Bar" & Other Labels & Matches The Icon Images To Each Of The Respective Labels
             if (details.icon === "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png") {
               markerIcon = "../../../assets/img/markerIcons/food/" + list.venuelists[key].colour + ".png"
               label = "Restaurant"
@@ -202,6 +206,7 @@ export class MapComponent implements OnInit {
     }
   }
 
+  //The Filter Method Which Filters What Is Displayed On The Map Page Based On The User's Search Input
   filter(query: string) {
     if (query != "Bar" && query != "Restaurant") {
       console.log(query)

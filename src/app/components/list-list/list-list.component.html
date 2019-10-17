@@ -1,14 +1,20 @@
 <body>
+  //Button Which Links To Map Page
   <a mat-raised-button routerLink="/map">Map View</a>
+  //Button Which Links To Recommended Venues Page
   <a mat-raised-button routerLink="/rec">Recommended Venues</a>
+  //Search Bar Which Takes The User's Query As An Input & Based On This Input Filters The List Of Current Values In The List
+  //Contains A Placeholder In The Search Bar "Search: Venue Genre"
   <p>
     <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search: Venue Genre">
   </p>
+  //Displays The Validation Message Following The User's Query If The Query Did Not Meet The Conditions
   <span>
     {{message}}
   </span>
   <table>
     <thead>
+      //The Table Column Headings Containing The Following Venue Information; Name, Location, Genre, Venue Flag, FlaggedAs, Review
       <tr>
         <th (click)="arraysort_name()">Venue Name</th>
         <th (click)="arraysort_location()">Venue Location</th>
@@ -19,6 +25,7 @@
       </tr>
     </thead>
     <tbody>
+      //Passes Through The List Of Filtered Venues From The List-List-Component.Ts Based On The User's Search & Displays That In The Browser
       <tr *ngFor="let v of filteredVenues" app-list-list-item [marker]="v"></tr>
     </tbody>
   </table>
