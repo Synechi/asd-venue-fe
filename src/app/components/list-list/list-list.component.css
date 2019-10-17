@@ -6,11 +6,19 @@ table {
   margin-right: auto;
   margin-top: 1.4%;
   margin-bottom: 10%;
+  font-size: x-small;
 }
 
 agm-map {
   height: 0vh;
   width: 0vh;
+}
+
+span
+{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: x-small;
+  color: red;
 }
 
 td,

@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { AddListDialogComponent } from "../add-list-dialog/add-list-dialog.component";
 import { UserService } from "src/app/service/user.service";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "app-venue-list",
@@ -10,12 +11,35 @@ import { UserService } from "src/app/service/user.service";
   styleUrls: ["./venue-list.component.css"]
 })
 export class VenueListComponent implements OnInit {
+
+  firstname = this.route.snapshot.paramMap.get("firstname");
+
   constructor(
     private dialog: MatDialog,
     private userService: UserService,
-    private __zone: NgZone
+    private __zone: NgZone,
+    public route: ActivatedRoute
   ) {}
   lists: list[] = [];
+
+  checkFriendID(): boolean {
+
+    return this.route.snapshot.paramMap.get("friendID") == null;
+  }
+
+  getFriendID(): any {
+
+    var result;
+
+    if(this.route.snapshot.paramMap.get("friendID") == null) {
+
+      result = "user";
+      
+    } else result = this.route.snapshot.paramMap.get('friendID');
+
+    return result;
+  }
+
 
   openDialog() {
     //allows create list dialog to open
@@ -30,7 +54,22 @@ export class VenueListComponent implements OnInit {
   }
 
   ngOnInit() {
-    //gets lists of logged in user
+    // gets lists of logged in user
+
+    //Bella L - Checks friendID to determine if friend lists should be displayed 
+    let friendID = this.route.snapshot.paramMap.get("friendID");
+    
+    if(friendID != null) {
+      this.userService
+      .getListsByID(friendID)
+      .subscribe(userlist => {
+        for (var key in userlist) {
+          if (userlist.hasOwnProperty(key)) {
+            this.lists.push(userlist[key]);
+          }
+        }
+      });
+    } else {
     this.userService
       .getListsByID(localStorage.getItem("id"))
       .subscribe(userlist => {
@@ -41,6 +80,7 @@ export class VenueListComponent implements OnInit {
         }
         console.log(this.lists);
       });
+    }
   }
 
   delete(list) {

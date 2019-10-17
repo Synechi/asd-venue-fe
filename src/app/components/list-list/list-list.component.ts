@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule, NgZone } from "@angular/core";
+import { Component, OnInit, NgModule, NgZone, Input } from "@angular/core";
 import { GoogleMapsService } from "../../service/google-maps.service";
 import { MarkerManager } from "@agm/core";
 import { UserService } from "../../service/user.service";
@@ -11,13 +11,15 @@ declare var google: any;
   styleUrls: ["./list-list.component.css"]
 })
 export class ListListComponent implements OnInit {
+  filteredVenues: any[];
+  message: string = "";
   constructor(
     private gMapsService: GoogleMapsService,
     private userService: UserService,
     private __zone: NgZone
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
   markers: marker[] = [];
 
   // Map Center
@@ -85,20 +87,54 @@ export class ListListComponent implements OnInit {
                 .getDetails(list.venuelists[key].venues[test].placeID, map)
                 .subscribe(details => {
                   this.__zone.run(() => {
+                    var label;
+                    if (details.icon === "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png") {
+                      label = "Restaurant"
+                    } else if (details.icon === "https://maps.gstatic.com/mapfiles/place_api/icons/bar-71.png") {
+                      label = "Bar"
+                    } else {
+                      label = "Other";
+                    }
+
                     this.markers.push({
                       name: details.name,
                       address: details.formatted_address,
                       list: list.venuelists[key].name,
-                      label: null,
+                      label: label,
                     });
                   });
                 });
             }
           }
+          this.filteredVenues = this.markers;
         });
       });
-    }
+  }
 
+  //filter(query : string)
+  //{
+  //this.filteredVenues = (query) ?
+  //this.markers.filter(v => v.label.toLowerCase().includes(query.toLowerCase())) : 
+  //this.markers; 
+  //if(query != "Bar" && query != "Restaurant")
+  //{
+  //this.message = "Venue Genre Required. Search 'Restaurant' Or 'Bar'."
+  //}
+  //}
+
+  filter(query: string) {
+    if (query != "Bar" && query != "Restaurant") {
+      console.log(query)
+      this.message = "Venue Genre Required. Search 'Restaurant' Or 'Bar'."
+    }
+    else {
+      this.message = ""
+      this.filteredVenues = (query) ?
+        this.markers.filter(v =>
+          v.label.toLowerCase().includes(query.toLowerCase())) :
+        this.markers;
+    }
+  }
 
   arraysort_name() {
     this.markers.sort((a, b) => (a.name > b.name ? 1 : -1));
@@ -110,6 +146,7 @@ export class ListListComponent implements OnInit {
     this.markers.sort((a, b) => (a.label > b.label ? 1 : -1));
   }
 }
+
 
 export class marker {
   name: string;

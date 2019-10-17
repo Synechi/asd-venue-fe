@@ -12,8 +12,8 @@
         <td>{{ user.firstname }}</td>
         <td>{{ user.lastname }}</td>
         <td>
-          <button (click)="updateFriendStatus(user, 'Accepted')">Accept</button>
-          <button
+          <button mat-button (click)="updateFriendStatus(user, 'Accepted')">Accept</button>
+          <button mat-button
             (click)="updateFriendStatus(user, 'Declined')"
             class="declineBtn"
           >
@@ -23,10 +23,12 @@
       </tr>
     </tbody>
   </table>
-  <p class="placeholder" *ngIf="!this.pendingRequests.length">
-    No Results Found
-  </p>
-  <div class="notification-container" *ngIf="this.status">
-    <p>{{ statusMessage }}</p>
+
+  <div class ="placeholder-notification-container" *ngIf="this.placeholderStatus">
+   <p>{{placeholderMessage}}</p>
+  </div>
+
+  <div class="success-notification-container" *ngIf="this.statusSuccess">
+    <p>{{ statusSuccessMessage }}</p>
   </div>
 </body>

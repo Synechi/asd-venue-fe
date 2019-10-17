@@ -10,28 +10,28 @@ import { User } from "../../user";
   styleUrls: ["./suggestedfriends.component.css"]
 })
 export class SuggestedfriendsComponent implements OnInit {
-  suggestedFriends: User[];
-  status: boolean;
-  statusMessage: string;
+  suggestedFriends: User[] = [];
   searchBox: string;
+  statusSuccess: boolean;
+  statusSuccessMessage: string;
+  placeholderStatus: boolean;
+  placeholderMessage: string;
 
   constructor(private friendService: FriendService) {}
 
   ngOnInit() {}
 
-  onHttpError(errorResponse: any) {
-    console.log("error: ", errorResponse);
-    this.status = true;
-    this.statusMessage = "Internal Server Error, please refresh your browser.";
-  }
-
   //Bella L: Displays 'suggested friends' based on input from user search
   displaySuggestedFriends(searchBox: String): void {
     this.friendService
-      .displaySuggestedFriends(searchBox)
-      .subscribe(
-        suggestedFriends => (this.suggestedFriends = suggestedFriends)
-      );
+      .displaySuggestedFriends(searchBox, localStorage.getItem("id"))
+      .subscribe(suggestedFriends => {
+        this.suggestedFriends = suggestedFriends;
+        if (this.suggestedFriends.length == 0) {
+          this.placeholderStatus = true;
+          this.placeholderMessage = "No Search Results Found.";
+        }
+      });
   }
 
   removeSuggestedFriend(suggestedFriends: User[], id: String): User[] {
@@ -51,11 +51,13 @@ export class SuggestedfriendsComponent implements OnInit {
       user._id
     );
 
-    this.friendService.sendFriendRequest(user._id).subscribe(() => {
-      this.suggestedFriends = suggestedFriends;
-    });
+    this.friendService
+      .sendFriendRequest(user._id, localStorage.getItem("id"))
+      .subscribe(() => {
+        this.suggestedFriends = suggestedFriends;
+      });
 
-    this.status = true;
-    this.statusMessage = "Success! Friend Request has been sent.";
+    this.statusSuccess = true;
+    this.statusSuccessMessage = "Success! Friend Request has been sent.";
   }
 }

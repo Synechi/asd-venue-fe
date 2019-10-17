@@ -17,11 +17,12 @@ export class AddVenueDialogComponent implements OnInit {
     private userService: UserService,
     private gMapService: GoogleMapsService,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) { }
 
-  placeID: string;
+  name: string;
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   close() {
     this.dialogRef.close();
@@ -33,17 +34,21 @@ export class AddVenueDialogComponent implements OnInit {
   }
 
   createList() {
+
     this.gMapService
-      .getDetails(this.placeID, document.createElement("div"))
+      .getDetails(this.data.placeID, document.createElement("div"))
       .subscribe(venueDetails => {
+        console.log("made it this far");
         if (Object.keys(venueDetails).length === 0) {
           console.log("Invalid Place ID");
         } else {
+
+
           this.userService
             .addListVenue(
               localStorage.getItem("id"),
               this.data.listID,
-              this.placeID
+              this.data.placeID
             )
             .subscribe(
               data => {

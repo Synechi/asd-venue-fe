@@ -8,6 +8,8 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { UserService } from 'src/app/service/user.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { ReviewsService } from 'src/app/service/reviews.service';
+import { Reviews } from 'src/app/reviews';
 
 @Component({
   selector: 'app-create-account',
@@ -41,6 +43,7 @@ export class CreateAccountComponent implements OnInit {
     this.postStatusMessage = "Internal Error";
   }
 
+  // When the Email Address already exist
   onHttpStatus(statusResponse: any) {
     console.log('status: ', statusResponse);
     this.postStatus = true;
@@ -56,7 +59,7 @@ export class CreateAccountComponent implements OnInit {
     }
   }
   
-
+  // When the user creates an account 
   onSubmitAccount(form:NgForm) {
     console.log('in onSubmitAccount: ', form);
 

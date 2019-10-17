@@ -9,9 +9,11 @@ import { User } from "../../user";
   styleUrls: ["./pending-requests-table.component.css"]
 })
 export class PendingRequestsTableComponent implements OnInit {
-  pendingRequests: User[];
-  status: boolean;
-  statusMessage: string;
+  pendingRequests: User[] = [];
+  statusSuccess: boolean;
+  statusSuccessMessage: string;
+  placeholderStatus: boolean;
+  placeholderMessage: string;
 
   constructor(private friendService: FriendService) {}
 
@@ -22,8 +24,16 @@ export class PendingRequestsTableComponent implements OnInit {
   //Bella L: Updates the component variable to display pending friend requests
   displayPendingFriendRequests(): void {
     this.friendService
-      .displayPendingFriendRequests()
-      .subscribe(pendingRequests => (this.pendingRequests = pendingRequests));
+      .displayPendingFriendRequests(localStorage.getItem("id"))
+      .subscribe(pendingRequests => {
+        this.pendingRequests = pendingRequests;
+
+        if (this.pendingRequests.length == 0) {
+          this.placeholderStatus = true;
+          this.placeholderMessage =
+            "You do not have any pending requests right now.";
+        }
+      });
   }
 
   removePendingRequest(arr: User[], id: String): any {
@@ -40,10 +50,12 @@ export class PendingRequestsTableComponent implements OnInit {
     let newArr = this.removePendingRequest(this.pendingRequests, user._id);
 
     this.friendService
-      .updateFriendStatus(user._id, friendStatus)
-      .subscribe(() => (this.pendingRequests = newArr));
+      .updateFriendStatus(user._id, localStorage.getItem("id"), friendStatus)
+      .subscribe(() => {
+        this.pendingRequests = newArr;
+      });
 
-    this.status = true;
-    this.statusMessage = "Success! Request has been updated.";
+    this.statusSuccess = true;
+    this.statusSuccessMessage = "Success! Request has been updated.";
   }
 }

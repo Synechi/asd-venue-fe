@@ -5,3 +5,4 @@ export class Venue {
         public address: string
         ) { }
     }
+

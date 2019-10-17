@@ -4,3 +4,4 @@ export class List {
         public colour: string
     ) {}
 }
+
