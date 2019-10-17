@@ -6,12 +6,13 @@
         <option value="Select">Select</option>
         <option value="Want To Visit">Want To Visit</option>
         <option value="Visited">Visited</option>
-    </select>      
+    </select>
 </td>
 <td>{{selectedOption}}</td>
 <td>
-  <ng-container *ngIf="showRev == true">
-    <a mat-raised-button [routerLink]="['/create-review']" [queryParams]="{venueName: marker.name}">Leave A Review</a>
-    <!-- <a mat-raised-button routerLink="/create-review">Leave A Review</a> -->
-</ng-container>
+    <ng-container *ngIf="showRev == true">
+        <a mat-raised-button [routerLink]="['/create-review']" [queryParams]="{venueName: marker.name}">Leave A
+            Review</a>
+        <!-- <a mat-raised-button routerLink="/create-review">Leave A Review</a> -->
+    </ng-container>
 </td>

@@ -25,7 +25,9 @@ declare var google: any;
   styleUrls: ["./map.component.css"]
 })
 export class MapComponent implements OnInit {
+  //Generates The Filtered Venues Array. Stores The Venues Which Fulfil The User's Search Query
   filteredVenues: any[];
+  //Creates The Message Variable & Declares It As A String 
   message: string = "";
 
   // Map Center
@@ -52,7 +54,7 @@ export class MapComponent implements OnInit {
     private userService: UserService,
     private __zone: NgZone,
     private _mapsAPILoader: MapsAPILoader
-  ) {}
+  ) { }
 
   lists = [];
   selectedValue;
@@ -76,9 +78,9 @@ export class MapComponent implements OnInit {
     opening_hours: ""
   };
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() { }
 
   private getPlaceAutocomplete(map: any) {
     var ne = new google.maps.LatLng(-33.853487, 151.218456);
@@ -183,11 +185,11 @@ export class MapComponent implements OnInit {
     placeService.getDetails(request, (results, status) => {
       console.log(
         "This is the request: " +
-          request +
-          " This is the result: " +
-          results +
-          " This is the error: " +
-          status
+        request +
+        " This is the result: " +
+        results +
+        " This is the error: " +
+        status
       );
       this.locationResults.push({
         lat: results.geometry.location.lat(),
@@ -276,25 +278,15 @@ export class MapComponent implements OnInit {
         .subscribe(details => {
           this.__zone.run(() => {
             var markerIcon;
+            //Declares The Label Variable
             var label;
-            if (
-              details.icon ===
-              "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png"
-            ) {
-              markerIcon =
-                "../../../assets/img/markerIcons/food/" +
-                list.venuelists[key].colour +
-                ".png";
-              label = "Restaurant";
-            } else if (
-              details.icon ===
-              "https://maps.gstatic.com/mapfiles/place_api/icons/bar-71.png"
-            ) {
-              markerIcon =
-                "../../../assets/img/markerIcons/bars/" +
-                list.venuelists[key].colour +
-                ".png";
-              label = "Bar";
+            //Creates The "Restaurant", "Bar" & Other Labels & Matches The Icon Images To Each Of The Respective Labels
+            if (details.icon === "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png") {
+              markerIcon = "../../../assets/img/markerIcons/food/" + list.venuelists[key].colour + ".png"
+              label = "Restaurant"
+            } else if (details.icon === "https://maps.gstatic.com/mapfiles/place_api/icons/bar-71.png") {
+              markerIcon = "../../../assets/img/markerIcons/bars/" + list.venuelists[key].colour + ".png"
+              label = "Bar"
             } else {
               markerIcon = details.icon;
               label = "Other";
@@ -325,6 +317,7 @@ export class MapComponent implements OnInit {
     }
   }
 
+  //The Filter Method Which Filters What Is Displayed On The Map Page Based On The User's Search Input
   filter(query: string) {
     if (query != "Bar" && query != "Restaurant") {
       this.message = "Venue Genre Required. Search 'Restaurant' Or 'Bar'.";
@@ -332,8 +325,8 @@ export class MapComponent implements OnInit {
       this.message = "";
       this.filteredVenues = query
         ? this.markers.filter(v =>
-            v.label.toLowerCase().includes(query.toLowerCase())
-          )
+          v.label.toLowerCase().includes(query.toLowerCase())
+        )
         : this.markers;
     }
   }

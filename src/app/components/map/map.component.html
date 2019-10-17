@@ -25,7 +25,9 @@
   </div>
 </div>
 <agm-map [zoom]="15" [styles]="styles" [latitude]="latitude" [longitude]="longitude" (mapReady)="loadMarkers($event)">
+  //Displays The Venue Details For All Venues In The Filtered Venues Array Based On The User's Search Query
   <agm-marker *ngFor="let m of filteredVenues; let i = index" [latitude]="m.lat" [longitude]="m.lng" [iconUrl]="m.icon">
+    //Contains Which Information Will Be Displayed About Each Venue
     <agm-info-window>
       <strong>Name: </strong>
       <p>{{ m.name }}</p>

@@ -11,7 +11,9 @@ declare var google: any;
   styleUrls: ["./list-list.component.css"]
 })
 export class ListListComponent implements OnInit {
+  //Generates The Filtered Venues Array
   filteredVenues: any[];
+  //Generates The Message Variable & Declres It As A String
   message: string = "";
   constructor(
     private gMapsService: GoogleMapsService,
@@ -20,6 +22,7 @@ export class ListListComponent implements OnInit {
   ) { }
 
   ngOnInit() { }
+  //Called After The Constructor To Declare/Initialise The Markers Array
   markers: marker[] = [];
 
   // Map Center
@@ -34,7 +37,7 @@ export class ListListComponent implements OnInit {
   selectedOption: string = " ";
   //Event Handler For The Select Element's Change Event
   selectChangeHandler(event: any) {
-    //Update The UI
+    //Updates The UI To Display The Visited Button If The Selected Option Is Visited & To Not Display Anything If The Option Is "Want To Visit" Or Blank
     this.selectedOption = event.target.value;
 
     if (this.selectedOption == "Visited") {
@@ -87,7 +90,9 @@ export class ListListComponent implements OnInit {
                 .getDetails(list.venuelists[key].venues[test].placeID, map)
                 .subscribe(details => {
                   this.__zone.run(() => {
+                    //Generates The Lable Variable
                     var label;
+                    //Generates The "Restaurant", "Bar" & "Other" Labels & Matches The Particular Icon Image To The Restuarant Or Bar Label.
                     if (details.icon === "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png") {
                       label = "Restaurant"
                     } else if (details.icon === "https://maps.gstatic.com/mapfiles/place_api/icons/bar-71.png") {
@@ -96,6 +101,7 @@ export class ListListComponent implements OnInit {
                       label = "Other";
                     }
 
+                    //Declares These Variables To Be Stored In The Markers Array
                     this.markers.push({
                       name: details.name,
                       address: details.formatted_address,
@@ -122,6 +128,7 @@ export class ListListComponent implements OnInit {
   //}
   //}
 
+  //Method For Filtering The User's Query
   filter(query: string) {
     if (query != "Bar" && query != "Restaurant") {
       console.log(query)
