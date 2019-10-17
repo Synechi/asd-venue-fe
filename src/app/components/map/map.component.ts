@@ -140,7 +140,7 @@ export class MapComponent implements OnInit {
           location.geometry.location.lat(),
           location.geometry.location.lng()
         ),
-        radius: 1500,
+        radius: 500,
         type: ["bar"]
       };
       placeService.nearbySearch(requestBar, (results, status) => {
@@ -149,7 +149,7 @@ export class MapComponent implements OnInit {
           for (let result in results) {
             setTimeout(() => {
               this.getDetails(map, results[result].place_id);
-            }, 20);
+            }, 10);
           }
         } else {
           console.log("Error - ", results, " & Status - ", status);
