@@ -2,9 +2,9 @@
 <agm-map></agm-map>
 <app-nav></app-nav>
 <h1>{{ listName }}</h1>
-<div class="form-group" *ngIf="this.route.snapshot.paramMap.get('friendID') == 'user'">
-  <input placeholder="Search to add venue to list" type="text" class="input" id="place" #addresstext autocomplete="off"
-    autocapitalize="off" spellcheck="off">
+<div class="form-group">
+  <input placeholder="Search to add venue to list" type="text" class="input" id="place" #listsearchbar
+    autocomplete="off" autocapitalize="off" spellcheck="off" />
 </div>
 <p></p>
 
@@ -16,7 +16,7 @@
         <th>Name</th>
         <th>Phone Number</th>
         <th>Address</th>
-        <th>Place ID</th>
+        <th>Opening Hours</th>
         <th *ngIf="this.route.snapshot.paramMap.get('friendID') == 'user'">Actions</th>
       </tr>
     </thead>
@@ -29,7 +29,9 @@
         <td>
           {{ object.formatted_address }}
         </td>
-        <td>{{ object.place_id }}</td>
+        <td>
+          <p *ngFor="let n of object.opening_hours.weekday_text">{{ n }}</p>
+        </td>
         <td *ngIf="this.route.snapshot.paramMap.get('friendID') == 'user'">
           <button mat-button><i class="fa fa-trash" (click)="delete(object)"></i></button>
         </td>

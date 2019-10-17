@@ -14,6 +14,9 @@ declare var google: any;
   styleUrls: ["./venue-list-view.component.css"]
 })
 export class VenueListViewComponent implements OnInit {
+  @Input() adressType: string;
+  @Output() setAddress: EventEmitter<any> = new EventEmitter();
+  @ViewChild('listsearchbar', { static: true }) listsearchbar: any;
   constructor(
     private userService: UserService,
     public route: ActivatedRoute,
@@ -22,9 +25,7 @@ export class VenueListViewComponent implements OnInit {
     private dialog: MatDialog
   ) { }
 
-  @Input() adressType: string;
-  @Output() setAddress: EventEmitter<any> = new EventEmitter();
-  @ViewChild('addresstext', { static: true }) addresstext: any;
+
 
   openDialog(result) {
     //allows create list dialog to open
@@ -124,14 +125,17 @@ export class VenueListViewComponent implements OnInit {
     var ne = new google.maps.LatLng(-33.853487, 151.218456);
     var sw = new google.maps.LatLng(-33.884559, 151.194724);
     var bound = new google.maps.LatLngBounds(sw, ne);
-    const autocomplete = new google.maps.places.Autocomplete(this.addresstext.nativeElement, {
+    const autocomplete = new google.maps.places.Autocomplete(this.listsearchbar.nativeElement, {
       componentRestrictions: { country: 'au' },
       types: ['establishment'],
       bounds: bound
     })
     google.maps.event.addListener(autocomplete, "place_changed", () => {
-      const place = autocomplete.getPlace();
-      this.openDialog(place)
+      if (this.route.snapshot.paramMap.get('friendID') == 'user') {
+        const place = autocomplete.getPlace();
+        this.openDialog(place)
+      }
+
     })
   }
 }
