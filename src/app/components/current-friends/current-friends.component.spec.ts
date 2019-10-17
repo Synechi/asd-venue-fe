@@ -60,7 +60,7 @@ describe("CurrentFriendsComponent", () => {
     expect(component).toBeTruthy();
   });
 
-  //Bella L: Stubbing the FriendService to display test friends
+  //Bella L: Stubbing the FriendService to test displayCurrentFriends function
   it("should display test friends", fakeAsync(() => {
     const spy = spyOn(
       friendServiceStub,
