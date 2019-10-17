@@ -43,28 +43,27 @@ export class CreateReviewComponent implements OnInit {
       this.review.venueName = params['venueName'];
     })
   }
-// When the create review button is pressed
+// Process the review
   onSubmitReview(form:NgForm) {
-    console.log("hello, its meeeeee");
-    console.log(this.review.thumbsUpDown);
+    // console.log(this.review.thumbsUpDown);
     //Gets the user ID from the local storage
     this.review._userid= localStorage.getItem('id');
     
-    //Post review form
+    //Post the review to the Service 
     this.reviewsService.postReviewForm(this.review).subscribe(
       result => this.onHttpStatus(result),
       error => this.onHttpError(error)
     );
   }
 
-  //If an error occurs
+  //If error occurs from the post
   onHttpError(errorResponse: any) {
     console.log('error: ', errorResponse);
    this.postStatus = true;
    this.postStatusMessage = "Internal Error";
   }
 
-    //If no error occurs
+    //Response from the post
   onHttpStatus(statusResponse: any) {
     console.log('status: ', statusResponse);
    this.postStatus = true;

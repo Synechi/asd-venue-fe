@@ -1,3 +1,4 @@
+// UNIT Testing: for create review. 
 import {
     async,
     ComponentFixture,
@@ -61,10 +62,12 @@ import { browser, element, by } from 'protractor';
     //   reviewDescription = fixture.debugElement.query(By.css('input[id=reviewDescription]'));
     });
   
+    // Test for component creation
     it("should create Create Review component", () => {
         expect(component).toBeTruthy();
     });
 
+    //Call onSubmit function
     it("should call onSubmitReview function", async(() => {
       spyOn(component, "onSubmitReview");
   
@@ -76,12 +79,14 @@ import { browser, element, by } from 'protractor';
       });
     }));
 
+    //Enters values and shows output
     it('Entering review values in input control and emit output evnts', ()=> {
         let review: any;
         reviewDescription.nativeElement.value = "This place was excellent";
         submitButton.triggerEventHandler('click', null);
     });
 
+    //Check to see if venue name has been passed into the UI
     it ('should show venue name as KFC', async(()=> {
         component.review.venueName = 'KFC';
         fixture.detectChanges();
@@ -90,18 +95,6 @@ import { browser, element, by } from 'protractor';
         });
 
     }));
-
-    it ('create review successful', function(){
-        browser.get('http://localhost:9876/create-review');
-        // element(by.review('reviewDescription').sendKeys('It was good'));
-        // element(by.id('submitReview')).click()
-        // browser.wait(function() {
-        //     return browser.getCurrentUrl().then(function(url) {
-        //        return url === 'http://localhost:9876/map';
-        //     });
-        //  });
-
-    });
 
   });
   

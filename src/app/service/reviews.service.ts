@@ -17,11 +17,11 @@ export class ReviewsService {
   getFriendReviews(id, placeID) {
     return this.http.get(`${this.uri}/reviews/getfriendreviews/${id}/${placeID}`);
   }
-  postReviewForm(review: Reviews): Observable<any> {
 
+  //Call the add review API call
+  postReviewForm(review: Reviews): Observable<any> {
     // return this.http.post('http://localhost:4000/user/addReview', review);
     return this.http.post(`${this.uri}/reviews/addReview`, review);
-
 
   }
 
