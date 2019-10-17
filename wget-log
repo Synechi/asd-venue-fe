@@ -1,0 +1,5 @@
+Will not apply HSTS. The HSTS database must be a regular and non-world-writable file.
+ERROR: could not open HSTS store at '/home/evan/.wget-hsts'. HSTS will be disabled.
+--2019-10-17 13:05:18--  https://update.code.visualstudio.com/commit:9df03c6d6ce97c6645c5846f6dfa2a6a7d276515/server-linux-x64/stable
+Resolving update.code.visualstudio.com (update.code.visualstudio.com)... failed: Temporary failure in name resolution.
+wget: unable to resolve host address ‘update.code.visualstudio.com’

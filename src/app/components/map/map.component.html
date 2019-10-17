@@ -3,21 +3,61 @@
   <div class="row">
     <div class="col=md-12">
       <div class="form-group">
-        <input placeholder="Search A Venue" type="text" class="input" id="place" #addresstext autocomplete="off"
-          autocapitalize="off" spellcheck="off">
+        <input
+          placeholder="Search A Venue"
+          type="text"
+          class="input"
+          id="place"
+          #addresstext
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="off"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col=md-12">
+      <div class="form-group">
+        <input
+          placeholder="Search A Location"
+          type="text"
+          class="input"
+          id="place"
+          #locationsearch
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="off"
+        />
       </div>
     </div>
   </div>
   <div id="filtersearchBar">
     <div class="row">
-      <input #query (keyup)="filter(query.value)" type="text" class="form-control"
-        placeholder="Filter Search Results By Venue Genre">
-      {{message}}
+      <input
+        #query
+        (keyup)="filter(query.value)"
+        type="text"
+        class="form-control"
+        placeholder="Filter Search Results By Venue Genre"
+      />
+      {{ message }}
     </div>
   </div>
 </div>
-<agm-map [zoom]="15" [styles]="styles" [latitude]="latitude" [longitude]="longitude" (mapReady)="loadMarkers($event)">
-  <agm-marker *ngFor="let m of filteredVenues; let i = index" [latitude]="m.lat" [longitude]="m.lng" [iconUrl]="m.icon">
+<agm-map
+  [zoom]="15"
+  [styles]="styles"
+  [latitude]="latitude"
+  [longitude]="longitude"
+  (mapReady)="loadMarkers($event)"
+>
+  <agm-marker
+    *ngFor="let m of filteredVenues; let i = index"
+    [latitude]="m.lat"
+    [longitude]="m.lng"
+    [iconUrl]="m.icon"
+  >
     <agm-info-window>
       <strong>Name: </strong>
       <p>{{ m.name }}</p>
@@ -30,10 +70,19 @@
       <strong>Opening hours: </strong>
       <p *ngFor="let n of m.opening_hours">{{ n }}</p>
       <p></p>
-      <a mat-raised-button class="viewBtn" [routerLink]="['/viewreview',m.placeID]">See Reviews</a>
+      <a
+        mat-raised-button
+        class="viewBtn"
+        [routerLink]="['/viewreview', m.placeID]"
+        >See Reviews</a
+      >
     </agm-info-window>
   </agm-marker>
-  <agm-marker [latitude]="search.lat" [longitude]="search.lng" [iconUrl]="search.icon">
+  <agm-marker
+    [latitude]="search.lat"
+    [longitude]="search.lng"
+    [iconUrl]="search.icon"
+  >
     <agm-info-window>
       <strong>Name: </strong>
       <p>{{ search.name }}</p>
@@ -48,10 +97,50 @@
         <select ng-model="selectedList" (change)="setCurrentSelect($event)">
           <option *ngFor="let p of lists" [value]="p._id">{{ p.name }} </option>
         </select>
-        <br><br>
-        <button type="submit" (click)="addVenuetoList(search.placeID)">Add</button>
+        <br /><br />
+        <button type="submit" (click)="addVenuetoList(search.placeID)">
+          Add
+        </button>
       </form>
-      <a mat-raised-button class="viewBtn" [routerLink]="['/viewreview',search.placeID]">See Reviews</a>
+      <a
+        mat-raised-button
+        class="viewBtn"
+        [routerLink]="['/viewreview', search.placeID]"
+        >See Reviews</a
+      >
+    </agm-info-window>
+  </agm-marker>
+  <agm-marker
+    *ngFor="let p of locationResults; let i = index"
+    [latitude]="p.lat"
+    [longitude]="p.lng"
+    [iconUrl]="p.icon"
+  >
+    <agm-info-window>
+      <strong>Name: </strong>
+      <p>{{ p.name }}</p>
+      <strong>Addresss: </strong>
+      <p>{{ p.address }}</p>
+      <strong>Website: </strong>
+      <p>{{ p.website }}</p>
+      <strong>Opening hours: </strong>
+      <p *ngFor="let n of p.opening_hours">{{ n }}</p>
+      <strong>Add to list:</strong>
+      <form>
+        <select ng-model="selectedList" (change)="setCurrentSelect($event)">
+          <option *ngFor="let p of lists" [value]="p._id">{{ p.name }} </option>
+        </select>
+        <br /><br />
+        <button type="submit" (click)="addVenuetoList(p.placeID)">
+          Add
+        </button>
+      </form>
+      <a
+        mat-raised-button
+        class="viewBtn"
+        [routerLink]="['/viewreview', p.placeID]"
+        >See Reviews</a
+      >
     </agm-info-window>
   </agm-marker>
 </agm-map>
