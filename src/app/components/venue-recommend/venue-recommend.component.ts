@@ -17,6 +17,7 @@ export class VenueRecommendComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
+  // marker array that stores all of the base venue details to be shown on
   markers: marker[] = [];
   markers2: marker2[] = [];
 
@@ -30,6 +31,7 @@ export class VenueRecommendComponent implements OnInit {
 
   getPlaces(map: any)
   {
+    //Gets user recommendations from the location and list of users.
     //========================================================================//
     this.userService
     .getListsByID(localStorage.getItem("id"))
@@ -91,6 +93,8 @@ export class VenueRecommendComponent implements OnInit {
 
 }
 
+//Adds a class for the marker structure that allows 
+//for the marker array to exist.
     export class marker {
       name: string;
       address: string;
