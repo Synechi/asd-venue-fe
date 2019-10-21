@@ -1,9 +1,7 @@
-//Takes The Values Stored Under Name, Address & Label In The Markers Array & Displays It In Individual Table Rows
 <td>{{ marker.name }}</td>
 <td>{{ marker.address }}</td>
 <td>{{ marker.label }}</td>
 <td>
-    //Stores The User's Selection From The Drop Down 
     <select (change)="selectChangeHandler($event)">
         //Generates The Options For The Dropdown From Which The User Can Select
         <option value="Select">Select</option>
@@ -11,7 +9,6 @@
         <option value="Visited">Visited</option>
     </select>      
 </td>
-//Displays The Users Selected Option From The Drop Down In The Respective Venue Row
 <td>{{selectedOption}}</td>
 <td>
   <ng-container *ngIf="showRev == true">
