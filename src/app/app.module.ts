@@ -92,7 +92,7 @@ import { ViewReviewComponent } from './components/view-review/view-review.compon
     MatIconModule,
     MatListModule,
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyARpeZgOM28DWy69OEewkRMgUfrfxASKLY",
+      apiKey: "AIzaSyDY5KirnVT0U-CuA8aSOehxu8v8luFb9Xc",
       libraries: ["places"]
     }),
     MatCardModule,
